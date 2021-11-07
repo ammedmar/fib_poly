@@ -10,3 +10,9 @@
 *.txss
 *.bcf
 *.xml
+
+.DS_Store
+
+fib_poly.fdb_latexmk
+
+fib_poly.fls
