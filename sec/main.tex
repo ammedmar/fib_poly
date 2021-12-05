@@ -2,64 +2,62 @@
 
 \section{Fiber polytopes and Steenrod diagonals} \label{s:fiber polytopes and Steenrod diagonals}
 
-Let $\pi \colon P \to Q$ be a projection of polytopes, that is, an affine map $\pi \colon \R^p \to \R^q$ such that $\pi(P)=Q$ for two polytopes $P\subset \R^p$ and $Q \subset \R^q$.
-One can associate to it the \emph{fiber polytope} \[\Sigma(P,Q) \defeq \left\{ \frac{1}{vol(Q)}\int_Q \gamma(x)dx \ \colon \ \gamma \text{ is a section of }\pi \right\} \ , \] whose face lattice is isomorphic to the lattice of $\pi$-coherent subdivisions of $Q$ \cite{BilleraSturmfels92}.
-See also \cite[Chapter 9]{Ziegler95} for a detailed account.
-The vertices of $\Sigma(P,Q)$ correspond to tight coherent subdivisions, that is, subdivisions $\pi(\mathcal{F})$ where for each face $F \in \mathcal{F}\subset\mathcal{L}(P)$ we have $\dim(\pi(F))=\dim(F)$.
-Any linear function $c\in (\R^p)^{*}$ induces a subdivision $\pi(\mathcal{F}^c)$.
-When this subdivision is tight, there is a unique section $\gamma^c$ of $\pi$ which maximizes $c$ in each fiber.
 
-Morover, the fiber polytope $\Sigma(P,Q)$ lives in the preimage of the barycenter $r$ of $Q$, that is, $\Sigma(P,Q)\subset\pi^{-1}(r)\cap P$.
 
 Let $P\subset\R^n$ be a polytope.
-Following \cite{MTTV19} and \cite{GLA21}, we consider the projection $\pi \colon P\times P \to P$, $(x,y)\mapsto (x+y)/2$.
-In this case, the section $\triangle$ associated to any vertex of the fiber polytope $\Sigma P \defeq \Sigma(P\times P,P)$ is a cellular approximation of the diagonal of $P$.
+Following \cite{MTTV19} and \cite{GLA21}, we consider the projection $\pi_0 \colon P\times P \to P$, $(x,y)\mapsto (x+y)/2$.
+In this case, the section $\triangle_0$ associated to any vertex $s_0$ of the fiber polytope $P_0 \defeq \Sigma(P\times P,P)$ is a cellular approximation of the diagonal of $P$.
 
-Observe that any fiber $\pi^{-1}(z), z \in P$ is contained in an hyperplane $H$ in $\R^n\times\R^n$ for which $(1,\ldots,1)$ is a normal vector.
+Observe that any fiber $\pi_0^{-1}(z), z \in P$ is contained in an hyperplane in $\R^n\times\R^n$ for which $(1,\ldots,1)$ is a normal vector.
 In particular, this is true for the fiber of the barycenter $r$ of $P$.
-So, the fiber polytope $\Sigma P$ lies in an hyperplane with normal vector $(1,\ldots,1)$.
-This means that if we want to study the normal fan of $\Sigma P$, it is enough to restrict our attention to linear functions $c=(c_1,c_2) \in (\R^n \times \R^n)^{*}\cong (\R^n)^{*}\times (\R^n)^{*}$ for which $c_1=-c_2$.
+So, the fiber polytope $P_0$ lies in an hyperplane $T_0 \defeq \LinSpan (\pi_0^{-1}(r)) \subset \R^n \times \R^n$ with normal vector $(1,\ldots,1)$.
+We write $\mathcal{N}_{P_0}$ for the restriction of the normal fan of $P_0$ to $T_0^{*}$. Note that we have $$T_0^{*}=\{(c,-c) \in (\R^n \times \R^n)^{*}\cong (\R^n)^{*}\times (\R^n)^{*} \ | \ c \in (\R^n)^{*}\}$$
+and an isomorphism
+\begin{eqnarray*}
+    \R^n & \cong & T_0^{*} \\
+    v & \mapsto & \phi_v \ ,
+\end{eqnarray*}
+where $\phi_v : \R^n \times \R^n \to \R$, $(x,y) \mapsto \langle x-y, v \rangle$. 
 
 The product $P\times P$ admits a natural action of the symmetric group $\S_2$ by permutation of the factors.
 Let $\sigma_2$ denote the non-trivial permutation $(x,y)\mapsto (y,x)$.
 
 \begin{proposition}
-	Any tight coherent section $\triangle$ has an opposite section $\triangle^{\op}$, given by $\triangle^{\op}(z)=\triangle(z)\sigma_2$.
+	Any tight coherent section $\triangle_0$ of $\pi_0$ has an opposite section $\triangle_0^{\op}$, given by $\triangle_0^{\op}(z)=\triangle_0(z)\sigma_2$.
 \end{proposition}
 
 \begin{proof}
-	Let $c\in (\R^n\times\R^n)^{*}$ be in the interior of a maximal cone of $\mathcal{N}_{\Sigma P}$.
-	By the preceding observation, we can restrict our attention to a linear function $c$ of the form $c=(c_1,-c_1)$.
-	For any $z\in P$, the point $\triangle(z)$ in $P\times P$ maximizes $c$ in $\pi^{-1}(z)$.
-	Then, the point $\triangle^{\op}(z) \defeq \triangle(z)\sigma_2$ maximizes $-c$ in $\pi^{-1}(z)$.
+	Let $(c,-c) \in T_0^{*}$ be in the interior of a maximal cone of $\mathcal{N}_{P_0}$.
+	For any $z\in P$, the point $\triangle_0(z)$ in $P\times P$ maximizes $c$ in $\pi_0^{-1}(z)$.
+	Then, the point $\triangle_0^{\op}(z) \defeq \triangle_0(z)\sigma_2$ maximizes $(-c,c)$ in $\pi_0^{-1}(z)$.
 \end{proof}
 
-This means that the normal fan of $\Sigma P$ is centrally symmetric: any face $F$ of $\Sigma P$ has an "opposite" face $F^{\op}$, defined by $\mathcal{N}_{\Sigma P}(F^{\op})=-\mathcal{N}_{\Sigma P}(F)$.
+This means that the normal fan of $P_0$ is centrally symmetric: any face $F$ of $P_0$ has an "opposite" face $F^{\op}$, for which $\mathcal{N}_{P_0}(F^{\op})=-\mathcal{N}_{P_0}(F)$.
 
-Now choose a tight coherent section $\triangle_0\defeq\triangle$.
+Now choose a tight coherent section $\triangle_0$.
 For $n\geq 0$, let $I^n=[0,1]^n$ denote the $n$-dimensional cube.
 We want to build two families of cellular maps
 \begin{eqnarray*}
 \triangle_n, \triangle^{\op}_n & : & I^n \times P \to P\times P  \ ,
 \end{eqnarray*}
-which are equivariant under the action of $\S_2$ sending $\triangle_n$ to $\triangle^{\op}_n$.
+which are equivariant under the action of $\S_2$ sending $\triangle_n$ to $\triangle^{\op}_n$, and such that $\triangle_i$ and $\triangle_i^{op}$ are homotopies between $\triangle_{i-1}$ and $\triangle_{i-1}^{op}$ for all $i \geq 1$.
 
-We already constructed $\triangle_0$ and $\triangle^{\op}_0$; this amounted to the choice of a linear function $c_0$ in an inclusion-maximal cone of the normal fan $\mathcal{N}_{P_0}$ of the fiber polytope $P_0\defeq\Sigma P$, or equivalently to the choice of a vertex $v_0$ of $P_0$.
-The section $\triangle^{\op}_0$ is associated with the linear function $-c_0$, or equivalently to another vertex $v^{\op}_0$ of $P_0$, the opposite vertex of $v_0$.
+Let $s_0$ be the vertex of $P_0$ associated to $\triangle_0$, and denote by $s_0^{op}$ its "opposite" vertex, associated to $\triangle_0^{op}$. We set $v_0 \defeq s_0^{op}-s_0$. It is clear that for any identification $T_0 \cong T_0^{*}$, we have $v_0 \in \mathcal{N}_{P_0}(s_0^{op})$. 
 
-Consider now the linear function $\langle - , v^{\op}_0-v_0 \rangle$.
-It defines a projection of polytopes $\pi_0 \colon P_0 \to I$ via the formula
+Consider now the linear function $\langle - , v_0 \rangle$.
+It defines a projection of polytopes $\pi_1 \colon P_0 \to I$ via the formula
 \[
-x \mapsto \frac{x-\langle v_0, v^{\op}_0-v_0 \rangle}{||v^{\op}_0-v_0||^2}.
+x \mapsto \frac{\langle x-s_0, v_0 \rangle}{||v_0||^2}.
 \]
 We consider the fiber polytope $P_1 \defeq \Sigma(P_0,I)$ associated to this projection, also called the \emph{monotone path polytope} \cite[Chapter 9]{Ziegler95}.
-Choose a vertex $v_1$ in $P_1$.
-It defines a monotone path between $v_0$ and $v^{\op}_0$ in $P_0$, that is, a sequence of vertices and edges $v_0 = v_0^1, e_0^1, v_0^2, e_0^2, \dots, e_0^k, v_0^{k+1} = v^{\op}_0$ on which the linear function $\langle - , v^{\op}_0-v_0 \rangle$ takes increasing values.
-These vertices and edges define a sequence of subdivisions of $P$ that interpolate between the two cellular approximations of the diagonal $\triangle_0$ and $\triangle^{\op}_0$ of $P$.
-Let us denote the tight coherent sections associated to $v_0^i$'s by $\triangle_0^i$, for $1 \leq i \leq k+1$.
 
-The vertex $v_1$ of $P_1$ defines a tight coherent subdivision of $I$.
-We denote the vertices of this subdivision by $x_i \defeq \pi_0(v_0^i)$, for $1 \leq i \leq k+1$.
+Choose a vertex $s_1$ in $P_1$.
+It defines a monotone path between $s_0$ and $s^{\op}_0$ in $P_0$, that is, a sequence of vertices and edges $s_0 = s_0^1, e_0^1, s_0^2, e_0^2, \dots, e_0^k, s_0^{k+1} = s^{\op}_0$ on which the linear function $\langle - , v_0 \rangle$ takes increasing values.
+These vertices and edges define a sequence of subdivisions of $P_0$ that interpolate between the two cellular approximations of the diagonal $\triangle_0$ and $\triangle^{\op}_0$.
+Let us denote the tight coherent sections associated to $s_0^i$ by $\triangle_0^i$, for $1 \leq i \leq k+1$.
+
+The vertex $s_1$ of $P_1$ defines a tight coherent subdivision of $I$.
+We denote the vertices of this subdivision by $x_i \defeq \pi_1(s_0^i)$, for $1 \leq i \leq k+1$.
 We define a map
 \[
 \triangle_1 \colon I \times P \to P \times P,
@@ -71,29 +69,28 @@ on the segment $[x_i, x_{i+1}]$, $1 \leq i \leq k$, by the formula
 We obtain a cellular, continuous and piecewise-linear map.
 Notice that, by construction, we have $\triangle_1(0,z)=\triangle_0(z)$ and $\triangle_1(1,z)=\triangle_0^{\op}(z)$, so $\triangle_1$ is an homotopy between $\triangle_0$ and $\triangle_0^{\op}$.
 
-Since the normal fan of $\Sigma P$ is centrally symmetric, the vertex $v_1$ of $P_1$ has an opposite vertex $v_1^{\op}$ in $P_1$: it is associated to the monotone path from $v_0$ to $v_0^{\op}$ in $P_0$ given by taking the opposite of each face in the path from $v_0$ to $v^{\op}_0$, in the reverse order.
-With the notations above, it is given by $(v_0^{k+1})^{\op},(e_0^k)^{\op},\ldots,(e_0^1)^{\op},(v_0^1)^{\op}$.
-In the same fashion as for $\triangle_1$, the this path defines a map
+Since the normal fan of $P_0$ is centrally symmetric, the vertex $s_1$ of $P_1$ has an opposite vertex $s_1^{\op}$ in $P_1$: it is associated to the monotone path from $s_0$ to $s_0^{\op}$ in $P_0$ given by taking the opposite of each face in the path from $s_0$ to $s^{\op}_0$, in the reverse order.
+With the notations above, it is given by $(s_0^{k+1})^{\op},(e_0^k)^{\op},\ldots,(e_0^1)^{\op},(s_0^1)^{\op}$.
+In the same fashion as for $\triangle_1$, this path defines a map
 \[
 \triangle_1^{\op} \colon I \times P \to P \times P.
 \]
 Notice that $I$ is endowed here with a different tight coherent subdivision than for $\triangle_1$.
 Again, $\triangle_1^{\op}$ is an homotopy between $\triangle_0$ and $\triangle_0^{\op}$.
 
-Consider now the linear function $\langle - , v^{\op}_1-v_1 \rangle$.
-It defines a projection of polytopes $\pi_1 \colon P_1 \to I$ via the formula
+Set $v_1 \defeq s_1^{op}-s_1$, and consider the linear function $\langle - , v_1 \rangle$.
+It defines a projection of polytopes $\pi_2 \colon P_1 \to I$ via the formula
 \[
-x \mapsto \frac{x-\langle v_1, v^{\op}_1-v_1 \rangle}{||v^{\op}_1-v_1||^2}.
+x \mapsto \frac{\langle x-s_1, v_1 \rangle}{||v_1||^2}.
 \]
 We consider the fiber polytope $P_2 \defeq \Sigma(P_1,I)$ associated to this projection.
-Choose a vertex $v_2$ in $P_2$.
 
-It defines a monotone path $v_1 = v_1^1, e_1^1, v_1^2, e_1^2, \dots, e_1^l, v_1^{l+1} = v^{\op}_1$.
-These vertices and edges define a sequence of subdivisions of $I$ that interpolate between the subdivisions associated to $v_1$ and $v_1^{\op}$.
-Let us denote the tight coherent sections associated to the $v_1^i$'s by $\triangle_1^i$, for $1\leq i \leq l+1$.
+Choose a vertex $s_2$ in $P_2$. It defines a monotone path $s_1 = s_1^1, e_1^1, s_1^2, e_1^2, \dots, e_1^l, s_1^{l+1} = s^{\op}_1$.
+These vertices and edges define a sequence of subdivisions of $I$ that interpolate between the subdivisions associated to $s_1$ and $s_1^{\op}$.
+Let us denote the tight coherent section associated to $s_1^i$ by $\triangle_1^i$, for $1\leq i \leq l+1$.
 
-The vertex $v_2$ of $P_2$ defines a tight coherent subdivision of $I$.
-We denote the vertices of this subdivision by $y_i \defeq \pi_1(v_1^i)$, for $1 \leq i \leq l+1$.
+The vertex $s_2$ of $P_2$ defines a tight coherent subdivision of $I$.
+We denote the vertices of this subdivision by $y_i \defeq \pi_2(s_1^i)$, for $1 \leq i \leq l+1$.
 We define a map
 \[
 \triangle_2 \colon I \times (I \times P) \to P \times P,
@@ -105,7 +102,7 @@ on the segment $[y_i,y_{i+1}]$, $1 \leq i \leq l$, by the formula
 We obtain a cellular, continuous and piecewise-linear map.
 Notice that, by construction, we have $\triangle_2(0,z)=\triangle_1(z)$ and $\triangle_2(1,z)=\triangle_1^{\op}(z)$, so $\triangle_2$ is an homotopy between $\triangle_1$ and $\triangle_1^{\op}$.
 
-Now we iterate the procedure, define $P_3$ and choose a vertex $v_3$, and so on.
+Now we iterate the procedure, define $P_3$ and choose a vertex $s_3$, and so on.
 This process will stop at step $\dim P$.
 Indeed, we have
 \begin{eqnarray*}
@@ -117,18 +114,24 @@ Indeed, we have
 \end{eqnarray*}
 So if $P$ has dimension $n$, then $P_n$ has dimension 0 and there is no more fiber polytope to be constructed.
 
-So, given a family of vertices $v_i$ in the fiber polytopes $P_i$, $i\geq 0$, we have constructed a tower of homotopies, equivariant under the action of the symmetric groups.
+In summary, we have proven the following result.
+
+\begin{theorem}
+    Any choice of vertices $s_i$ in the fiber polytopes $P_i$, for $i\geq 0$, define a Steenrod diagonal of $P$. 
+\end{theorem}
+
+Remark that any choice of $s_i$ gives a family of vectors $v_i$ which, under an identification $T_0 \cong T_0^{*} \cong \R^n$, forms an orthogonal basis of $\R^n$. Indeed, for $i \geq 1$, let us define $T_i \defeq \LinSpan(\pi_{i}^{-1}(1/2))$. We have $P_i \subset T_i$ for each $i \geq 0$, and $T_i \subset T_{i-1}$ for all $i\geq 1$. For all $i \geq 0$, we have that $T_i$ is an hyperplane of $T_{i-1}$ for which $v_{i-1}$ is a normal vector.  
+
+In fact, since a choice of $s_i$ is equivalent to a choice of maximal cones $\mathcal{N}_{P_i}(s_i)$, any other vector $w_i$ in $\mathcal{N}_{P_i}(s_i)$ would do. Such a family of $w_i$ will always form a (non-necessarily orthogonal) basis of $\R^n$. Indeed, we have $\mathcal{N}_{P_{i-1}}(s_{i-1}) \cap T_{i} = 0$ since $v_{i-1} \in \mathcal{N}_{P_{i-1}}(s_{i-1})$ and $v_{i-1}$ is perpendicular to $T_i$.
+
+\begin{question} 
+    Given a full-dimensional polytope $P \subset \R^n$, which basis of $\R^n$ define a Steenrod diagonal of $P$? 
+\end{question}
 
 \begin{example}[The simplices]
 \end{example}
 
-\begin{example}[The cubes]
-\end{example}
-
-\begin{example}[The associahedra]
-\end{example}
-
-\begin{example} What happens is $P$ is a zonotope? Do we get a sequence of zonotopes?
+\begin{example}[Zonotopes]
 \end{example}
 
 
