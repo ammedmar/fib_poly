@@ -2,13 +2,11 @@
 
 \section{Fiber polytopes and Steenrod diagonals} \label{s:fiber polytopes and Steenrod diagonals}
 
+Let $P \subset \R^n$ be a polytope.
+Following \cite{MTTV19} and \cite{GLA21}, we consider the projection $\pi_0 \colon P \times P \to P$, $(x,y) \mapsto (x+y)/2$.
+In this case, the section $\triangle_0$ associated to any vertex $s_0$ of the fiber polytope $P_0 \defeq \Sigma(P \times P,P)$ is a cellular approximation of the diagonal of $P$.
 
-
-Let $P\subset\R^n$ be a polytope.
-Following \cite{MTTV19} and \cite{GLA21}, we consider the projection $\pi_0 \colon P\times P \to P$, $(x,y)\mapsto (x+y)/2$.
-In this case, the section $\triangle_0$ associated to any vertex $s_0$ of the fiber polytope $P_0 \defeq \Sigma(P\times P,P)$ is a cellular approximation of the diagonal of $P$.
-
-Observe that any fiber $\pi_0^{-1}(z), z \in P$ is contained in an hyperplane in $\R^n\times\R^n$ for which $(1,\ldots,1)$ is a normal vector.
+Observe that any fiber $\pi_0^{-1}(z), z \in P$ is contained in an hyperplane in $\R^n\times\R^n$ for which $(1, \dots, 1)$ is a normal vector.
 In particular, this is true for the fiber of the barycenter $r$ of $P$.
 So, the fiber polytope $P_0$ lies in an hyperplane $T_0 \defeq \LinSpan (\pi_0^{-1}(r)) \subset \R^n \times \R^n$ with normal vector $(1,\ldots,1)$.
 We write $\mathcal{N}_{P_0}$ for the restriction of the normal fan of $P_0$ to $T_0^{*}$. Note that we have $$T_0^{*}=\{(c,-c) \in (\R^n \times \R^n)^{*}\cong (\R^n)^{*}\times (\R^n)^{*} \ | \ c \in (\R^n)^{*}\}$$
@@ -17,9 +15,9 @@ and an isomorphism
     \R^n & \cong & T_0^{*} \\
     v & \mapsto & \phi_v \ ,
 \end{eqnarray*}
-where $\phi_v : \R^n \times \R^n \to \R$, $(x,y) \mapsto \langle x-y, v \rangle$. 
+where $\phi_v : \R^n \times \R^n \to \R$, $(x,y) \mapsto \langle x-y, v \rangle$.
 
-The product $P\times P$ admits a natural action of the symmetric group $\S_2$ by permutation of the factors.
+The product $P \times P$ admits a natural action of the symmetric group $\S_2$ by permutation of the factors.
 Let $\sigma_2$ denote the non-trivial permutation $(x,y)\mapsto (y,x)$.
 
 \begin{proposition}
@@ -28,21 +26,21 @@ Let $\sigma_2$ denote the non-trivial permutation $(x,y)\mapsto (y,x)$.
 
 \begin{proof}
 	Let $(c,-c) \in T_0^{*}$ be in the interior of a maximal cone of $\mathcal{N}_{P_0}$.
-	For any $z\in P$, the point $\triangle_0(z)$ in $P\times P$ maximizes $c$ in $\pi_0^{-1}(z)$.
+	For any $z\in P$, the point $\triangle_0(z)$ in $P \times P$ maximizes $c$ in $\pi_0^{-1}(z)$.
 	Then, the point $\triangle_0^{\op}(z) \defeq \triangle_0(z)\sigma_2$ maximizes $(-c,c)$ in $\pi_0^{-1}(z)$.
 \end{proof}
 
-This means that the normal fan of $P_0$ is centrally symmetric: any face $F$ of $P_0$ has an "opposite" face $F^{\op}$, for which $\mathcal{N}_{P_0}(F^{\op})=-\mathcal{N}_{P_0}(F)$.
+This means that the normal fan of $P_0$ is centrally symmetric: any face $F$ of $P_0$ has an ``opposite'' face $F^{\op}$, for which $\mathcal{N}_{P_0}(F^{\op}) = -\mathcal{N}_{P_0}(F)$.
 
 Now choose a tight coherent section $\triangle_0$.
 For $n\geq 0$, let $I^n=[0,1]^n$ denote the $n$-dimensional cube.
 We want to build two families of cellular maps
 \begin{eqnarray*}
-\triangle_n, \triangle^{\op}_n & : & I^n \times P \to P\times P  \ ,
+\triangle_n, \triangle^{\op}_n & : & I^n \times P \to P \times P  \ ,
 \end{eqnarray*}
-which are equivariant under the action of $\S_2$ sending $\triangle_n$ to $\triangle^{\op}_n$, and such that $\triangle_i$ and $\triangle_i^{op}$ are homotopies between $\triangle_{i-1}$ and $\triangle_{i-1}^{op}$ for all $i \geq 1$.
+which are equivariant under the action of $\S_2$ sending $\triangle_n$ to $\triangle^{\op}_n$, and such that $\triangle_i$ and $\triangle_i^{\op}$ are homotopies between $\triangle_{i-1}$ and $\triangle_{i-1}^{\op}$ for all $i \geq 1$.
 
-Let $s_0$ be the vertex of $P_0$ associated to $\triangle_0$, and denote by $s_0^{op}$ its "opposite" vertex, associated to $\triangle_0^{op}$. We set $v_0 \defeq s_0^{op}-s_0$. It is clear that for any identification $T_0 \cong T_0^{*}$, we have $v_0 \in \mathcal{N}_{P_0}(s_0^{op})$. 
+Let $s_0$ be the vertex of $P_0$ associated to $\triangle_0$, and denote by $s_0^{\op}$ its ``opposite'' vertex, associated to $\triangle_0^{\op}$. We set $v_0 \defeq s_0^{\op}-s_0$. It is clear that for any identification $T_0 \cong T_0^{*}$, we have $v_0 \in \mathcal{N}_{P_0}(s_0^{\op})$.
 
 Consider now the linear function $\langle - , v_0 \rangle$.
 It defines a projection of polytopes $\pi_1 \colon P_0 \to I$ via the formula
@@ -78,7 +76,7 @@ In the same fashion as for $\triangle_1$, this path defines a map
 Notice that $I$ is endowed here with a different tight coherent subdivision than for $\triangle_1$.
 Again, $\triangle_1^{\op}$ is an homotopy between $\triangle_0$ and $\triangle_0^{\op}$.
 
-Set $v_1 \defeq s_1^{op}-s_1$, and consider the linear function $\langle - , v_1 \rangle$.
+Set $v_1 \defeq s_1^{\op}-s_1$, and consider the linear function $\langle - , v_1 \rangle$.
 It defines a projection of polytopes $\pi_2 \colon P_1 \to I$ via the formula
 \[
 x \mapsto \frac{\langle x-s_1, v_1 \rangle}{||v_1||^2}.
@@ -117,15 +115,15 @@ So if $P$ has dimension $n$, then $P_n$ has dimension 0 and there is no more fib
 In summary, we have proven the following result.
 
 \begin{theorem}
-    Any choice of vertices $s_i$ in the fiber polytopes $P_i$, for $i\geq 0$, define a Steenrod diagonal of $P$. 
+    Any choice of vertices $s_i$ in the fiber polytopes $P_i$, for $i\geq 0$, define a Steenrod diagonal of $P$.
 \end{theorem}
 
-Remark that any choice of $s_i$ gives a family of vectors $v_i$ which, under an identification $T_0 \cong T_0^{*} \cong \R^n$, forms an orthogonal basis of $\R^n$. Indeed, for $i \geq 1$, let us define $T_i \defeq \LinSpan(\pi_{i}^{-1}(1/2))$. We have $P_i \subset T_i$ for each $i \geq 0$, and $T_i \subset T_{i-1}$ for all $i\geq 1$. For all $i \geq 0$, we have that $T_i$ is an hyperplane of $T_{i-1}$ for which $v_{i-1}$ is a normal vector.  
+Remark that any choice of $s_i$ gives a family of vectors $v_i$ which, under an identification $T_0 \cong T_0^{*} \cong \R^n$, forms an orthogonal basis of $\R^n$. Indeed, for $i \geq 1$, let us define $T_i \defeq \LinSpan(\pi_{i}^{-1}(1/2))$. We have $P_i \subset T_i$ for each $i \geq 0$, and $T_i \subset T_{i-1}$ for all $i\geq 1$. For all $i \geq 0$, we have that $T_i$ is an hyperplane of $T_{i-1}$ for which $v_{i-1}$ is a normal vector.
 
 In fact, since a choice of $s_i$ is equivalent to a choice of maximal cones $\mathcal{N}_{P_i}(s_i)$, any other vector $w_i$ in $\mathcal{N}_{P_i}(s_i)$ would do. Such a family of $w_i$ will always form a (non-necessarily orthogonal) basis of $\R^n$. Indeed, we have $\mathcal{N}_{P_{i-1}}(s_{i-1}) \cap T_{i} = 0$ since $v_{i-1} \in \mathcal{N}_{P_{i-1}}(s_{i-1})$ and $v_{i-1}$ is perpendicular to $T_i$.
 
-\begin{question} 
-    Given a full-dimensional polytope $P \subset \R^n$, which basis of $\R^n$ define a Steenrod diagonal of $P$? 
+\begin{question}
+    Given a full-dimensional polytope $P \subset \R^n$, which basis of $\R^n$ define a Steenrod diagonal of $P$?
 \end{question}
 
 \begin{example}[The simplices]
