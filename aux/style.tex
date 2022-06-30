@@ -5,45 +5,6 @@
 \usepackage{csquotes}
 
 % bibliography
-\usepackage[
-	backend=biber,
-	style=alphabetic,
-	backref=true,
-	url=false,
-	doi=false,
-	isbn=false,
-	eprint=false]{biblatex}
-
-\addbibresource{aux/usualpapers.bib}
-\addbibresource{aux/mypapers.bib}
-
-\renewbibmacro{in:}{}  % don't display "in:" before the journal name
-\AtEveryBibitem{\clearfield{pages}}  % don't show page numbers
-
-\DeclareFieldFormat{title}{\myhref{\mkbibemph{#1}}}
-\DeclareFieldFormat
-[article,inbook,incollection,inproceedings,patent,thesis,unpublished]
-{title}{\myhref{\mkbibquote{#1\isdot}}}
-
-\newcommand{\doiorurl}{%
-	\iffieldundef{url}
-	{\iffieldundef{eprint}
-		{}
-		{http://arxiv.org/abs/\strfield{eprint}}}
-	{\strfield{url}}%
-}
-
-\newcommand{\myhref}[1]{%
-	\ifboolexpr{%
-		test {\ifhyperref}
-		and
-		not test {\iftoggle{bbx:eprint}}
-		and
-		not test {\iftoggle{bbx:url}}
-	}
-	{\href{\doiorurl}{#1}}
-	{#1}%
-}
 
 % references
 \usepackage[

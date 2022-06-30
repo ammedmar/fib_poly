@@ -1,7 +1,170 @@
 % !TEX root = ../fib_poly.tex
 
-\section{Fiber polytopes and Steenrod diagonals} \label{s:fiber polytopes and Steenrod diagonals}
+\section{Fiber polytopes and Steenrod diagonals} 
+\label{s:fiber polytopes and Steenrod diagonals}
 
+\Guillaume{We work in the linear setting; needs to translate into affine}
+
+\begin{definition}
+    A \emph{KV system} on $\R^n$ is a family of full-rank linear maps 
+    \[
+	\pi_\bullet = \big\{
+	\R^n \xra{\pi^n_{n-1}} \R^{n-1} \xra{\pi^{n-1}_{n-2}} \dotsb \xra{\pi^3_{2}} \R^2 \xra{\pi^2_1} \R \xra{\pi^1_0} * 
+	\big\}
+	\]
+    We denote by $\pi_k$ the composition $\pi^{k+1}_{k}\cdots\pi^n_{n-1}$.
+\end{definition}
+
+\begin{lemma}
+    The data of a KV system is equivalent to the data of an orthogonal basis $\{v_1,\ldots,v_n\}$ of $\R^n$ such that $\ker \pi_k= <v_n, \ldots, v_{k+1}>$ for all $k$. 
+    Moreover, this basis can be taken orthonormal, in which case it is unique up to signs.
+\end{lemma}
+
+\begin{proof}
+    Since $\pi_{n-1}$ has full rank, its kernel is 1-dimensional.
+    We can choose a (unit) vector $v_n$ such that $\ker \pi_{n-1} = <v_n>$.
+    The kernel of $\pi_{n-2}$ is 2-dimensional, and contains $\ker \pi_{n-1}$, so we can choose a (unit) vector $v_{n-1}$, perpendicular to $v_n$, such that $\ker \pi_{n-2}=<v_n,v_{n-1}>$.
+    Continuing in the same fashion, we obtain an ordered basis $\{v_1,\ldots, v_n\}$ of $\R^n$ such that $\ker \pi_{k}=<v_n,\ldots,v_{k+1}>$.
+    In the other way around, given such a basis, one can define the projections $\pi^{k}_{k-1}$ (which are orthogonal in this case) by forgetting the last coordinate in this basis. 
+\end{proof}
+
+\begin{definition}
+    Let $P\subset \R^n$ be a polytope. 
+    A KV system is \emph{$P$-admissible} if and only if every $k$-dimensional face of $P$ is sent injectively to $\R^k$, for all $1\leq k \leq n$. 
+\end{definition}
+
+\begin{proposition}
+\label{prop:P-admissible}
+    A KV system is $P$-admissible if and only if for any $k$-dimensional face $F_k$ of $P$, the vector $v_k$ is not perpendicular to the line $\LinSpan(F_k) \cap \ker \pi_{k-1}$.
+\end{proposition}
+
+\begin{proof}
+    Requiring $\pi_1$ to be injective on the 1-faces of $P$ is exactly asking that for every 1-face $F_1$, we have $\LinSpan(F_1)\cap \ker \pi_0=0$, which is the same as requiring that $v_1$ is not perpendicular to $\LinSpan(F_1)$. 
+    Note that on both sides, it is not possible that the condition for $k=2$ is satisfied while the condition for $k=1$ does not hold. 
+    So, supposing that this last condition holds, we have indeed that for all 2-face $F_2$ of $P$, $\LinSpan(F_2)\cap \ker \pi_1$ is a line (the dimension of $\LinSpan(F_2)\cap \ker \pi_1$ is at least 1, and if it was 2 it would mean that some 1-faces of $F_2$ are perpendicular to $v_1$).
+    Requiring that $\pi_1$ is injective on 2-faces of $P$ is exactly asking that for every 2-face $F_2$ of $P$, we have $\LinSpan(F_2)\cap \ker \pi_2=0$, which is the same as requiring that $v_2$ is not perpendicular to $\LinSpan(F_2)\cap \ker \pi_1$.
+    Continuing in the same fashion, we get the equivalence between the injectivity condition on both sides.
+\end{proof}
+
+\begin{definition}
+    Let $\pi_\bullet$ be a KV system on $\R^n$, and let $P\subset \R^n$ be a polytope. 
+    A \emph{BS system} is a family of fiber polytopes defined recursively as 
+    \begin{align*}
+        P_0 & \defeq P \\
+        P_1 & \defeq \Sigma_{\pi_1}(P_0,\pi_1(P_0)) \\
+        P_k & \defeq \Sigma_{\pi_k}(P_{k-1},\Sigma_{\pi^{k}_{k-1}}(P_{k-2})), \ 2 \leq k \leq n \ ,
+    \end{align*}
+    where $\Sigma_{\pi^{k}_{k-1}}(P_{k-2})\defeq \Sigma_{\pi^{k}_{k-1}}(\pi_k(P_{k-2}),\pi_{k-1}(P_{k-2}))$.
+\end{definition}
+
+Note that by definition of the fiber polytope, we have $P_k \subset \ker \pi_k$ and $\dim P_k = \dim P - \min\{ \dim P,k\}$ for all $0\leq k \leq n$.
+
+In the case where $P$ is full dimensional, we have $\dim P_k = n-k$, and all the $P_k, 1 \leq k \leq n$ are made out of a projection to a 1-dimensional polytope, so they are \emph{monotone path polytopes} \cite[Theorem 5.3]{BilleraSturmfels92}. 
+
+\Guillaume{Verify the definition of MPP: do we require the bot-top property to speak of monotone path polytope?}
+
+Note also that in order for this definition to make sense, one needs to use crucially the functoriality of the fiber polytope construction \cite[Lemma 2.3]{BilleraSturmfels92}.
+
+\begin{proposition}
+\label{prop:KV-BS}
+    A KV system is $P$-admissible if and only if in the associated BS system, $v_k$ orients $P_{k-1}$, for all $1\leq k \leq n$.
+\end{proposition}
+
+In order to prove this, we first prove the following general lemma.
+
+\begin{lemma}
+    Let $P \xra{\pi} Q$ be a projection of polytopes. 
+    A vector $v$ orients the fiber polytope $\Sigma_\pi(P,Q)$ if and only if it orients every fiber $\pi^{-1}(q), q \in Q$. 
+\end{lemma}
+
+\begin{proof}
+    The normal fan of $\Sigma_\pi(P,Q)$ is the common refinement of the normal fans of the fibers $\pi^{-1}(q), q \in Q$ \cite[Proposition 2.2]{BilleraSturmfels94}.
+    It follows that the set of directions of the edges of $\Sigma_\pi(P,Q)$ is the union of the sets of directions of the edges of $\pi^{-1}(q), q \in Q$. 
+    Indeed, the edge directions of $\Sigma_\pi(P,Q)$ are normal directions to the walls of $\mathcal{N}_{\Sigma_\pi(P,Q)}$, which are precisely covered by the union of the walls of $\mathcal{N}_{\pi^{-1}(q)}, q \in Q$. 
+\end{proof}
+
+\begin{proof}[Proof of \cref{prop:KV-BS}]
+    From the preceding lemma, we get that the lines generated by the edges of $P_{k-1}$ are exactly the lines $\LinSpan(F_k)\cap \ker \pi_{k-1}$, for $F_k$ a $k$-face of $P$. 
+    By \cref{prop:P-admissible}, $P$-admissibility is equivalent to requiring that $v_k$ is not perpendicular to these lines, which is then (by definition) requiring that $v_k$ orients~$P_{k-1}$. 
+\end{proof}
+
+We observe that if $v$ orients $P$, then every face $F$ of $P$ has a unique vertex $\bm_v(F)$ (resp. $\tp_v(F)$) which minimizes (resp. maximizes) the scalar product $\angles{-,v}$.
+
+\begin{definition}
+    We say that $(P,v)$ possess the \emph{bot-top property} if it has a unique vertex $\bm_v(P)$ (resp. $\tp_v(P)$) which minimizes (resp. maximizes) the scalar product $\angles{-,v}$.
+    We say that $(P,\{v_k\})$ possess the \emph{bot-top property} if $(P_{k-1}, v_k)$ possess it, for every $1\leq k \leq n$.
+\end{definition}
+
+Without loss of generality, we will consider from now on a full-dimensional polytope $P\subset \R^n$, i.e. such that $\dim P=n$. 
+
+\begin{proposition}
+    If a polytope-basis pair $(P,\{v_k\})$ has the bot-top property, then there is an equivariant cellular map $\mathbb{G}^n \to P$.
+\end{proposition}
+
+\begin{proof}
+    In the BS system associated to $\{v_k\}$, each $P_k$ is defined via the linear functional $\angles{-,v_k}$. 
+    We consider the BS system associated to the linear functionals
+    \begin{equation} \label{eq:new-projection}
+    \frac{\angles{-,v_k}-\angles{\bm_{v_k}(P_{k-1}),v_k}}{\angles{\tp_{v_k}(P_{k-1})-\bm_{v_k}(P_{k-1}),v_k}}
+    \end{equation}
+    where each $P_{k-1}$ is sent to the interval $I$, the vertex $\bm_{v_k}(P_{k-1})$ is sent to $0$ and $\tp_{v_k}(P_{k-1})$ is sent to $1$. 
+    We construct inductively a family of continuous piece-wise linear cellular maps 
+    \[
+    \triangle_k, \triangle_k^{\op}: I^k \to P \ , 0 \leq k \leq n-1
+    \]
+    such that the two maps $\triangle_k$ and $\triangle_k^{\op}$ are both homotopies between $\triangle_{k-1}$ and $\triangle_{k-1}^{\op}$.
+    We can also extend the construction to a $\triangle_n : I^n \to P$ which will be an homotopy between $\triangle_{n-1}$ and $\triangle_{n-1}^{\op}$.
+
+    First, we define $\triangle_0 (*) \defeq \bm_{v_1}(P)$ and $\triangle_0^{\op} (*) \defeq \tp_{v_1}(P)$.
+    Then, the vertices $\bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$ define uniquely sections $\triangle_1, \triangle_1^\op : I \to P$ such that $\triangle_1(0)=\triangle_1^\op(0)=\bm_{v_1}(P)$ and $\triangle_1(1)=\triangle_1^\op(1)=\tp_{v_1}(P)$.
+    These sections are coherent monotone paths on $P$, defined explicitly by 
+    \begin{align*}
+        \triangle_1(x) & = \bm_{v_2}(\pi_1^{-1}(x)) \\
+        \triangle_1^\op(x) & = \tp_{v_2}(\pi_1^{-1}(x)) 
+    \end{align*}
+    for $x \in I$, where $\pi_1 : P \to I$ denotes the projection with respect to the linear functional (\ref{eq:new-projection}) in the case $k=2$. 
+    Next, the vertices $\bm_{v_3}(P_2)$ and $\tp_{v_3}(P_2)$ define monotone paths on $P_1$ between $bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$. 
+    We consider the associated (tight coherent) subdivisions of $I$, induced by $\pi_2 : P_1 \to I$.
+    We denote the vertices of these subdivisions by 
+    \begin{align*}
+        x_1 & =\pi_2(\bm_{v_2}(P_1)), x_2, \ldots, x_{p-1}, x_p=\pi_2(\tp_{v_2}(P_1)) \\
+        y_1 & = \pi_2(\bm_{v_2}(P_1)), y_2, \ldots, y_{q-1}, y_q=\pi_2(\tp_{v_2}(P_1)) \ .
+    \end{align*}
+    All these vertices are projections of vertices of $P_1$, which in turn have associated tight coherent sections $\triangle_{x_i}: I \to P$. 
+    We define a map 
+    \[ 
+    \triangle_2 : I \times I \to P \ ,
+    \]
+    where the first copy of $I$ receives the subdivision by the $x_i$, $1\leq i \leq p$, via the formula 
+    \[ 
+        \triangle_2(x_i, z) \defeq \triangle_{x_i}(z) \ ,
+    \]
+    and on each of the cubes $[x_i,x_{i+1}]\times I$ by the formula 
+    \[
+    \triangle_2(t,z) \defeq \left( \frac{x_{i+1}-t}{x_{i+1}-x_i} \right) \triangle_{x_i}(z) + \left( \frac{t-x_i}{x_{i+1}-x_i} \right) \triangle_{x_{i+1}}(z) \ .
+    \]
+    We proceed in a similar fashion to define $\triangle_2^\op$ with the $y_j$. 
+    Continuing in the same fashion, we define inductively the next maps
+    \[ 
+    \triangle_k, \triangle_k^\op : I \times I^{k-1} \to P \ , 3 \leq k \leq n-1 \ .
+    \]
+    For the last step, we observe that $P_{n-1}$ is a segment, so we can simply define 
+    \begin{eqnarray*}
+        \triangle_n : I \times I^{n-1} & \to & P \\
+        (t,z) & \mapsto & (1-t)\triangle_{n-1}(z) + t \triangle_{n-1}^\op (z) \ .
+    \end{eqnarray*}
+    These maps that we obtain are by construction continuous, cellular, equivariant under the action of $\Sym_2$ permuting $\triangle_k$ and $\triangle_k^\op$ (or sending $v_k$ to $-v_k$), and even piece-wise linear. 
+\end{proof}
+
+We will be interested in the preceding construction when $P$ is the polytope of diagonals of some other polytope. 
+
+\begin{definition}
+    Let $P\subset \R^n$ be a polytope. 
+    Its \emph{polytope of diagonals} $D_P$ is the fiber polytope $\Sigma_\pi(P\times P, P)$, where $\pi(x,y)\defeq (x+y)/2$.
+\end{definition}
+
+We observe that $P$ embeds into $P\times P$ via the set-theoretic diagonal $\Delta (x)=(x,x)$, which is a section of $\pi$. 
+The vertices of $D_P$ are associated with tight coherent sections, that are cellular approximations of the diagonal $\Delta$ \cite[Proposition 5]{MTTV19}, see also \cite[Proposition 1.1]{GLA21}. 
 Consider the diagonal embedding
 \[
 \begin{tikzcd}[row sep=0, column sep=small]
@@ -12,166 +175,99 @@ Consider the diagonal embedding
 Denote by $\{e_j\}$ the standard basis of $\R^n$. 
 Then, $\{\Delta (e_j)\}$ is a basis of $\Ima \Delta$ and we have an isomorphism $\R^n \cong \Ima \Delta$. 
 A basis for the orthogonal complement $\Ima \Delta^{\bot}$ is $\{(e_j,-e_j)\}$, and we have an isomorphism $\R^n \cong \Ima \Delta^{\bot}$. 
-We consider the projection 
-\[
-\begin{tikzcd}[row sep=0, column sep=small]
-\pi \colon \R^n \times \R^n \arrow{r} & \R^n \\
-\phantom{\pi_0 \colon} (x,y) \arrow[r, |->] & \frac{(x+y)}{2}.
-\end{tikzcd}
-\]
-For any $z \in \R^n$, we have $\pi^{-1}(z)=\Delta(z)+\ker \pi$, and an isomorphism
-\begin{equation*}
+For any $z \in \R^n$, we have $\pi^{-1}(z)=\Delta(z)+\ker \pi$, and an affine isomorphism
+\begin{equation} \label{eq:D_P-iso}
 \begin{matrix}
  \iota_z & : & \R^n  & \cong & \pi^{-1}(z) \\
  & & v  & \mapsto & \Delta(z)+(v,-v).
 \end{matrix}
-\end{equation*}
+\end{equation}
+The polytope of diagonals $D_P$ has the same dimension as $P$, and can be seen in $\R^n$ via the isomorphism $\iota_0$. 
+
+\begin{remark}
 We can see this isomorphism as the discrete analogue of the isomorphism between the tangent bundle of a manifold $M$ and the normal bundle of the diagonal submanifold of $M\times M$. 
-
-Let $P \subset \R^n$ be a polytope. We consider the projection
-\[
-\begin{tikzcd}[row sep=0, column sep=small]
-\pi_0 \colon P \times P \arrow{r} & P \\
-\phantom{\pi_0 \colon} (x,y) \arrow[r, |->] & \frac{(x+y)}{2}.
-\end{tikzcd}
-\]
-In this case, the section $\triangle_0$ associated to any vertex $s_0$ of the fiber polytope $P_0 \defeq \Sigma(P \times P,P)$ is a cellular approximation of the diagonal of $P$ \cite[Proposition 5]{MTTV19}. 
-We call it the \emph{polytope of diagonals} of $P$.
-We have $P_0 \subset \pi_0^{-1}(r)$, where $r$ is the centroid of $P$.
-
-The product $P \times P$ admits a natural action of the symmetric group $\Sym_2$ by permutation of the factors. Let $\sigma$ denote the non-trivial permutation $(x,y)\mapsto (y,x)$.
+\end{remark}
 
 \begin{proposition}
-	Let $P$ be a polytope, and let $r$ be its centroid. The polytope of diagonals $\Sigma (P \times P, P)$ is centrally symmetric with respect to the point $(r,r)$. Moreover, the symmetry is given by permutation of the factors. 
+    For any polytope $P$, the polytope of diagonals $D_P$ is centrally symmetric. 
 \end{proposition}
-\begin{proof} 
-    Observe first that any fiber $\pi_0^{-1}(z)$, for $z \in P$, is invariant under the action of $\sigma$.  
-    Using the description of $\pi_0^{-1}(z)$ given by the isomorphism $\iota_z$, one can see directly that this action defines a central symmetry with respect to the point $\Delta (z)$.
-    The fiber polytope $P_0$ being a Minkowski sum of centrally symmetric polytopes \cite[Theorem 1.5]{BilleraSturmfels92}, it is also centrally symmetric.
-\end{proof}
-
-\begin{corollary}
-	Any tight coherent section $\triangle_0$ of $\pi_0$ has an opposite section $\triangle_0^{\op}$, given by $\triangle_0^{\op}(z)=\sigma\triangle_0(z)$.
-\end{corollary}
 
 \begin{proof}
-	The normal fan $\mathcal{N}_{P_0}$ of $P_0$ is a fan of the space $(\ker \pi)^{*}$ \cite[Section 2]{BilleraSturmfels94}. 
-    This can be seen to be the space of linear functionals $\phi_v : \R^n \times \R^n \to \R$ of the form $\phi_v(x,y) \defeq \langle x-y, v \rangle$, where $v \in \R^n$, via the canonical isomorphism $\{(v,-v) \ | \ v \in \R^n \}=\ker \pi \cong (\ker \pi)^{*}=\{\langle -, (v,-v)\rangle \ | \ v \in \R^n \}$. 
-    Now let $\phi_v$ be in the interior of a maximal cone of $\mathcal{N}_{P_0}$.
-	For any $z\in P$, the point $\triangle_0(z)$ maximizes $\phi_v$ in $\pi_0^{-1}(z)$.
-	Then, the point $\triangle_0^{\op}(z) \defeq \sigma \triangle_0(z)$ maximizes $\phi_{-v}$ in $\pi_0^{-1}(z)$.
+    Let $x=(y,-y)$ be a vertex of $D_P$. 
+    There is a linear form $\angles{-,v}$ which is maximized at $x$ over $D_P$. 
+    Its associated tight coherent section 
+    \begin{equation*}
+    \begin{matrix}
+        \gamma & : & P & \to & P \times P \\
+        & & x  & \mapsto & (\gamma_1(z),\gamma_2(z))
+    \end{matrix}
+    \end{equation*}
+    is given by maximum of $\angles{-,v}$ in each fiber $\pi^{-1}(z)$ of $\pi$. Then, the section 
+    \begin{equation*}
+    \begin{matrix}
+        \sigma_2\gamma & : & P & \to & P \times P \\
+        & & x  & \mapsto & (\gamma_2(z),\gamma_1(z))
+    \end{matrix}
+    \end{equation*}
+    is given by the minimum of $\angles{-,v}$ in each fiber, or equivalently the maximum of of $\angles{-,-v}$ in each fiber. 
+    Thus, this tight coherent section defines a vertex $-x=(-y,y)$ of $D_P$. 
 \end{proof}
 
-Now choose a tight coherent section $\triangle_0$.
-For $n\geq 0$, let $I^n=[0,1]^n$ denote the $n$-dimensional cube.
-We want to build two families of cellular maps
-\begin{eqnarray*}
-\triangle_n, \triangle^{\op}_n & : & I^n \times P \to P \times P  \ ,
-\end{eqnarray*}
-which are equivariant under the action of $\Sym_2$ sending $\triangle_n$ to $\triangle^{\op}_n$, and such that $\triangle_i$ and $\triangle_i^{\op}$ are homotopies between $\triangle_{i-1}$ and $\triangle_{i-1}^{\op}$ for all $i \geq 1$.
+In the sequel, we will be interested in a KV system over $D_P$.
 
-Let $s_0$ be the vertex of $P_0$ associated to $\triangle_0$, and denote by $s_0^{\op}$ its opposite vertex, associated to $\triangle_0^{\op}$. We set $v_0 \defeq s_0^{\op}-s_0$. 
+\begin{definition}
+    A \emph{Steenrod diagonal} on $P$ is the datum of a KV system on $D_P$ which possess the bot-top property with respect to $D_P$.
+\end{definition}
 
-Consider now the linear function $\langle - , v_0 \rangle$.
-It defines a projection of polytopes $\pi_1 \colon P_0 \to I$ via the formula
-\[
-x \mapsto \frac{\langle x-s_0, v_0 \rangle}{||v_0||^2}.
-\]
-We consider the fiber polytope $P_1 \defeq \Sigma(P_0,I)$ associated to this projection, also called the \emph{monotone path polytope} \cite[Chapter 9]{Ziegler95}.
+\Guillaume{moduli space of Steenrod diagonals}
 
-Choose a vertex $s_1$ in $P_1$.
-It defines a monotone path between $s_0$ and $s^{\op}_0$ in $P_0$, that is, a sequence of vertices and edges $s_0 = s_0^1, e_0^1, s_0^2, e_0^2, \dots, e_0^k, s_0^{k+1} = s^{\op}_0$ on which the linear function $\langle - , v_0 \rangle$ takes increasing values.
-These vertices and edges define a sequence of subdivisions of $P_0$ that interpolate between the two cellular approximations of the diagonal $\triangle_0$ and $\triangle^{\op}_0$.
-Let us denote the tight coherent sections associated to $s_0^i$ by $\triangle_0^i$, for $1 \leq i \leq k+1$.
+We denote by $\rho_z P \defeq 2z-P$ the reflection of $P$ with respect to $z \in P$. 
 
-The vertex $s_1$ of $P_1$ defines a tight coherent subdivision of $I$.
-We denote the vertices of this subdivision by $x_i \defeq \pi_1(s_0^i)$, for $1 \leq i \leq k+1$.
-We define a map
-\[
-\triangle_1 \colon I \times P \to P \times P,
-\]
-on the segment $[x_i, x_{i+1}]$, $1 \leq i \leq k$, by the formula
-\[
-(t,z) \mapsto \left( \frac{x_{i+1}-t}{x_{i+1}-x_i} \right) \triangle_0^{i}(z) + \left( \frac{t-x_{i}}{x_{i+1}-x_i} \right) \triangle_0^{i+1}(z).
-\]
-We obtain a cellular, continuous and piecewise-linear map.
-Notice that, by construction, we have $\triangle_1(0,z)=\triangle_0(z)$ and $\triangle_1(1,z)=\triangle_0^{\op}(z)$, so $\triangle_1$ is an homotopy between $\triangle_0$ and $\triangle_0^{\op}$.
-
-Since the normal fan of $P_0$ is centrally symmetric, the vertex $s_1$ of $P_1$ has an opposite vertex $s_1^{\op}$ in $P_1$: it is associated to the monotone path from $s_0$ to $s_0^{\op}$ in $P_0$ given by taking the opposite of each face in the path from $s_0$ to $s^{\op}_0$, in the reverse order.
-With the notations above, it is given by $(s_0^{k+1})^{\op},(e_0^k)^{\op},\ldots,(e_0^1)^{\op},(s_0^1)^{\op}$.
-In the same fashion as for $\triangle_1$, this path defines a map
-\[
-\triangle_1^{\op} \colon I \times P \to P \times P.
-\]
-Notice that $I$ is endowed here with a different tight coherent subdivision than for $\triangle_1$.
-Again, $\triangle_1^{\op}$ is an homotopy between $\triangle_0$ and $\triangle_0^{\op}$.
-
-Set $v_1 \defeq s_1^{\op}-s_1$, and consider the linear function $\langle - , v_1 \rangle$.
-It defines a projection of polytopes $\pi_2 \colon P_1 \to I$ via the formula
-\[
-x \mapsto \frac{\langle x-s_1, v_1 \rangle}{||v_1||^2}.
-\]
-We consider the fiber polytope $P_2 \defeq \Sigma(P_1,I)$ associated to this projection.
-
-Choose a vertex $s_2$ in $P_2$. It defines a monotone path $s_1 = s_1^1, e_1^1, s_1^2, e_1^2, \dots, e_1^l, s_1^{l+1} = s^{\op}_1$.
-These vertices and edges define a sequence of subdivisions of $I$ that interpolate between the subdivisions associated to $s_1$ and $s_1^{\op}$.
-Let us denote the tight coherent section associated to $s_1^i$ by $\triangle_1^i$, for $1\leq i \leq l+1$.
-
-The vertex $s_2$ of $P_2$ defines a tight coherent subdivision of $I$.
-We denote the vertices of this subdivision by $y_i \defeq \pi_2(s_1^i)$, for $1 \leq i \leq l+1$.
-We define a map
-\[
-\triangle_2 \colon I \times (I \times P) \to P \times P,
-\]
-on the segment $[y_i,y_{i+1}]$, $1 \leq i \leq l$, by the formula
-\[
-(t,z) \mapsto \left(\frac{y_{i+1}-t}{y_{i+1}-y_i}\right)\triangle_1^{i}(z)+\left(\frac{t-y_{i}}{y_{i+1}-y_i}\right)\triangle_1^{i+1}(z).
-\]
-We obtain a cellular, continuous and piecewise-linear map.
-Notice that, by construction, we have $\triangle_2(0,z)=\triangle_1(z)$ and $\triangle_2(1,z)=\triangle_1^{\op}(z)$, so $\triangle_2$ is an homotopy between $\triangle_1$ and $\triangle_1^{\op}$.
-
-Now we iterate the procedure, define $P_3$ and choose a vertex $s_3$, and so on.
-This process will stop at step $\dim P$.
-Indeed, we have
-\begin{eqnarray*}
-    \dim P_0 & = & \dim \Sigma P = 2 \dim P - \dim P = \dim P \\
-    \dim P_1 & = & \dim P_0 -1 = \dim P -1 \\
-    \dim P_2 & = & \dim P_1 - 1 = \dim P -2 \\
-    \vdots & & \vdots  \\
-    \dim P_n & = &\dim P - n
-\end{eqnarray*}
-So if $P$ has dimension $n$, then $P_n$ has dimension 0 and there is no more fiber polytope to be constructed.
-
-We shall call \emph{vertex system} a choice of vertices $s_i$ in the fiber polytopes $P_i$, for $i\geq 0$. In summary, we have proven the following result.
-
-\begin{theorem}
-    A vertex system defines a Steenrod diagonal of $P$.
-\end{theorem}
-
-The preceding construction exhibits a natural family of vectors. 
-
-\begin{theorem}
-    A vertex system defines an orthogonal basis of $\LinSpan(P)$.
-\end{theorem}
+\begin{lemma}
+    There is an affine isomorphism 
+    \begin{equation} \label{eq:iso-intersection}
+    \begin{matrix}
+        \rho & : & P\cap\rho_z P & \xra{\cong} & \pi^{-1}(z) \\
+        & & x  & \mapsto & (x,2z-x)
+    \end{matrix}
+    \end{equation}
+    for all $z \in P$. 
+\end{lemma}
 
 \begin{proof}
-    Any choice of vertices $s_i$ in the fiber polytopes $P_i$ gives a family of vectors $v_i \defeq s_i^{op} - s_i$, which define the successive projections $\pi_i$. Let us define $T_0 \defeq \pi_0^{-1}(r)$, where $r$ is the centroid of $P$. For $i \geq 1$, let us define $T_i \defeq \LinSpan(\pi_{i}^{-1}(1/2))$. We have $P_i \subset T_i$ for each $i \geq 0$, by definition of the fiber polytope. 
-    
-    Since the projection $\pi_i$ is defined by taking the scalar product with $v_{i-1}$, the linear space $T_i$ is an hyperplane of $T_{i-1}$, orthogonal to the vector $v_{i-1}$. Also, we have the inclusion $T_i \subset T_{i-1}$ for all $i\geq 1$, so the vectors $v_i$, $i \geq 0$, are all orthogonal to each other. Since there are exactly $n$ such non-zero vectors, they form an orthogonal basis of $T_0$. 
-    
-    The space $T_0$ is, modulo translation by $(r,r)$, a linear subspace of $\ker \pi = \{(v,-v) \ | \ v \in \R^n \}$, which has a canonical identification with $\R^n$. This isomorphism $(v,-v) \mapsto v$ preserves orthogonality, thus the orthogonal basis of $T_0$ gives an orthogonal basis of $\LinSpan(P) \subset \R^n$. [Restrict ourselves to a full-dimensional polytope for simplicity??]
+    This is a straightforward observation.
+    Equivalently, the isomorphism can be given by the assignment $z+t \mapsto (z+t,z-t)$. 
 \end{proof}
 
+This lemma makes clear the pointwise description of the diagonal 
+\begin{equation*}
+\begin{matrix}
+    \triangle_{(P,v)} & : & P & \to & P \times P \\
+    & & z  & \mapsto & (\bm_v(P \cap \rho_z P),\tp_v(P \cap \rho_z P))
+\end{matrix}
+\end{equation*}
+in \cite[Definition 10]{MTTV19}, see also \cite[Proposition 1.15]{GLA21}. 
+Indeed, the tight coeherent section associated to a vertex in $D_P$ is given by the extremal vetices of all the fibers $\pi^{-1}(z), z \in P$ with respect to some functional $\angles{-,w}$.
+Since $D_P \subset \ker \pi$, we can restrict ourselves to the vectors of the form $w=(v,-v) \in \ker \pi$ without loosing generality. 
+Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum (resp. minimum) of $(v,-v)$ over $\pi^{-1}(z)$ is exactly the top (resp. bot) element of $P\cap \rho_z P$ with respect to $v$. 
 
-\begin{question}
-    Given a full-dimensional polytope $P \subset \R^n$, which basis of $\R^n$ define a Steenrod diagonal of $P$?
-\end{question}
+\begin{proposition}
+    Let $\{v_k\}$ be an orthogonal basis of $\R^n$, and let $P\subset \R^n$ be a full-dimensional polytope. 
+    Then, we have that
+    \[
+    (D_P,\{v_k\}) \text{ has the bot-top property (resp. } \{v_k\} \text{ is }D_P\text{-admissible)}  
+    \]
+    \[
+    \iff (P\cap \rho_z P,\{v_k\}) \text{ has the bot-top property (resp. } \{v_k\} \text{ is }P\cap \rho_z P\text{-admissible)} \ \forall z \in P \ .
+    \]
+    Moreover, in both cases, we have that $\{v_k\}$ is $P$-admissible.
+\end{proposition}
+Note that we make a slight abuse of notation on the left-hand side, denoting by $D_P$ the inverse image $\iota_0^{-1}(D_P)$ of the polytope of diagonals under the isomorphism~(\ref{eq:D_P-iso}).
+We first prove the following general lemma. 
 
-\begin{example}[The simplices]
-\end{example}
-
-\begin{example}[Zonotopes]
-\end{example}
+\begin{lemma}
+    Let $\pi : P\to Q$ be an affine projection of polytopes such that all the fibers lie in parallel  
+\end{lemma}
 
 
 
