@@ -1,5 +1,7 @@
 % !TEX root = ../fib_poly.tex
 
+\section{Steenrod diagonals}
+
 We will be interested in the preceding construction when $P$ is the polytope of diagonals of some other polytope.
 
 \begin{definition}
@@ -93,7 +95,9 @@ Indeed, the tight coeherent section associated to a vertex in $D_P$ is given by 
 Since $D_P \subset \ker \pi$, we can restrict ourselves to the vectors of the form $w=(v,-v) \in \ker \pi$ without loosing generality.
 Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum (resp. minimum) of $(v,-v)$ over $\pi^{-1}(z)$ is exactly the top (resp. bot) element of $P\cap \rho_z P$ with respect to $v$.
 
-\begin{proposition} \label{prop:bot-top-for-D_P}
+\anibal{maybe this as a general statement:}
+
+\begin{lemma} \label{l:bot-top-for-DP}
 	Let $\{v_k\}$ be an orthogonal basis of $\R^n$, and let $P\subset \R^n$ be a full-dimensional polytope.
 	Then, we have that
 	\[
@@ -102,8 +106,8 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 	\[
 	\iff (P\cap \rho_z P,\{v_k\}) \text{ has the bot-top property (resp. } \{v_k\} \text{ is }P\cap \rho_z P\text{-admissible)} \ \forall z \in P \ .
 	\]
-	Moreover, in both cases, we have that $\{v_k\}$ is $P$-admissible.
-\end{proposition}
+\end{lemma}
+
 Note that we make a slight abuse of notation on the left-hand side, denoting by $D_P$ the inverse image $\iota_0^{-1}(D_P)$ of the polytope of diagonals under the isomorphism~(\ref{eq:D_P-iso}).
 We first prove the following general lemma.
 
@@ -119,7 +123,7 @@ We first prove the following general lemma.
 	We conclude as in \cref{lemma:orients-the-fibers}.
 \end{proof}
 
-\begin{proof}[Proof of \cref{prop:bot-top-for-D_P}]
+\begin{proof}[Proof of \cref{l:bot-top-for-DP}]
 	We prove the first part of the statement.
 	To ease the notation, let us denote by $D$ the polytope of diagonals $D_P$.
 	Using the isormophism (\ref{eq:D_P-iso}), it suffices to prove the statement for $(D,\{v_k,-v_k\})$ and $\pi^{-1}(z), z \in P$.
