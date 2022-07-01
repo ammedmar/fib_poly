@@ -2,23 +2,21 @@
 
 \section{Steenrod diagonals}
 
-We will be interested in the preceding construction when $P$ is the polytope of diagonals of some other polytope.
-
 \begin{definition}
 	Let $P\subset \R^n$ be a polytope.
 	Its \emph{polytope of diagonals} $D_P$ is the fiber polytope $\Sigma_\pi(P\times P, P)$, where $\pi(x,y)\defeq (x+y)/2$.
 \end{definition}
 
 We observe that $P$ embeds into $P\times P$ via the set-theoretic diagonal $\Delta (x)=(x,x)$, which is a section of $\pi$.
-The vertices of $D_P$ are associated with tight coherent sections, that are cellular approximations of the diagonal $\Delta$ \cite[Proposition 5]{MTTV19}, see also \cite[Proposition 1.1]{GLA21}.
+The vertices of $D_P$ are associated with tight coherent sections, which are cellular approximations of the diagonal $\Delta$ by \cite[Proposition 5]{MTTV19}, see also \cite[Proposition 1.1]{GLA21}.
 Consider the diagonal embedding
 \[
 \begin{tikzcd}[row sep=0, column sep=small]
 	\Delta \colon \R^n \arrow{r} & \R^n \times \R^n \\
-	\phantom{\Delta \colon} z \arrow[r, |->] & (z,z).
+	\phantom{\Delta \colon} z \arrow[r, |->] & (z,z) \ ,
 \end{tikzcd}
 \]
-Denote by $\{e_j\}$ the standard basis of $\R^n$.
+and denote by $\{e_j\}$ the standard basis of $\R^n$.
 Then, $\{\Delta (e_j)\}$ is a basis of $\Ima \Delta$ and we have an isomorphism $\R^n \cong \Ima \Delta$.
 A basis for the orthogonal complement $\Ima \Delta^{\bot}$ is $\{(e_j,-e_j)\}$, and we have an isomorphism $\R^n \cong \Ima \Delta^{\bot}$.
 For any $z \in \R^n$, we have $\pi^{-1}(z)=\Delta(z)+\ker \pi$, and an affine isomorphism
@@ -59,11 +57,30 @@ The polytope of diagonals $D_P$ has the same dimension as $P$, and can be seen i
 	Thus, this tight coherent section defines a vertex $-x=(-y,y)$ of $D_P$.
 \end{proof}
 
-In the sequel, we will be interested in a KV system over $D_P$.
-
 \begin{definition}
-	A \emph{Steenrod diagonal} on $P$ is the datum of a KV system on $D_P$ which possess the bot-top property with respect to $D_P$.
+	A \emph{Steenrod diagonal} on $P$ is the datum of a frame which possess the bot-top property with respect to $D_P$.
 \end{definition}
+
+Observe that a Steenrod diagonal of $P$ defines a Steenrod diagonal on every face of $P$. 
+
+\begin{theorem}
+	A Steenrod diagonal on $P$ defines an $\Sym_2$-equivariant topological, piece-wise linear, cellular map $I^\infty \times P \to P \times P$.
+\end{theorem}
+
+\begin{proof}
+	From \cref{thm:map-from-the-globe} we get a family of $\Sym_2$-equivariant cellular maps
+	\[
+	\triangle_k, \triangle_k^\op : I^k \to D_P \ . 
+	\]
+	The maps $\triangle_0, \triangle_0^\op$ select two vertices of $D_P$, that is two tight coherent sections of $P\times P \xra{\pi} P$ that we still denote by $\triangle_0, \triangle_0^\op : P \to P\times P$.
+	Similarly the vertices in the polytopal subdivision of the source $I$ of the maps $\triangle_1$ and $\triangle_1^\op$ are sent to tight coherent sections of $\pi$. 
+	Thus, the two maps $\triangle_1$ and $\triangle_1^\op$ define discrete coherent homotopies 
+	\[
+	\triangle_1, \triangle_1^\op : I\times P \to P \times P  
+	\]
+	between these the sections $\triangle_0$ and $\triangle_0^\op$. 
+	The higher maps are obtained in a similar fashion, the ones above the dimension of $P$ being trivial. 
+\end{proof}
 
 We denote by $\rho_z P \defeq 2z-P$ the reflection of $P$ with respect to $z \in P$.
 
@@ -91,14 +108,12 @@ This lemma makes clear the pointwise description of the diagonal
 	\end{matrix}
 \end{equation*}
 in \cite[Definition 10]{MTTV19}, see also \cite[Proposition 1.15]{GLA21}.
-Indeed, the tight coeherent section associated to a vertex in $D_P$ is given by the extremal vetices of all the fibers $\pi^{-1}(z), z \in P$ with respect to some functional $\angles{-,w}$.
+Indeed, the tight coherent section associated to a vertex in $D_P$ is given by the extremal vetices of all the fibers $\pi^{-1}(z), z \in P$ with respect to some functional $\angles{-,w}$.
 Since $D_P \subset \ker \pi$, we can restrict ourselves to the vectors of the form $w=(v,-v) \in \ker \pi$ without loosing generality.
 Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum (resp. minimum) of $(v,-v)$ over $\pi^{-1}(z)$ is exactly the top (resp. bot) element of $P\cap \rho_z P$ with respect to $v$.
 
-\anibal{maybe this as a general statement:}
-
 \begin{lemma} \label{l:bot-top-for-DP}
-	Let $\{v_k\}$ be an orthogonal basis of $\R^n$, and let $P\subset \R^n$ be a full-dimensional polytope.
+	Let $\{v_k\}$ be an orthogonal basis of $\R^n$, and let $P\subset \R^n$ be a polytope.
 	Then, we have that
 	\[
 	(D_P,\{v_k\}) \text{ has the bot-top property (resp. } \{v_k\} \text{ is }D_P\text{-admissible)}
@@ -109,43 +124,52 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 \end{lemma}
 
 Note that we make a slight abuse of notation on the left-hand side, denoting by $D_P$ the inverse image $\iota_0^{-1}(D_P)$ of the polytope of diagonals under the isomorphism~(\ref{eq:D_P-iso}).
-We first prove the following general lemma.
-
-\begin{lemma} \label{lemma:iterated-orientation}
-	Let $P\xra{\pi} Q$ be an affine projection of polytopes, and suppose that $v_1$ orients the fiber polytope $\Sigma_\pi (P,Q)$.
-	Then, a vector $v_2$ perpendicular to $v_1$ orients every intersection of an hyperplane orthogonal to $v_1$ with $\Sigma_\pi (P,Q)$ if and only if this property holds for every fiber $\pi^{-1}(q), q \in Q$.
-\end{lemma}
-
-\begin{proof}
-	As mentioned in the proof of \cref{lemma:orients-the-fibers}, the normal fan of $\Sigma_\pi(P,Q)$ is the common refinement of the normal fans of the fibers $\pi^{-1}(q), q \in Q$.
-	The normal fan of a the intersection of an hyperplane $H$ orthogonal to $v_1$ with $\Sigma_\pi(P,Q)$ is the common refinement of the normal fans of some intersections of hyperplanes orthogonal to $v_1$ with the fibers $\pi^{-1}(q), q \in Q$.
-	Indeed, as shown in \cite[Lemma 3.1]{BilleraSturmfels94}, refinement of normal fans is preserved by projection.
-	We conclude as in \cref{lemma:orients-the-fibers}.
-\end{proof}
 
 \begin{proof}[Proof of \cref{l:bot-top-for-DP}]
-	We prove the first part of the statement.
-	To ease the notation, let us denote by $D$ the polytope of diagonals $D_P$.
-	Using the isormophism (\ref{eq:D_P-iso}), it suffices to prove the statement for $(D,\{v_k,-v_k\})$ and $\pi^{-1}(z), z \in P$.
-	It suffices to consider the case where $\{v_k,-v_k\}$ is $D$-admissible, the analogous statement with the bot-top then follows directly.
-	By \cref{lemma:orients-the-fibers}, we have that $v_1$ orients $D$ if and only if it orients every fiber $\pi^{-1}(z)$.
-	By the same lemma, we have that $v_2$ orients $D_1$ if and only if it orients every intersection of $D$ with an hyperplane orthogonal to $v_1$.
-	According to \cref{lemma:iterated-orientation}, this is equivalent to $v_2$ orienting the intersections of each fiber $\pi^{-1}(z)$ with an hyperplane orthogonal to $v_1$.
-	Using again \cref{lemma:orients-the-fibers}, this is equivalent to $v_2$ orienting $\pi^{-1}(z)_1$, for each $z \in P$.
-	Continuing in the same fashion for the higher $v_k$, we get the above equivalence.
-
-	For the second part of the statement, observe first that if $\{v_k,-v_k\}$ is $D$-admissible, then $v_k$ is $P$-admissible since the linear span $\LinSpan(F_k)$ of a $k$-face $F_k$ of $P$ is equal to the linear span of some $k$-face $F_z$ of $P\cap \rho_z P$, for some $z \in P$ (for example, $F_k \cap \rho_z F_k$ for $z=(\bm_{v_1}(F_k)+\tp_{v_1}(F_k))/2$).
-	So, if all the faces of $P\cap \rho_z P$ are sent injectively to $\R^k$, then so are the faces of $P$.
-	Now, suppose that $(D,\{v_k,-v_k\})$ possess the bot-top property.
-	Let $F_1$ be a 1-face of $P$, with vertices $x$ and $y$.
-	Setting $z=(x+y)/2$, we have that $F_1 \cap \rho_z F_1 = F_1$.
-	This intersection possess the bot-top property with respect to $v_1$, so we have that $v_1$ orients $F_1$.
-	Let $F_k$ by any $k$-face of $P$. \Guillaume{TBC}
+	Using the isormophism (\ref{eq:D_P-iso}), it suffices to prove the statement for $(D_P,\{v_k,-v_k\})$ and $\pi^{-1}(z), z \in P$, which is a special case of \cref{prop:bot-top-for-fibers}.
 \end{proof}
 
-\Guillaume{Observation: Steenrod diagonal of P implies Steenrod diagonal on every face of P}
+\begin{proposition}
+	If $(D_P,\{v_k\})$ has the bot-top property, then $\{v_k\}$ is $P$-admissible. 
+\end{proposition}
 
-\Guillaume{KV choice for simplices}
+\begin{proof}
+	Suppose that $(D_P,\{v_k\})$ has the bot-top property.
+	Using \cref{l:bot-top-for-DP}, this is equivalent to $(P\cap\rho_z P, \{v_k\})$ having the bot-top property for all $z \in P$. 
+	On the other hand, by \cref{l:bot-top-admissible} it suffices to show that $\{v_k\}$ is $F$-admissible, for any face $F$ of $P$.
+	Thus, we only need to show that if $(F \cap \rho_z F, \{v_k\})$ has the bot-top property, for all $z \in F$, then $(F,\{v_k\})$ has the bot-top property. 
+	
+	For an edge $F_1$ of $P$, the two conditions are equivalent since $F_1 \cap \rho_z F_1 = F_1$, for $z$ the middle point between the vertices of $F_1$.
+	For a $2$-face $F_2$ of $P$, we first have that every edge of $F_2$ is oriented by $v_1$, which implies that the intersection of $F_2$ with any hyperplane perpendicular to $v_1$ is a line $\ell$ (except for $\bm_{v_1}(F_2)$ and $\tp_{v_1}(F_2)$) with two distinct vertices $x$ and $y$ that belong to two distinct edges of $F_2$. 
+	Choosing $z \defeq (x+y)/2$, we have that if $F_2 \cap \rho_z F_2$ has the bot-top property with respect to $v_2$, then the line $\ell$ has the bot-top property, or equivalently is oriented by $v_2$. 
+	Thus, all such lines are oriented by $v_2$, and the frame $\{v_k\}$ is $F_2$-admissible. 
+	Continuing the induction process in the same fashion, we obtain that this is the case for any face $F$ of $P$. 
+\end{proof}
+
+\begin{example}
+	Note that the reverse implication in the preceding proposition does not hold in general.  
+	For instance, the standard $3$-dimensional permutohedron is oriented by the vector $v_1=(4,3,2,1)$, while the intersection $F \cap \rho_z G$, for $F$ and $G$ the faces associated to the ordered partitions $12|34$ and $24|13$, does not have the bot-top property with respect to $v_1$, for any $z \in (\mathring F + \mathring G)/2$.
+	This is due to the fact that ... \cite[Section 3.1]{GLA21} for details. 
+	\Guillaume{TBC; + add general links with the fundamental hyperplane arrangement!!}
+\end{example}
+
+\Guillaume{Conjecture: the reverse implication holds for the simplices and cubes}
+
+We turn our attention to the special case where $P=\Delta^n$, the standard $n$-simplex. 
+
+\begin{lemma}
+	The polytope of diagonals $D_{\Delta^n}$ of the standard $n$-simplexe is the $n$-dimensional permutahedron. 
+\end{lemma}
+
+\begin{lemma}
+	The frame ... defines a Steenrod diagonal on $\Delta^n$. 
+\end{lemma}
+
+\begin{theorem}
+	This choice recovers both Steenrod original construction, and Street orientals. 
+\end{theorem}
+
+This provides a topological enhancement of the results...
 
 \Guillaume{moduli space of Steenrod diagonals}
 

@@ -5,7 +5,7 @@
 \Guillaume{We work in the linear setting; needs to translate into affine}
 
 \begin{definition}
-	A flag ...
+	A \emph{flag} is a family of linear maps of the form
 	\[
 	\pi_\bullet = \big\{
 	\R^n \xra{\pi^n_{n-1}} \R^{n-1} \xra{\pi^{n-1}_{n-2}} \dotsb \xra{\pi^3_{2}} \R^2 \xra{\pi^2_1} \R \xra{\pi^1_0} *
@@ -14,19 +14,17 @@
 	We denote by $\pi_k$ the composition $\pi^{k+1}_{k}\cdots\pi^n_{n-1}$.
 \end{definition}
 
-Remark... 	Given an othonormal basis of $\R^n$ its \textit{associated flag} is a family of full-rank linear maps
+Given an othonormal basis of $\R^n$ its \emph{associated flag} is the family of full-rank linear maps $\pi_\bullet$ where each projection $\pi_k$ is given by forgetting the last $k+1$ coordinates in this basis. 
 
 \begin{lemma}
-	The data of a KV system is equivalent to the data of an orthogonal basis $\{v_1,\ldots,v_n\}$ of $\R^n$ such that $\ker \pi_k= <v_n, \ldots, v_{k+1}>$ for all $k$.
-	Moreover, this basis can be taken orthonormal, in which case it is unique up to signs.
+	The data of a full-rank flag is equivalent, up to sign, to the data of an orthonormal basis $\{v_1,\ldots,v_n\}$ of $\R^n$ such that $\ker \pi_k=\LinSpan{v_n, \ldots, v_{k+1}}$ for all $k$.
 \end{lemma}
 
 \begin{proof}
 	Since $\pi_{n-1}$ has full rank, its kernel is 1-dimensional.
-	We can choose a (unit) vector $v_n$ such that $\ker \pi_{n-1} = <v_n>$.
-	The kernel of $\pi_{n-2}$ is 2-dimensional, and contains $\ker \pi_{n-1}$, so we can choose a (unit) vector $v_{n-1}$, perpendicular to $v_n$, such that $\ker \pi_{n-2}=<v_n,v_{n-1}>$.
-	Continuing in the same fashion, we obtain an ordered basis $\{v_1,\ldots, v_n\}$ of $\R^n$ such that $\ker \pi_{k}=<v_n,\ldots,v_{k+1}>$.
-	In the other way around, given such a basis, one can define the projections $\pi^{k}_{k-1}$ (which are orthogonal in this case) by forgetting the last coordinate in this basis.
+	We can choose a unit vector $v_n$ such that $\ker \pi_{n-1} = \LinSpan(v_n)$.
+	The kernel of $\pi_{n-2}$ is 2-dimensional, and contains $\ker \pi_{n-1}$, so we can choose a unit vector $v_{n-1}$, perpendicular to $v_n$, such that $\ker \pi_{n-2}=\LinSpan(v_n,v_{n-1})$.
+	Continuing in the same fashion, we obtain an ordered basis $\{v_1,\ldots, v_n\}$ of $\R^n$ such that $\ker \pi_{k}=\LinSpan(v_n,\ldots,v_{k+1})$.
 \end{proof}
 
 \begin{definition}
@@ -36,7 +34,7 @@ Remark... 	Given an othonormal basis of $\R^n$ its \textit{associated flag} is a
 
 \begin{definition}
 	Let $P$ be a framed polytope with associated flag $\pi_\bullet$.
-	Its \textit{iterated monotone path polytope} $P_\bullet = \{P_k\}_{k \geq 0}$ is the collection of framed polytopes ...
+	Its \textit{iterated monotone path polytope} $P_\bullet = \{P_k\}_{k \geq 0}$ is the collection of framed polytopes defined recursively by the formulas
 	\begin{align*}
 		P_0 & \defeq P \\
 		P_1 & \defeq \Sigma_{\pi_1}(P_0,\pi_1(P_0)) \\
@@ -46,29 +44,26 @@ Remark... 	Given an othonormal basis of $\R^n$ its \textit{associated flag} is a
 \end{definition}
 
 Note that by definition of the fiber polytope, we have $P_k \subset \ker \pi_k$ and $\dim P_k = \dim P - \min\{ \dim P,k\}$ for all $0\leq k \leq n$.
-
 In the case where $P$ is full dimensional, we have $\dim P_k = n-k$, and all the $P_k, 1 \leq k \leq n$ are made out of a projection to a 1-dimensional polytope, so they are \emph{monotone path polytopes} \cite[Theorem 5.3]{BilleraSturmfels92}.
-
-\Guillaume{Verify the definition of MPP: do we require the bot-top property to speak of monotone path polytope?}
-
-\Guillaume{Say that this is a flag of fiber polytopes as considered in BS94; the flag polytope here is always a line...}
-
+Note that flags of polytopes and their associated iterated fiber polytopes where studied in \cite{BilleraSturmfels94}.
 Note also that in order for this definition to make sense, one needs to use crucially the functoriality of the fiber polytope construction \cite[Lemma 2.3]{BilleraSturmfels92}.
 
 \begin{definition}
-	We say that $(P,v)$ possess the \emph{bot-top property} if it has a unique vertex $\bm_v(P)$ (resp. $\tp_v(P)$) which minimizes (resp. maximizes) the scalar product $\angles{-,v}$.
+	We say that $(P,v)$ possess the \emph{bot-top property} if it has a unique vertex $\bm_v(P)$ which minimizes the scalar product $\angles{-,v}$ and a unique vertex $\tp_v(P)$ which maximizes it.
 	We say that $(P,\{v_k\})$ possess the \emph{bot-top property} if $(P_{k-1}, v_k)$ possess it, for every $1\leq k \leq n$.
 \end{definition}
 
-Without loss of generality, we will consider from now on a full-dimensional polytope $P\subset \R^n$, i.e. such that $\dim P = n$.
+The bot-top property for $(P,v)$ was named \emph{quasi-orientation} in \cite[Definition 1.11]{GLA21}.
 
 \begin{theorem}
-	If a framed polytope $(P,\{v_k\})$ has the bot-top property, then there is an equivariant cellular map $\mathbb{G}^n \to P$.
+	\label{thm:map-from-the-globe}
+	If a framed polytope $(P,\{v_k\})$ has the bot-top property, then there is an equivariant cellular map $\mathbb{G}^\infty \to P$.
 \end{theorem}
 
 \begin{proof}
-	In the BS system associated to $\{v_k\}$, each $P_k$ is defined via the linear functional $\angles{-,v_k}$.
-	We consider the BS system associated to the linear functionals
+	We suppose that $P$ has dimension $n\geq 0$. 
+	In the iterated monotone path polytope associated to $\{v_k\}$, each $P_k$ is defined via the linear functional $\angles{-,v_k}$.
+	We consider the iterated monotone path polytope associated to the linear functionals
 	\begin{equation} \label{eq:new-projection}
 		\frac{\angles{-,v_k}-\angles{\bm_{v_k}(P_{k-1}),v_k}}{\angles{\tp_{v_k}(P_{k-1})-\bm_{v_k}(P_{k-1}),v_k}}
 	\end{equation}
@@ -88,7 +83,7 @@ Without loss of generality, we will consider from now on a full-dimensional poly
 		\triangle_1^\op(x) & = \tp_{v_2}(\pi_1^{-1}(x))
 	\end{align*}
 	for $x \in I$, where $\pi_1 : P \to I$ denotes the projection with respect to the linear functional (\ref{eq:new-projection}) in the case $k=2$.
-	Next, the vertices $\bm_{v_3}(P_2)$ and $\tp_{v_3}(P_2)$ define monotone paths on $P_1$ between $bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$.
+	Next, the vertices $\bm_{v_3}(P_2)$ and $\tp_{v_3}(P_2)$ define monotone paths on $P_1$ between $\bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$.
 	We consider the associated (tight coherent) subdivisions of $I$, induced by $\pi_2 : P_1 \to I$.
 	We denote the vertices of these subdivisions by
 	\begin{align*}
@@ -119,4 +114,5 @@ Without loss of generality, we will consider from now on a full-dimensional poly
 		(t,z) & \mapsto & (1-t)\triangle_{n-1}(z) + t \triangle_{n-1}^\op (z) \ .
 	\end{eqnarray*}
 	These maps that we obtain are by construction continuous, cellular, equivariant under the action of $\Sym_2$ permuting $\triangle_k$ and $\triangle_k^\op$ (or sending $v_k$ to $-v_k$), and even piece-wise linear.
+	Finally, we obtain a map from $\mathbb{G}^\infty$ by defining all the higher maps trivially mapping to the point $P_n$ and taking the colimit. 
 \end{proof}
