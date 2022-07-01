@@ -1,3 +1,54 @@
 % !TEX root = ../fib_poly.tex
 
 \section{Introduction} \label{s:introduction}
+
+\subsection{Polytopes}
+
+A polytope $P \subset \mathbb{R}^n$ is the convex hull of a finite set of points. Equivalently, it is defined as the bounded intersection of a finite number of half-spaces.
+
+Let $\pi \colon P \to Q$ be a projection of polytopes, that is, an affine map $\pi \colon \R^p \to \R^q$ such that $\pi(P)=Q$ for two polytopes $P\subset \R^p$ and $Q \subset \R^q$.
+One can associate to it the \emph{fiber polytope} \[\Sigma(P,Q) \defeq \left\{ \frac{1}{vol(Q)}\int_Q \gamma(x)dx \ \colon \ \gamma \text{ is a section of }\pi \right\} \ , \] whose face lattice is isomorphic to the lattice of $\pi$-coherent subdivisions of $Q$ \cite{BilleraSturmfels92}.
+See also \cite[Chapter 9]{Ziegler95} for a detailed account.
+The vertices of $\Sigma(P,Q)$ correspond to tight coherent subdivisions, that is, subdivisions $\pi(\mathcal{F})$ where for each face $F \in \mathcal{F}\subset\mathcal{L}(P)$ we have $\dim(\pi(F))=\dim(F)$.
+Any linear function $c\in (\R^p)^{*}$ induces a subdivision $\pi(\mathcal{F}^c)$.
+When this subdivision is tight, there is a unique section $\gamma^c$ of $\pi$ which maximizes $c$ in each fiber.
+
+Morover, the fiber polytope $\Sigma(P,Q)$ lives in the preimage of the barycenter $r$ of $Q$, that is, $\Sigma(P,Q)\subset\pi^{-1}(r)\cap P$.
+
+\section{Steenrod diagonals}
+
+A \textit{cellular space} is a topological space with a CW structure and a \textit{cellular map} is a continuous map preserving skeleta.
+The product of cellular spaces is naturally a cellular space.
+For our purposes, two important examples of cellular spaces are the interval $\gcube$ with its usual CW structure, and the colimit $\gcube^\infty$ of the system of cellular maps $\gcube^0 \to \gcube^1 \to \gcube^2 \to \dotsb$ defined by inclusion into the subspace with last coordinate equal to $0$.
+
+A cellular map $X \to X \times X$ is a \textit{cellular diagonal} if it is homotopic to the (non-cellular) diagonal $x \mapsto (x, x)$, and agrees with it on the $0$-cells of $X$.
+Applying the functor of (cellular) chains $\gchains = \gchains(-\, ;\, \Z)$, a cellular diagonal $X \to X \times X$ makes $\gchains(X)$ into a coalgebra in $\Ch$, the category of chain complexes, which induces the cup product in the cohomology of $X$.
+
+Unlike the diagonal of $X$, a cellular diagonal is not invariant under the transposition action of $\Sym_2$ on $X \times X$.
+A \textit{Steenrod diagonal} is a cellular map $\Delta \colon \gcube^\infty \times X \to X \times X$ such that the restrictions $\Delta_i \colon \gcube^i \times X \to X \times X$ satisfy that $\Delta_0$ is a cellular diagonal and that, for $i > 0$, $\Delta_i$ is a homotopy between $\Delta_{i-1}$ and its transpose.
+We refer to $\Delta_i$ as the \textit{Steenrod $i$-diagonal} of $\Delta$.
+Applying the functor of chains, a Steenrod diagonal induces for $i \geq 0$ a degree $i$ linear map
+\[
+\gchains(\Delta_i) \colon \gchains(X) \to \gchains(X \times X) \xra{\cong} \gchains(X) \otimes \gchains(X)
+\]
+referred to as a \textit{cup-$i$ coproduct}.
+These define the Steenrod squares on the mod~$2$ cohomology of $X$ by the formula
+\[
+Sq^k\big( [\alpha] \big) \defeq \big[ (\alpha \otimes \alpha)\gchains(\Delta_{k-\bars{\alpha}}) \big],
+\]
+where brackets denote the cohomology class represented by a cocycle and bars its (cohomological) degree.
+
+\subsection{Higher categories}
+
+\dots \textit{composable pasting scheme} \dots
+
+\begin{proposition}[{\cite[Theorem 2.3]{kapranov1991polycategory}}]
+	If $P \subset \R^n$ is a polytope and
+	\[
+	\pi^\bullet = \big\{
+	\R^n \xra{\pi^n_{n-1}} \R^{n-1} \xra{\pi^{n-1}_{n-2}} \dotsb \xra{\pi^3_{2}} \R^2 \xra{\pi^2_1} \R
+	\big\}
+	\]
+	is a system of projections such that any $k$-dimensional
+	face of $P$ projects injectively into $\R^k$, then $A(P, \pi^\bullet)$ is a composable pasting scheme.
+\end{proposition}
