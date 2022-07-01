@@ -63,6 +63,8 @@ In the case where $P$ is full dimensional, we have $\dim P_k = n-k$, and all the
 
 \Guillaume{Verify the definition of MPP: do we require the bot-top property to speak of monotone path polytope?}
 
+\Guillaume{Say that this is a flag of fiber polytopes as considered in BS94; the flag polytope here is always a line...}
+
 Note also that in order for this definition to make sense, one needs to use crucially the functoriality of the fiber polytope construction \cite[Lemma 2.3]{BilleraSturmfels92}.
 
 \begin{proposition}
@@ -72,7 +74,7 @@ Note also that in order for this definition to make sense, one needs to use cruc
 
 In order to prove this, we first prove the following general lemma.
 
-\begin{lemma}
+\begin{lemma} \label{lemma:orients-the-fibers}
     Let $P \xra{\pi} Q$ be a projection of polytopes. 
     A vector $v$ orients the fiber polytope $\Sigma_\pi(P,Q)$ if and only if it orients every fiber $\pi^{-1}(q), q \in Q$. 
 \end{lemma}
@@ -219,8 +221,6 @@ In the sequel, we will be interested in a KV system over $D_P$.
     A \emph{Steenrod diagonal} on $P$ is the datum of a KV system on $D_P$ which possess the bot-top property with respect to $D_P$.
 \end{definition}
 
-\Guillaume{moduli space of Steenrod diagonals}
-
 We denote by $\rho_z P \defeq 2z-P$ the reflection of $P$ with respect to $z \in P$. 
 
 \begin{lemma}
@@ -251,7 +251,7 @@ Indeed, the tight coeherent section associated to a vertex in $D_P$ is given by 
 Since $D_P \subset \ker \pi$, we can restrict ourselves to the vectors of the form $w=(v,-v) \in \ker \pi$ without loosing generality. 
 Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum (resp. minimum) of $(v,-v)$ over $\pi^{-1}(z)$ is exactly the top (resp. bot) element of $P\cap \rho_z P$ with respect to $v$. 
 
-\begin{proposition}
+\begin{proposition} \label{prop:bot-top-for-D_P}
     Let $\{v_k\}$ be an orthogonal basis of $\R^n$, and let $P\subset \R^n$ be a full-dimensional polytope. 
     Then, we have that
     \[
@@ -265,11 +265,42 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 Note that we make a slight abuse of notation on the left-hand side, denoting by $D_P$ the inverse image $\iota_0^{-1}(D_P)$ of the polytope of diagonals under the isomorphism~(\ref{eq:D_P-iso}).
 We first prove the following general lemma. 
 
-\begin{lemma}
-    Let $\pi : P\to Q$ be an affine projection of polytopes such that all the fibers lie in parallel  
+\begin{lemma} \label{lemma:iterated-orientation}
+    Let $P\xra{\pi} Q$ be an affine projection of polytopes, and suppose that $v_1$ orients the fiber polytope $\Sigma_\pi (P,Q)$. 
+    Then, a vector $v_2$ perpendicular to $v_1$ orients every intersection of an hyperplane orthogonal to $v_1$ with $\Sigma_\pi (P,Q)$ if and only if this property holds for every fiber $\pi^{-1}(q), q \in Q$. 
 \end{lemma}
 
+\begin{proof}
+    As mentioned in the proof of \cref{lemma:orients-the-fibers}, the normal fan of $\Sigma_\pi(P,Q)$ is the common refinement of the normal fans of the fibers $\pi^{-1}(q), q \in Q$. 
+    The normal fan of a the intersection of an hyperplane $H$ orthogonal to $v_1$ with $\Sigma_\pi(P,Q)$ is the common refinement of the normal fans of some intersections of hyperplanes orthogonal to $v_1$ with the fibers $\pi^{-1}(q), q \in Q$. 
+    Indeed, as shown in \cite[Lemma 3.1]{BilleraSturmfels94}, refinement of normal fans is preserved by projection.
+    We conclude as in \cref{lemma:orients-the-fibers}.
+\end{proof}
 
+\begin{proof}[Proof of \cref{prop:bot-top-for-D_P}]
+    We prove the first part of the statement.
+    To ease the notation, let us denote by $D$ the polytope of diagonals $D_P$. 
+    Using the isormophism (\ref{eq:D_P-iso}), it suffices to prove the statement for $(D,\{v_k,-v_k\})$ and $\pi^{-1}(z), z \in P$.
+    It suffices to consider the case where $\{v_k,-v_k\}$ is $D$-admissible, the analogous statement with the bot-top then follows directly. 
+    By \cref{lemma:orients-the-fibers}, we have that $v_1$ orients $D$ if and only if it orients every fiber $\pi^{-1}(z)$.
+    By the same lemma, we have that $v_2$ orients $D_1$ if and only if it orients every intersection of $D$ with an hyperplane orthogonal to $v_1$.
+    According to \cref{lemma:iterated-orientation}, this is equivalent to $v_2$ orienting the intersections of each fiber $\pi^{-1}(z)$ with an hyperplane orthogonal to $v_1$. 
+    Using again \cref{lemma:orients-the-fibers}, this is equivalent to $v_2$ orienting $\pi^{-1}(z)_1$, for each $z \in P$.
+    Continuing in the same fashion for the higher $v_k$, we get the above equivalence. 
 
+    For the second part of the statement, observe first that if $\{v_k,-v_k\}$ is $D$-admissible, then $v_k$ is $P$-admissible since the linear span $\LinSpan(F_k)$ of a $k$-face $F_k$ of $P$ is equal to the linear span of some $k$-face $F_z$ of $P\cap \rho_z P$, for some $z \in P$ (for example, $F_k \cap \rho_z F_k$ for $z=(\bm_{v_1}(F_k)+\tp_{v_1}(F_k))/2$). 
+    So, if all the faces of $P\cap \rho_z P$ are sent injectively to $\R^k$, then so are the faces of $P$. 
+    Now, suppose that $(D,\{v_k,-v_k\})$ possess the bot-top property. 
+    Let $F_1$ be a 1-face of $P$, with vertices $x$ and $y$. 
+    Setting $z=(x+y)/2$, we have that $F_1 \cap \rho_z F_1 = F_1$.
+    This intersection possess the bot-top property with respect to $v_1$, so we have that $v_1$ orients $F_1$. 
+    Let $F_k$ by any $k$-face of $P$. \Guillaume{TBC}
+\end{proof}
 
+\Guillaume{Observation: Steenrod diagonal of P implies Steenrod diagonal on every face of P}
 
+\Guillaume{KV choice for simplices}
+
+\Guillaume{moduli space of Steenrod diagonals}
+
+\Guillaume{unicity for simplices}
