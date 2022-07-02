@@ -9,6 +9,9 @@
 
 We observe that $P$ embeds into $P\times P$ via the set-theoretic diagonal $\Delta (x)=(x,x)$, which is a section of $\pi$.
 The vertices of $D_P$ are associated with tight coherent sections, which are cellular approximations of the diagonal $\Delta$ by \cite[Proposition 5]{MTTV19}, see also \cite[Proposition 1.1]{GLA21}.
+
+\input{aux/DPinterval} 
+
 Consider the diagonal embedding
 \[
 \begin{tikzcd}[row sep=0, column sep=small]
@@ -63,6 +66,10 @@ The polytope of diagonals $D_P$ has the same dimension as $P$, and can be seen i
 
 Observe that a Steenrod diagonal of $P$ defines a Steenrod diagonal on every face of $P$. 
 
+According to \cref{e:centrally-symmetric}, the iterated fiber polytope of $P$ is a family of centrally symmetric polytopes. 
+Moreover, \cref{e:zonotopes} shows that if $P$ is a zonotope, then the iterated fiber polytope of $P$ is a familty of centrally symmetric zonotopes. 
+\Guillaume{check:the product of zonotopes is a zonotope}
+
 \begin{theorem}
 	A Steenrod diagonal on $P$ defines an $\Sym_2$-equivariant topological, piece-wise linear, cellular map $I^\infty \times P \to P \times P$.
 \end{theorem}
@@ -112,6 +119,15 @@ Indeed, the tight coherent section associated to a vertex in $D_P$ is given by t
 Since $D_P \subset \ker \pi$, we can restrict ourselves to the vectors of the form $w=(v,-v) \in \ker \pi$ without loosing generality.
 Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum (resp. minimum) of $(v,-v)$ over $\pi^{-1}(z)$ is exactly the top (resp. bot) element of $P\cap \rho_z P$ with respect to $v$.
 
+We can also see that the normal fan of $D_P$, seen in the same space as $P$ under the isomorphism $\iota_0$, refines the normal fan of $P$. 
+Moreover, the \emph{fundamental hyperplane arrangement} of $P$, introduced in \cite[Definition 1.18]{GLA21}, is obtained from the normal fan of $D_P$ by extending all the walls to hyperplanes. 
+In the case where the normal fan of $D_P$ is already an hyperplane arrangement (for example, when $D_P$ is a zonotope, or when $P$ is a zonotope), it then agrees with the fundamental hyperplane arrangement of $P$. 
+
+\begin{example}
+	\label{e:permutahedron}
+	If $P=\sum_{1 \leq i<j \leq n+1} [e_i-e_j, e_j-e_i]$ is the standard $n$-dimensional permutahedron, then $D_P$ is the zonotope $\sum_{I<J} [\sum_{i \in I}e_i - \sum_{j \in J}e_j, \sum_{j \in J} e_j - \sum_{i \in I}e_i]$, where the sum runs over all pairs $I,J\subset [n+1]$ such that $|I|=|J|\neq 0, I\cap J = \emptyset$ and $\min(I \cup J) \in I$, see \cite[Theorem 3.6]{GLA21}.
+\end{example}
+
 \begin{lemma} \label{l:bot-top-for-DP}
 	Let $\{v_k\}$ be an orthogonal basis of $\R^n$, and let $P\subset \R^n$ be a polytope.
 	Then, we have that
@@ -148,12 +164,13 @@ Note that we make a slight abuse of notation on the left-hand side, denoting by 
 
 \begin{example}
 	Note that the reverse implication in the preceding proposition does not hold in general.  
-	For instance, the standard $3$-dimensional permutohedron is oriented by the vector $v_1=(4,3,2,1)$, while the intersection $F \cap \rho_z G$, for $F$ and $G$ the faces associated to the ordered partitions $12|34$ and $24|13$, does not have the bot-top property with respect to $v_1$, for any $z \in (\mathring F + \mathring G)/2$.
-	This is due to the fact that ... \cite[Section 3.1]{GLA21} for details. 
-	\Guillaume{TBC; + add general links with the fundamental hyperplane arrangement!! $\implies$ way to obtain combinatorial description of the Steenrod diagonal?}
+	For instance, the standard $3$-dimensional permutahedron $P$ is oriented by the vector $v_1=(4,3,2,1)$, while the intersection $F \cap \rho_z G$, for $F$ and $G$ the faces associated to the ordered partitions $12|34$ and $24|13$, does not have the bot-top property with respect to $v_1$, for any $z \in (\mathring F + \mathring G)/2$.
+	This is due to the fact that $v_1$ lies in one of the hyperplanes in the normal fan of $D_P$, see \cref{e:permutahedron}. 
 \end{example}
 
 \Guillaume{Conjecture: the reverse implication holds for the simplices and cubes}
+
+\Guillaume{Fundamental hyperplane arrangement gives combinatorial description of Steenrod diagonal?}
 
 We turn our attention to the special case where $P=\Delta^n$, the standard $n$-simplex. 
 

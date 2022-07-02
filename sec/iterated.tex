@@ -48,6 +48,24 @@ In the case where $P$ is full dimensional, we have $\dim P_k = n-k$, and all the
 Note that flags of polytopes and their associated iterated fiber polytopes where studied in \cite{BilleraSturmfels94}.
 Note also that in order for this definition to make sense, one needs to use crucially the functoriality of the fiber polytope construction \cite[Lemma 2.3]{BilleraSturmfels92}.
 
+\begin{example}
+	\label{e:zonotopes}
+	IF $P$ is a zonotope, then all the $P_k$ are also zonotopes. 
+	Indeed, in this case $P$ is the projection of a cube $C \xra{\pi} P$.
+	\cite[Theorem 4.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(C,P)$ of this projection is itself a zonotope, the \emph{fiber zonotope} of $P$. 
+	We consider the flag $C \xra{\pi} P \xra{\pi_1} I$, where $I$ is the $1$-dimensional image of $P$ under the projection $\pi_1$. 
+	Using the functoriality property \cite[Lemma 2.3]{BilleraSturmfels92}, we have that $\Sigma(P,I)=\pi(\Sigma(C,I))$ is the projection of a zonotope, thus itself a zonotope. 
+	Repeating this argument, we get that all the $P_k$ are zonotopes. 
+\end{example}
+
+\begin{example}
+	\label{e:centrally-symmetric}
+	IF $P$ is centrally symmetric, then all the $P_k$ are also centrally symmetric. 
+	Indeed, in this case $P$ is the projection of a cross-polytope $T \xra{\pi} P$.
+	\cite[Theorem 5.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(T,P)$ of this projection is itself centrally symmetric.
+	A similar argument to \cref{e:zonotopes} yields the result. 
+\end{example}
+
 \begin{definition}
 	We say that $(P,v)$ possess the \emph{bot-top property} if it has a unique vertex $\bm_v(P)$ which minimizes the scalar product $\angles{-,v}$ and a unique vertex $\tp_v(P)$ which maximizes it.
 	We say that $(P,\{v_k\})$ possess the \emph{bot-top property} if $(P_{k-1}, v_k)$ possess it, for every $1\leq k \leq n$.
