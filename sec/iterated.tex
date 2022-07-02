@@ -14,7 +14,7 @@
 	We denote by $\pi_k$ the composition $\pi^{k+1}_{k}\cdots\pi^n_{n-1}$.
 \end{definition}
 
-Given an othonormal basis of $\R^n$ its \emph{associated flag} is the family of full-rank linear maps $\pi_\bullet$ where each projection $\pi_k$ is given by forgetting the last $k+1$ coordinates in this basis. 
+Given an othonormal basis of $\R^n$ its \emph{associated flag} is the family of full-rank linear maps $\pi_\bullet$ where each projection $\pi_k$ is given by forgetting the last $k+1$ coordinates in this basis.
 
 \begin{lemma}
 	The data of a full-rank flag is equivalent, up to sign, to the data of an orthonormal basis $\{v_1,\ldots,v_n\}$ of $\R^n$ such that $\ker \pi_k=\LinSpan(v_n, \ldots, v_{k+1})$ for all $k$.
@@ -47,23 +47,24 @@ Note that by definition of the fiber polytope, we have $P_k \subset \ker \pi_k$ 
 In the case where $P$ is full dimensional, we have $\dim P_k = n-k$, and all the $P_k, 1 \leq k \leq n$ are made out of a projection to a 1-dimensional polytope, so they are \emph{monotone path polytopes} \cite[Theorem 5.3]{BilleraSturmfels92}.
 Note that flags of polytopes and their associated iterated fiber polytopes where studied in \cite{BilleraSturmfels94}.
 Note also that in order for this definition to make sense, one needs to use crucially the functoriality of the fiber polytope construction \cite[Lemma 2.3]{BilleraSturmfels92}.
+\anibal{Why?}
 
-\begin{example}
-	\label{e:zonotopes}
-	IF $P$ is a zonotope, then all the $P_k$ are also zonotopes. 
+\begin{example}	\label{e:zonotopes}
+	IF $P$ is a zonotope, then all the $P_k$ are also zonotopes.
 	Indeed, in this case $P$ is the projection of a cube $C \xra{\pi} P$.
-	\cite[Theorem 4.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(C,P)$ of this projection is itself a zonotope, the \emph{fiber zonotope} of $P$. 
-	We consider the flag $C \xra{\pi} P \xra{\pi_1} I$, where $I$ is the $1$-dimensional image of $P$ under the projection $\pi_1$. 
-	Using the functoriality property \cite[Lemma 2.3]{BilleraSturmfels92}, we have that $\Sigma(P,I)=\pi(\Sigma(C,I))$ is the projection of a zonotope, thus itself a zonotope. 
-	Repeating this argument, we get that all the $P_k$ are zonotopes. 
+	\cite[Theorem 4.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(C,P)$ of this projection is itself a zonotope, the \emph{fiber zonotope} of $P$.
+	We consider the flag $C \xra{\pi} P \xra{\pi_1} I$, where $I$ is the $1$-dimensional image of $P$ under the projection $\pi_1$.
+	Using the functoriality property \cite[Lemma 2.3]{BilleraSturmfels92}, we have that $\Sigma(P,I)=\pi(\Sigma(C,I))$ is the projection of a zonotope, thus itself a zonotope.
+	Repeating this argument, we get that all the $P_k$ are zonotopes.
+	\anibal{What is a zonotope? Why are they interesting?}
 \end{example}
 
-\begin{example}
-	\label{e:centrally-symmetric}
-	IF $P$ is centrally symmetric, then all the $P_k$ are also centrally symmetric. 
+\begin{example}	\label{e:centrally-symmetric}
+	Ii $P$ is centrally symmetric, then all the $P_k$ are also centrally symmetric.
 	Indeed, in this case $P$ is the projection of a cross-polytope $T \xra{\pi} P$.
 	\cite[Theorem 5.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(T,P)$ of this projection is itself centrally symmetric.
-	A similar argument to \cref{e:zonotopes} yields the result. 
+	A similar argument to \cref{e:zonotopes} yields the result.
+	\anibal{Is this result used in the Steenrod diagonal section? If so, consider a definition of centrally symmetric and a lemma proving this statement.}
 \end{example}
 
 \begin{definition}
@@ -79,7 +80,7 @@ The bot-top property for $(P,v)$ was named \emph{quasi-orientation} in \cite[Def
 \end{theorem}
 
 \begin{proof}
-	We suppose that $P$ has dimension $n\geq 0$. 
+	We suppose that $P$ has dimension $n\geq 0$.
 	In the iterated monotone path polytope associated to $\{v_k\}$, each $P_k$ is defined via the linear functional $\angles{-,v_k}$.
 	We consider the iterated monotone path polytope associated to the linear functionals
 	\begin{equation} \label{eq:new-projection}
@@ -132,5 +133,5 @@ The bot-top property for $(P,v)$ was named \emph{quasi-orientation} in \cite[Def
 		(t,z) & \mapsto & (1-t)\triangle_{n-1}(z) + t \triangle_{n-1}^\op (z) \ .
 	\end{eqnarray*}
 	These maps that we obtain are by construction continuous, cellular, equivariant under the action of $\Sym_2$ permuting $\triangle_k$ and $\triangle_k^\op$ (or sending $v_k$ to $-v_k$), and even piece-wise linear.
-	Finally, we obtain a map from $\mathbb{G}^\infty$ by defining all the higher maps trivially mapping to the point $P_n$ and taking the colimit. 
+	Finally, we obtain a map from $\mathbb{G}^\infty$ by defining all the higher maps trivially mapping to the point $P_n$ and taking the colimit.
 \end{proof}
