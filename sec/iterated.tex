@@ -4,33 +4,46 @@
 
 \Guillaume{We work in the linear setting; needs to translate into affine}
 
-\begin{definition}
-	A \emph{flag} is a family of linear maps of the form
-	\[
-	\pi_\bullet = \big\{
-	\R^n \xra{\pi^n_{n-1}} \R^{n-1} \xra{\pi^{n-1}_{n-2}} \dotsb \xra{\pi^3_{2}} \R^2 \xra{\pi^2_1} \R \xra{\pi^1_0} *
-	\big\}
-	\]
-	We denote by $\pi_k$ the composition $\pi^{k+1}_{k}\cdots\pi^n_{n-1}$.
-\end{definition}
+\subsection{Flags and frames}
 
-Given an othonormal basis of $\R^n$ its \emph{associated flag} is the family of full-rank linear maps $\pi_\bullet$ where each projection $\pi_k$ is given by forgetting the last $k+1$ coordinates in this basis.
+A \emph{flag} is a diagram of full rank linear maps
+\[
+\R^n \xra{\pi^n_{n-1}} \R^{n-1} \xra{\pi^{n-1}_{n-2}} \dotsb \xra{\pi^3_{2}} \R^2 \xra{\pi^2_1} \R^1 \xra{\pi^1_0} \R^0.
+\]
+It is completely determined by the compositions
+$\pi_k \colon \R^n \to \R^k$.
+Given an ordered orthonormal basis $B = \{v_i\}$ of $\R^n$, which we will refer to as a \textit{frame}, its \emph{associated flag} $\pi_\bullet = \{\pi_k\}$ is defined by forgetting the last coordinates in this basis.
+Two frames give rise to the same associated flag if and only if they differ only on signs, and, given a flag, the Gram--Schmidt process can be used to construct a frame having it as its associated one.
 
-\begin{lemma}
-	The data of a full-rank flag is equivalent, up to sign, to the data of an orthonormal basis $\{v_1,\ldots,v_n\}$ of $\R^n$ such that $\ker \pi_k=\LinSpan(v_n, \ldots, v_{k+1})$ for all $k$.
-\end{lemma}
+%\begin{lemma}
+%	The data of a full-rank flag is equivalent, up to sign, to the data of an orthonormal basis $\{v_1,\ldots,v_n\}$ of $\R^n$ such that $\ker \pi_k=\LinSpan(v_n, \ldots, v_{k+1})$ for all $k$.
+%\end{lemma}
+%
+%\begin{proof}
+%	Since $\pi_{n-1}$ has full rank, its kernel is 1-dimensional.
+%	We can choose a unit vector $v_n$ such that $\ker \pi_{n-1} = \LinSpan(v_n)$.
+%	The kernel of $\pi_{n-2}$ is 2-dimensional, and contains $\ker \pi_{n-1}$, so we can choose a unit vector $v_{n-1}$, perpendicular to $v_n$, such that $\ker \pi_{n-2}=\LinSpan(v_n,v_{n-1})$.
+%	Continuing in the same fashion, we obtain an ordered basis $\{v_1,\ldots, v_n\}$ of $\R^n$ such that $\ker \pi_{k}=\LinSpan(v_n,\ldots,v_{k+1})$.
+%\end{proof}
 
-\begin{proof}
-	Since $\pi_{n-1}$ has full rank, its kernel is 1-dimensional.
-	We can choose a unit vector $v_n$ such that $\ker \pi_{n-1} = \LinSpan(v_n)$.
-	The kernel of $\pi_{n-2}$ is 2-dimensional, and contains $\ker \pi_{n-1}$, so we can choose a unit vector $v_{n-1}$, perpendicular to $v_n$, such that $\ker \pi_{n-2}=\LinSpan(v_n,v_{n-1})$.
-	Continuing in the same fashion, we obtain an ordered basis $\{v_1,\ldots, v_n\}$ of $\R^n$ such that $\ker \pi_{k}=\LinSpan(v_n,\ldots,v_{k+1})$.
-\end{proof}
+\subsection{Fiber polytopes}
 
-\begin{definition}
-	A \textit{framed polytope} is the convex hull of a finite set of point in $\R^n$ together with an orthonormal basis of $\R^n$.
-	Its \textit{associated flag} is the the one associated to its basis.
-\end{definition}
+A polytope $P \subset \mathbb{R}^n$ is the convex hull of a finite set of points.
+Equivalently, it is defined as the bounded intersection of a finite number of half-spaces.
+
+Let $\pi \colon P \to Q$ be a projection of polytopes, that is, an affine map $\pi \colon \R^p \to \R^q$ such that $\pi(P)=Q$ for two polytopes $P\subset \R^p$ and $Q \subset \R^q$.
+One can associate to it the \emph{fiber polytope} \[\Sigma(P,Q) \defeq \left\{ \frac{1}{vol(Q)}\int_Q \gamma(x)dx \ \colon \ \gamma \text{ is a section of }\pi \right\} \ , \] whose face lattice is isomorphic to the lattice of $\pi$-coherent subdivisions of $Q$ \cite{BilleraSturmfels92}.
+See also \cite[Chapter 9]{Ziegler95} for a detailed account.
+The vertices of $\Sigma(P,Q)$ correspond to tight coherent subdivisions, that is, subdivisions $\pi(\mathcal{F})$ where for each face $F \in \mathcal{F}\subset\mathcal{L}(P)$ we have $\dim(\pi(F))=\dim(F)$.
+Any linear function $c\in (\R^p)^{*}$ induces a subdivision $\pi(\mathcal{F}^c)$.
+When this subdivision is tight, there is a unique section $\gamma^c$ of $\pi$ which maximizes $c$ in each fiber.
+
+Moreover, the fiber polytope $\Sigma(P,Q)$ lives in the preimage of the barycenter $r$ of $Q$, that is, $\Sigma(P,Q)\subset\pi^{-1}(r)\cap P$.
+
+\subsection{Framed polytopes and the iterated monotone path polytopes}
+
+A \textit{framed polytope} is the convex hull of a finite set of point in $\R^n$ together with an orthonormal basis of $\R^n$.
+Its \textit{associated flag} is the the one associated to its basis.
 
 \begin{definition}
 	Let $P$ be a framed polytope with associated flag $\pi_\bullet$.
@@ -49,30 +62,36 @@ Note that flags of polytopes and their associated iterated fiber polytopes where
 Note also that in order for this definition to make sense, one needs to use crucially the functoriality of the fiber polytope construction \cite[Lemma 2.3]{BilleraSturmfels92}.
 \anibal{Why?}
 
-\begin{example}	\label{e:zonotopes}
-	IF $P$ is a zonotope, then all the $P_k$ are also zonotopes.
-	Indeed, in this case $P$ is the projection of a cube $C \xra{\pi} P$.
-	\cite[Theorem 4.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(C,P)$ of this projection is itself a zonotope, the \emph{fiber zonotope} of $P$.
-	We consider the flag $C \xra{\pi} P \xra{\pi_1} I$, where $I$ is the $1$-dimensional image of $P$ under the projection $\pi_1$.
-	Using the functoriality property \cite[Lemma 2.3]{BilleraSturmfels92}, we have that $\Sigma(P,I)=\pi(\Sigma(C,I))$ is the projection of a zonotope, thus itself a zonotope.
-	Repeating this argument, we get that all the $P_k$ are zonotopes.
-	\anibal{What is a zonotope? Why are they interesting?}
-\end{example}
+\subsection{Zonotopes} \label{ss:zonotopes}
 
-\begin{example}	\label{e:centrally-symmetric}
-	Ii $P$ is centrally symmetric, then all the $P_k$ are also centrally symmetric.
-	Indeed, in this case $P$ is the projection of a cross-polytope $T \xra{\pi} P$.
-	\cite[Theorem 5.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(T,P)$ of this projection is itself centrally symmetric.
-	A similar argument to \cref{e:zonotopes} yields the result.
-	\anibal{Is this result used in the Steenrod diagonal section? If so, consider a definition of centrally symmetric and a lemma proving this statement.}
-\end{example}
+IF $P$ is a zonotope, then all the $P_k$ are also zonotopes.
+Indeed, in this case $P$ is the projection of a cube $C \xra{\pi} P$.
+\cite[Theorem 4.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(C,P)$ of this projection is itself a zonotope, the \emph{fiber zonotope} of $P$.
+We consider the flag $C \xra{\pi} P \xra{\pi_1} I$, where $I$ is the $1$-dimensional image of $P$ under the projection $\pi_1$.
+Using the functoriality property \cite[Lemma 2.3]{BilleraSturmfels92}, we have that $\Sigma(P,I)=\pi(\Sigma(C,I))$ is the projection of a zonotope, thus itself a zonotope.
+Repeating this argument, we get that all the $P_k$ are zonotopes.
+\anibal{What is a zonotope? Why are they interesting?}
 
-\begin{definition}
-	We say that $(P,v)$ possess the \emph{bot-top property} if it has a unique vertex $\bm_v(P)$ which minimizes the scalar product $\angles{-,v}$ and a unique vertex $\tp_v(P)$ which maximizes it.
-	We say that $(P,\{v_k\})$ possess the \emph{bot-top property} if $(P_{k-1}, v_k)$ possess it, for every $1\leq k \leq n$.
-\end{definition}
+\subsection{Centrally symmetric polytopes} \label{ss:centrally-symmetric}
+
+If $P$ is centrally symmetric, then all the $P_k$ are also centrally symmetric.
+Indeed, in this case $P$ is the projection of a cross-polytope $T \xra{\pi} P$.
+\cite[Theorem 5.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(T,P)$ of this projection is itself centrally symmetric.
+A similar argument to \cref{ss:zonotopes} yields the result.
+\anibal{Is this result used in the Steenrod diagonal section? If so, consider a definition of centrally symmetric and a lemma proving this statement.}
+
+\subsection{Bot-top property}
+
+\anibal{I am still thinking of a different name for this}
+
+We say that $(P,v)$ possess the \emph{bot-top property} if it has a unique vertex $\bm_v(P)$ which minimizes the scalar product $\angles{-,v}$ and a unique vertex $\tp_v(P)$ which maximizes it.
+We say that $(P,\{v_k\})$ possess the \emph{bot-top property} if $(P_{k-1}, v_k)$ possess it, for every $1\leq k \leq n$.
 
 The bot-top property for $(P,v)$ was named \emph{quasi-orientation} in \cite[Definition 1.11]{GLA21}.
+
+\subsection{Standard globe}
+
+\anibal{In the Steenrod section you have a piecewise linear map from the cube, which is appealing because of the rigidity of such maps. Maybe the statement is that it factors through the/a projection from the cube to the standard globe?}
 
 \begin{theorem}
 	\label{thm:map-from-the-globe}
