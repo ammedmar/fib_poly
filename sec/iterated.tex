@@ -1,6 +1,6 @@
 % !TEX root = ../fib_poly.tex
 
-\section{Iterated monotone path polytopes}
+\section{Framed polytopes}
 
 \Guillaume{We work in the linear setting; needs to translate into affine}
 
@@ -40,9 +40,14 @@ When this subdivision is tight, there is a unique section $\gamma^c$ of $\pi$ wh
 
 Moreover, the fiber polytope $\Sigma(P,Q)$ lives in the preimage of the barycenter $r$ of $Q$, that is, $\Sigma(P,Q)\subset\pi^{-1}(r)\cap P$.
 
-\subsection{Framed polytopes and the iterated monotone path polytopes}
+\subsection{Monotone path polytopes}
+
+TBW example of fiber poly...
+
+\subsection{Framed polytope}
 
 A \textit{framed polytope} is the convex hull of a finite set of point in $\R^n$ together with an orthonormal basis of $\R^n$.
+Observe that if $(P, \{v_k\})$ is a framed polytope, then for every face $F$ of $P$, the pair $(F, \{v_k\})$ is a framed polytope.
 Its \textit{associated flag} is the the one associated to its basis.
 
 \begin{definition}
@@ -57,7 +62,7 @@ Its \textit{associated flag} is the the one associated to its basis.
 \end{definition}
 
 Note that by definition of the fiber polytope, we have $P_k \subset \ker \pi_k$ and $\dim P_k = \dim P - \min\{ \dim P,k\}$ for all $0\leq k \leq n$.
-In the case where $P$ is full dimensional, we have $\dim P_k = n-k$, and all the $P_k, 1 \leq k \leq n$ are made out of a projection to a 1-dimensional polytope, so they are \emph{monotone path polytopes} \cite[Theorem 5.3]{BilleraSturmfels92}.
+In the case where $P$ is full dimensional, we have $\dim P_k = n-k$, and all the $P_k, 1 \leq k \leq n$ are made out of a projection to a 1-dimensional polytope, so they are \emph{monotone path polytopes} \cite[Theorem 5.3]{BilleraSturmfels92}. \anibal{This should be moved to the previous subsection.}
 Note that flags of polytopes and their associated iterated fiber polytopes where studied in \cite{BilleraSturmfels94}.
 Note also that in order for this definition to make sense, one needs to use crucially the functoriality of the fiber polytope construction \cite[Lemma 2.3]{BilleraSturmfels92}.
 \anibal{Why?}
@@ -78,79 +83,6 @@ If $P$ is centrally symmetric, then all the $P_k$ are also centrally symmetric.
 Indeed, in this case $P$ is the projection of a cross-polytope $T \xra{\pi} P$.
 \cite[Theorem 5.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(T,P)$ of this projection is itself centrally symmetric.
 A similar argument to \cref{ss:zonotopes} yields the result.
-\anibal{Is this result used in the Steenrod diagonal section? If so, consider a definition of centrally symmetric and a lemma proving this statement.}
+\anibal{I think this result used in the Steenrod diagonal section. Consider expanding and including a lemma env. proving this statement.}
 
-\subsection{Bot-top property}
 
-\anibal{I am still thinking of a different name for this}
-
-We say that $(P,v)$ possess the \emph{bot-top property} if it has a unique vertex $\bm_v(P)$ which minimizes the scalar product $\angles{-,v}$ and a unique vertex $\tp_v(P)$ which maximizes it.
-We say that $(P,\{v_k\})$ possess the \emph{bot-top property} if $(P_{k-1}, v_k)$ possess it, for every $1\leq k \leq n$.
-
-The bot-top property for $(P,v)$ was named \emph{quasi-orientation} in \cite[Definition 1.11]{GLA21}.
-
-\subsection{Standard globe}
-
-\anibal{In the Steenrod section you have a piecewise linear map from the cube, which is appealing because of the rigidity of such maps. Maybe the statement is that it factors through the/a projection from the cube to the standard globe?}
-
-\begin{theorem}
-	\label{thm:map-from-the-globe}
-	If a framed polytope $(P,\{v_k\})$ has the bot-top property, then there is an equivariant cellular map $\mathbb{G}^\infty \to P$.
-\end{theorem}
-
-\begin{proof}
-	We suppose that $P$ has dimension $n\geq 0$.
-	In the iterated monotone path polytope associated to $\{v_k\}$, each $P_k$ is defined via the linear functional $\angles{-,v_k}$.
-	We consider the iterated monotone path polytope associated to the linear functionals
-	\begin{equation} \label{eq:new-projection}
-		\frac{\angles{-,v_k}-\angles{\bm_{v_k}(P_{k-1}),v_k}}{\angles{\tp_{v_k}(P_{k-1})-\bm_{v_k}(P_{k-1}),v_k}}
-	\end{equation}
-	where each $P_{k-1}$ is sent to the interval $I$, the vertex $\bm_{v_k}(P_{k-1})$ is sent to $0$ and $\tp_{v_k}(P_{k-1})$ is sent to $1$.
-	We construct inductively a family of continuous piece-wise linear cellular maps
-	\[
-	\triangle_k, \triangle_k^{\op}: I^k \to P \ , 0 \leq k \leq n-1
-	\]
-	such that the two maps $\triangle_k$ and $\triangle_k^{\op}$ are both homotopies between $\triangle_{k-1}$ and $\triangle_{k-1}^{\op}$.
-	We can also extend the construction to a $\triangle_n : I^n \to P$ which will be an homotopy between $\triangle_{n-1}$ and $\triangle_{n-1}^{\op}$.
-
-	First, we define $\triangle_0 (*) \defeq \bm_{v_1}(P)$ and $\triangle_0^{\op} (*) \defeq \tp_{v_1}(P)$.
-	Then, the vertices $\bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$ define uniquely sections $\triangle_1, \triangle_1^\op : I \to P$ such that $\triangle_1(0)=\triangle_1^\op(0)=\bm_{v_1}(P)$ and $\triangle_1(1)=\triangle_1^\op(1)=\tp_{v_1}(P)$.
-	These sections are coherent monotone paths on $P$, defined explicitly by
-	\begin{align*}
-		\triangle_1(x) & = \bm_{v_2}(\pi_1^{-1}(x)) \\
-		\triangle_1^\op(x) & = \tp_{v_2}(\pi_1^{-1}(x))
-	\end{align*}
-	for $x \in I$, where $\pi_1 : P \to I$ denotes the projection with respect to the linear functional (\ref{eq:new-projection}) in the case $k=2$.
-	Next, the vertices $\bm_{v_3}(P_2)$ and $\tp_{v_3}(P_2)$ define monotone paths on $P_1$ between $\bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$.
-	We consider the associated (tight coherent) subdivisions of $I$, induced by $\pi_2 : P_1 \to I$.
-	We denote the vertices of these subdivisions by
-	\begin{align*}
-		x_1 & =\pi_2(\bm_{v_2}(P_1)), x_2, \ldots, x_{p-1}, x_p=\pi_2(\tp_{v_2}(P_1)) \\
-		y_1 & = \pi_2(\bm_{v_2}(P_1)), y_2, \ldots, y_{q-1}, y_q=\pi_2(\tp_{v_2}(P_1)) \ .
-	\end{align*}
-	All these vertices are projections of vertices of $P_1$, which in turn have associated tight coherent sections $\triangle_{x_i}: I \to P$.
-	We define a map
-	\[
-	\triangle_2 : I \times I \to P \ ,
-	\]
-	where the first copy of $I$ receives the subdivision by the $x_i$, $1\leq i \leq p$, via the formula
-	\[
-	\triangle_2(x_i, z) \defeq \triangle_{x_i}(z) \ ,
-	\]
-	and on each of the cubes $[x_i,x_{i+1}]\times I$ by the formula
-	\[
-	\triangle_2(t,z) \defeq \left( \frac{x_{i+1}-t}{x_{i+1}-x_i} \right) \triangle_{x_i}(z) + \left( \frac{t-x_i}{x_{i+1}-x_i} \right) \triangle_{x_{i+1}}(z) \ .
-	\]
-	We proceed in a similar fashion to define $\triangle_2^\op$ with the $y_j$.
-	Continuing in the same fashion, we define inductively the next maps
-	\[
-	\triangle_k, \triangle_k^\op : I \times I^{k-1} \to P \ , 3 \leq k \leq n-1 \ .
-	\]
-	For the last step, we observe that $P_{n-1}$ is a segment, so we can simply define
-	\begin{eqnarray*}
-		\triangle_n : I \times I^{n-1} & \to & P \\
-		(t,z) & \mapsto & (1-t)\triangle_{n-1}(z) + t \triangle_{n-1}^\op (z) \ .
-	\end{eqnarray*}
-	These maps that we obtain are by construction continuous, cellular, equivariant under the action of $\Sym_2$ permuting $\triangle_k$ and $\triangle_k^\op$ (or sending $v_k$ to $-v_k$), and even piece-wise linear.
-	Finally, we obtain a map from $\mathbb{G}^\infty$ by defining all the higher maps trivially mapping to the point $P_n$ and taking the colimit.
-\end{proof}
