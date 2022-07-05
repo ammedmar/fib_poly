@@ -2,9 +2,9 @@
 
 \section{Orientations}
 
-\noindent\anibal{Note to self: write something here}
+\todo{@anibal: Missing intro}
 
-\subsection{Extremizing on and orienting polytopes}
+\subsection{Extremizing on and orienting polytopes} \todo{@anibal: Better subsection name}
 
 A vector $v \in \R^n$ \textit{extremizes on} $P \subseteq \R^n$ if $P$ has a \textbf{unique} vertex $\bm_v(P)$ which minimizes the scalar product $\angles{-,v}$ and a \textbf{unique} vertex $\tp_v(P)$ which maximizes it.
 %We say that $v$ \textit{orients} $P$ if it extremizes on each edge of $P$ or, equivalently, if it extremizes on each face of it.
@@ -33,7 +33,7 @@ We say that $\{v_k\}$ \textit{orients} $P$ if for every $1 \leq k \leq n$ the ve
 \end{proof}
 
 \begin{lemma} \label{l:KV-BS}
-	A frame $\{v_k\}$ is $P$-admissible if and only if, in the associated iterated monotone path polytope $P_\bullet$, for all $1 \leq k \leq n$ the polytope $P_{k-1}$ is oriented by $v_k$.
+	A frame $\{v_k\}$ is $P$-admissible if and only if, in the associated iterated monotone path sequence $P_\bullet$, for all $1 \leq k \leq n$ the polytope $P_{k-1}$ is oriented by $v_k$.
 \end{lemma}
 
 \begin{proof}
@@ -45,7 +45,7 @@ We say that $\{v_k\}$ \textit{orients} $P$ if for every $1 \leq k \leq n$ the ve
 
 \begin{theorem}	\label{t:bot-top-for-fibers}
 	Let $P \xra{\pi} Q$ be a projection of polytopes, and let $\{v_k\}$ be an orthonormal basis of $\ker \pi$.
-	\anibal{Kernel? It is not assumed that the barycenter of $Q$ is the origin.}
+	\anibal{Kernel? I don't think it is assumed that the barycenter of $Q$ is the origin.}
 	Then, we have that
 	\[
 	(\Sigma_\pi(P,Q),\{v_k\}) \text{ has the bot-top property (resp. } \{v_k\} \text{ is }\Sigma_\pi(P,Q)\text{-admissible)}
@@ -56,7 +56,8 @@ We say that $\{v_k\}$ \textit{orients} $P$ if for every $1 \leq k \leq n$ the ve
 \end{theorem}
 
 We first prove the following general lemma.
-\anibal{Consider not having this lemma as a stand alone since it is not used anywhere else, and instead absorve it and its proof into the proof of \cref{t:bot-top-for-fibers}}.
+
+\todo{@guillaume: consider not having this lemma as a stand alone since it is not used anywhere else, and instead include it and its proof in the proof of \cref{t:bot-top-for-fibers}}.
 
 \begin{lemma} \label{l:iterated-orientation}
 	Let $P\xra{\pi} Q$ be an affine projection of polytopes, let $v_1, v_2$ be two orthogonal unit vectors in $\ker \pi$ and suppose that $v_1$ orients $\Sigma_\pi (P,Q)$.
@@ -97,7 +98,7 @@ A frame $\{v_k\}$ is \emph{$P$-admissible} if every $k$-face of $P$ is sent inje
 \end{proof}
 
 \begin{lemma} \label{l:bot-top-admissible}
-	A frame orients $P$ if and only if it is $P$-admissible.
+	A frame orients $P$ if and only its associated flag is admissible.
 \end{lemma}
 
 \begin{proof}
