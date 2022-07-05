@@ -2,68 +2,78 @@
 
 \section{Higher categories}
 
-\subsection{Standard globe}
+In this section we give a proof of a theorem of Kapranov--Voevodsky \cite{kapranov1991polycategory} stating that one can construct the structure of pasting diagram on any polytope with a $P$-admissible flag.
 
-\anibal{In the Steenrod section you have a piecewise linear map from the cube, which is appealing because of the rigidity of such maps. Maybe the statement is that it factors through the/a projection from the cube to the standard globe?}
+\subsection{Globular sets, pasting diagrams and $\omega$-categories}
 
-\begin{theorem}
-	\label{thm:map-from-the-globe}
-	If a framed polytope $(P,\{v_k\})$ has the bot-top property, then there is an equivariant cellular map $\mathbb{G}^\infty \to P$.
-\end{theorem}
+TBW
 
-\begin{proof}
-	We suppose that $P$ has dimension $n\geq 0$.
-	In the iterated monotone path polytope associated to $\{v_k\}$, each $P_k$ is defined via the linear functional $\angles{-,v_k}$.
-	We consider the iterated monotone path polytope associated to the linear functionals
-	\begin{equation} \label{eq:new-projection}
-		\frac{\angles{-,v_k}-\angles{\bm_{v_k}(P_{k-1}),v_k}}{\angles{\tp_{v_k}(P_{k-1})-\bm_{v_k}(P_{k-1}),v_k}}
-	\end{equation}
-	where each $P_{k-1}$ is sent to the interval $I$, the vertex $\bm_{v_k}(P_{k-1})$ is sent to $0$ and $\tp_{v_k}(P_{k-1})$ is sent to $1$.
-	We construct inductively a family of continuous piece-wise linear cellular maps
-	\[
-	\triangle_k, \triangle_k^{\op}: I^k \to P \ , 0 \leq k \leq n-1
-	\]
-	such that the two maps $\triangle_k$ and $\triangle_k^{\op}$ are both homotopies between $\triangle_{k-1}$ and $\triangle_{k-1}^{\op}$.
-	We can also extend the construction to a $\triangle_n : I^n \to P$ which will be an homotopy between $\triangle_{n-1}$ and $\triangle_{n-1}^{\op}$.
+\subsection{Cubes and globes}
 
-	First, we define $\triangle_0 (*) \defeq \bm_{v_1}(P)$ and $\triangle_0^{\op} (*) \defeq \tp_{v_1}(P)$.
-	Then, the vertices $\bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$ define uniquely sections $\triangle_1, \triangle_1^\op : I \to P$ such that $\triangle_1(0)=\triangle_1^\op(0)=\bm_{v_1}(P)$ and $\triangle_1(1)=\triangle_1^\op(1)=\tp_{v_1}(P)$.
-	These sections are coherent monotone paths on $P$, defined explicitly by
-	\begin{align*}
-		\triangle_1(x) & = \bm_{v_2}(\pi_1^{-1}(x)) \\
-		\triangle_1^\op(x) & = \tp_{v_2}(\pi_1^{-1}(x))
-	\end{align*}
-	for $x \in I$, where $\pi_1 : P \to I$ denotes the projection with respect to the linear functional (\ref{eq:new-projection}) in the case $k=2$.
-	Next, the vertices $\bm_{v_3}(P_2)$ and $\tp_{v_3}(P_2)$ define monotone paths on $P_1$ between $\bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$.
-	We consider the associated (tight coherent) subdivisions of $I$, induced by $\pi_2 : P_1 \to I$.
-	We denote the vertices of these subdivisions by
-	\begin{align*}
-		x_1 & =\pi_2(\bm_{v_2}(P_1)), x_2, \ldots, x_{p-1}, x_p=\pi_2(\tp_{v_2}(P_1)) \\
-		y_1 & = \pi_2(\bm_{v_2}(P_1)), y_2, \ldots, y_{q-1}, y_q=\pi_2(\tp_{v_2}(P_1)) \ .
-	\end{align*}
-	All these vertices are projections of vertices of $P_1$, which in turn have associated tight coherent sections $\triangle_{x_i}: I \to P$.
-	We define a map
-	\[
-	\triangle_2 : I \times I \to P \ ,
-	\]
-	where the first copy of $I$ receives the subdivision by the $x_i$, $1\leq i \leq p$, via the formula
-	\[
-	\triangle_2(x_i, z) \defeq \triangle_{x_i}(z) \ ,
-	\]
-	and on each of the cubes $[x_i,x_{i+1}]\times I$ by the formula
-	\[
-	\triangle_2(t,z) \defeq \left( \frac{x_{i+1}-t}{x_{i+1}-x_i} \right) \triangle_{x_i}(z) + \left( \frac{t-x_i}{x_{i+1}-x_i} \right) \triangle_{x_{i+1}}(z) \ .
-	\]
-	We proceed in a similar fashion to define $\triangle_2^\op$ with the $y_j$.
-	Continuing in the same fashion, we define inductively the next maps
-	\[
-	\triangle_k, \triangle_k^\op : I \times I^{k-1} \to P \ , 3 \leq k \leq n-1 \ .
-	\]
-	For the last step, we observe that $P_{n-1}$ is a segment, so we can simply define
-	\begin{eqnarray*}
-		\triangle_n : I \times I^{n-1} & \to & P \\
-		(t,z) & \mapsto & (1-t)\triangle_{n-1}(z) + t \triangle_{n-1}^\op (z) \ .
-	\end{eqnarray*}
-	These maps that we obtain are by construction continuous, cellular, equivariant under the action of $\Sym_2$ permuting $\triangle_k$ and $\triangle_k^\op$ (or sending $v_k$ to $-v_k$), and even piece-wise linear.
-	Finally, we obtain a map from $\mathbb{G}^\infty$ by defining all the higher maps trivially mapping to the point $P_n$ and taking the colimit.
-\end{proof}
+Define ... $\gcube^\infty$, $\globe^\infty$ and the map between them.
+
+\subsection{Globularization}
+
+For any $n$-dimensional framed polytope $P$ whose frame extremizes on it, we construct a surjective cellular map
+\[
+\globe^\infty \to P
+\]
+which is injective on $\globe^n$ and whose composition $\gcube^\infty \to \globe^\infty \to P$ is piecewise linear.
+
+In the iterated monotone path polytope associated to $\{v_k\}$, each $P_k$ is defined via the linear functional $\angles{-,v_k}$.
+We consider the iterated monotone path polytope associated to the linear functionals
+\begin{equation} \label{eq:new-projection}
+	\frac{\angles{-,v_k}-\angles{\bm_{v_k}(P_{k-1}),v_k}}{\angles{\tp_{v_k}(P_{k-1})-\bm_{v_k}(P_{k-1}),v_k}}
+\end{equation}
+where each $P_{k-1}$ is sent to the interval $\gcube$, the vertex $\bm_{v_k}(P_{k-1})$ is sent to $0$ and $\tp_{v_k}(P_{k-1})$ is sent to $1$.
+We construct inductively a family of continuous piecewise linear cellular maps
+\[
+\Gamma_k, \Gamma_k^{\op} \colon \gcube^k \to P \ , 0 \leq k \leq n-1
+\]
+such that the two maps $\Gamma_k$ and $\Gamma_k^{\op}$ are both homotopies between $\Gamma_{k-1}$ and $\Gamma_{k-1}^{\op}$.
+We can also extend the construction to a $\Gamma_n \colon \gcube^n \to P$ which will be an homotopy between $\Gamma_{n-1}$ and $\Gamma_{n-1}^{\op}$.
+
+First, we define $\Gamma_0 (*) = \bm_{v_1}(P)$ and $\Gamma_0^{\op} (*) = \tp_{v_1}(P)$.
+Then, the vertices $\bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$ define uniquely sections $\Gamma_1, \Gamma_1^\op \colon \gcube \to P$ such that $\Gamma_1(0)=\Gamma_1^\op(0)=\bm_{v_1}(P)$ and $\Gamma_1(1)=\Gamma_1^\op(1)=\tp_{v_1}(P)$.
+These sections are coherent monotone paths on $P$, defined explicitly by
+\begin{align*}
+	\Gamma_1(x) & = \bm_{v_2}(\pi_1^{-1}(x)) \\
+	\Gamma_1^\op(x) & = \tp_{v_2}(\pi_1^{-1}(x))
+\end{align*}
+for $x \in \gcube$, where $\pi_1 \colon P \to \gcube$ denotes the projection with respect to the linear functional (\ref{eq:new-projection}) in the case $k=2$.
+Next, the vertices $\bm_{v_3}(P_2)$ and $\tp_{v_3}(P_2)$ define monotone paths on $P_1$ between $\bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$.
+We consider the associated (tight coherent) subdivisions of $\gcube$, induced by $\pi_2 \colon P_1 \to \gcube$.
+We denote the vertices of these subdivisions by
+\begin{align*}
+	x_1 & = \pi_2(\bm_{v_2}(P_1)), x_2, \ldots, x_{p-1}, x_p=\pi_2(\tp_{v_2}(P_1)) \\
+	y_1 & = \pi_2(\bm_{v_2}(P_1)), y_2, \ldots, y_{q-1}, y_q=\pi_2(\tp_{v_2}(P_1)) \ .
+\end{align*}
+All these vertices are projections of vertices of $P_1$, which in turn have associated tight coherent sections $\Gamma_{x_i} \colon \gcube \to P$.
+We define a map
+\[
+\Gamma_2 \colon \gcube \times \gcube \to P \ ,
+\]
+where the first copy of $\gcube$ receives the subdivision by the $x_i$, $1\leq i \leq p$, via the formula
+\[
+\Gamma_2(x_i, z) \defeq \Gamma_{x_i}(z) \ ,
+\]
+and on each of the cubes $[x_i,x_{i+1}] \times \gcube$ by the formula
+\[
+\Gamma_2(t,z) \defeq \left( \frac{x_{i+1}-t}{x_{i+1}-x_i} \right) \Gamma_{x_i}(z) + \left( \frac{t-x_i}{x_{i+1}-x_i} \right) \Gamma_{x_{i+1}}(z) \ .
+\]
+We proceed in a similar fashion to define $\Gamma_2^\op$ with the $y_j$.
+Continuing in the same fashion, we define inductively the next maps
+\[
+\Gamma_k, \Gamma_k^\op \colon \gcube \times \gcube^{k-1} \to P \ , 3 \leq k \leq n-1 \ .
+\]
+For the last step, we observe that $P_{n-1}$ is a segment, so we can simply define
+\begin{eqnarray*}
+	\Gamma_n \colon \gcube \times \gcube^{n-1} & \to & P \\
+	(t,z) & \mapsto & (1-t)\Gamma_{n-1}(z) + t \Gamma_{n-1}^\op (z) \ .
+\end{eqnarray*}
+These maps that we obtain are by construction continuous, cellular, equivariant under the action of $\Sym_2$ permuting $\Gamma_k$ and $\Gamma_k^\op$ (or sending $v_k$ to $-v_k$), and even piecewise linear.
+Finally, we obtain a map from $\globe^\infty$ by defining all the higher maps trivially mapping to the point $P_n$ and taking the colimit.
+
+\subsection{Kapranov--Voevodsky pasting scheme structure}
+
+TBW

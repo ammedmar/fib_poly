@@ -6,7 +6,7 @@
 
 \subsection{Diagonals polytope}
 
-\begin{figure}
+\begin{figure}[b]
 	\centering
 	\input{aux/DPinterval}
 	\caption{The polytope of diagonals of the interval (in red). Its two vertices define cellular approximations of the diagonal (dashed, in blue, and in green).}
@@ -45,8 +45,8 @@ A basis for the orthogonal complement $\Ima \Delta^{\bot}$ is $\{(e_j,-e_j)\}$, 
 For any $z \in \R^n$, we have $\pi^{-1}(z)=\Delta(z)+\ker \pi$, and an affine isomorphism
 \begin{equation} \label{eq:D_P-iso}
 	\begin{matrix}
-		\iota_z & : & \R^n  & \cong & \pi^{-1}(z) \\
-		& & v  & \mapsto & \Delta(z)+(v,-v).
+		\iota_z & : & \R^n & \cong & \pi^{-1}(z) \\
+		& & v & \mapsto & \Delta(z)+(v,-v).
 	\end{matrix}
 \end{equation}
 The polytope of diagonals $D_P$ has the same dimension as $P$, and can be seen in $\R^n$ via the isomorphism $\iota_0$.
@@ -70,7 +70,7 @@ We denote by $\rho_z P \defeq 2z-P$ the reflection of $P$ with respect to $z \in
 	\begin{equation} \label{eq:iso-intersection}
 		\begin{matrix}
 			\rho \colon & & P \cap \rho_z P & \xra{\cong} & \pi^{-1}(z) \\
-			& & x  & \mapsto & (x,2z-x)
+			& & x & \mapsto & (x,2z-x)
 		\end{matrix}
 	\end{equation}
 	for all $z \in P$.
@@ -86,7 +86,7 @@ This lemma makes clear the pointwise description of the diagonal
 \begin{equation*}
 	\begin{matrix}
 		\triangle_{(P,v)} & : & P & \to & P \times P \\
-		& & z  & \mapsto & (\bm_v(P \cap \rho_z P),\tp_v(P \cap \rho_z P))
+		& & z & \mapsto & (\bm_v(P \cap \rho_z P),\tp_v(P \cap \rho_z P))
 	\end{matrix}
 \end{equation*}
 in \cite[Definition 10]{MTTV19}, see also \cite[Proposition 1.15]{GLA21}.
@@ -107,7 +107,7 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 	\begin{equation*}
 		\begin{matrix}
 			\gamma & : & P & \to & P \times P \\
-			& & x  & \mapsto & (\gamma_1(z),\gamma_2(z))
+			& & x & \mapsto & (\gamma_1(z),\gamma_2(z))
 		\end{matrix}
 	\end{equation*}
 	is given by maximum of $\angles{-,v}$ in each fiber $\pi^{-1}(z)$ of $\pi$.
@@ -115,7 +115,7 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 	\begin{equation*}
 		\begin{matrix}
 			\sigma_2\gamma & : & P & \to & P \times P \\
-			& & x  & \mapsto & (\gamma_2(z),\gamma_1(z))
+			& & x & \mapsto & (\gamma_2(z),\gamma_1(z))
 		\end{matrix}
 	\end{equation*}
 	is given by the minimum of $\angles{-,v}$ in each fiber, or equivalently the maximum of of $\angles{-,-v}$ in each fiber.
@@ -139,7 +139,7 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 %\Guillaume{check:the product of zonotopes is a zonotope}
 
 \begin{definition}
-	A Steenrod diagonal on $P$ is an $\Sym_2$-equivariant topological, piece-wise linear, cellular map $I^\infty \times P \to P \times P$.
+	A Steenrod diagonal on $P$ is an $\Sym_2$-equivariant topological, piecewise linear, cellular map $I^\infty \times P \to P \times P$.
 \end{definition}
 
 \begin{theorem}
@@ -149,7 +149,7 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 \end{theorem}
 
 \begin{proof}
-	From \cref{thm:map-from-the-globe} we get a family of $\Sym_2$-equivariant cellular maps
+	From \cref{ss:globularization} we get a family of $\Sym_2$-equivariant cellular maps
 	\[
 	\triangle_k, \triangle_k^\op : I^k \to D_P \ .
 	\]
