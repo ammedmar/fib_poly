@@ -2,4 +2,24 @@
 
 \section{Preliminaries}
 
-TBW
+\subsection{Flags and frames}
+
+A \emph{flag} is a diagram of full rank linear maps
+\[
+\R^n \xra{\pi^n_{n-1}} \R^{n-1} \xra{\pi^{n-1}_{n-2}} \dotsb \xra{\pi^3_{2}} \R^2 \xra{\pi^2_1} \R^1 \xra{\pi^1_0} \R^0.
+\]
+It is completely determined by the compositions
+$\pi_k \colon \R^n \to \R^k$.
+Given an ordered orthonormal basis $B = \{v_i\}$ of $\R^n$, which we will refer to as a \textit{frame}, its \emph{associated flag} $\pi_\bullet = \{\pi_k\}$ is defined by forgetting coordinates in this basis.
+Two frames give rise to the same associated flag if and only if they differ only on signs, and, given a flag, the Gram--Schmidt process can be used to construct a frame having it as its associated one.
+
+%\begin{lemma}
+%	The data of a full-rank flag is equivalent, up to sign, to the data of an orthonormal basis $\{v_1,\ldots,v_n\}$ of $\R^n$ such that $\ker \pi_k=\LinSpan(v_n, \ldots, v_{k+1})$ for all $k$.
+%\end{lemma}
+%
+%\begin{proof}
+%	Since $\pi_{n-1}$ has full rank, its kernel is 1-dimensional.
+%	We can choose a unit vector $v_n$ such that $\ker \pi_{n-1} = \LinSpan(v_n)$.
+%	The kernel of $\pi_{n-2}$ is 2-dimensional, and contains $\ker \pi_{n-1}$, so we can choose a unit vector $v_{n-1}$, perpendicular to $v_n$, such that $\ker \pi_{n-2}=\LinSpan(v_n,v_{n-1})$.
+%	Continuing in the same fashion, we obtain an ordered basis $\{v_1,\ldots, v_n\}$ of $\R^n$ such that $\ker \pi_{k}=\LinSpan(v_n,\ldots,v_{k+1})$.
+%\end{proof}
