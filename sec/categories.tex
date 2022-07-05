@@ -2,7 +2,7 @@
 
 \section{Higher categories}
 
-In this section we give a proof of a theorem of Kapranov--Voevodsky \cite{kapranov1991polycategory} stating that one can construct the structure of pasting diagram on any polytope with a $P$-admissible flag.
+In this section we prove a theorem of Kapranov--Voevodsky \cite{kapranov1991polycategory} stating that a free $n$-category structure can be constructed on any framed polytope whose associated flag is admissible.
 
 \subsection{Globular sets, pasting diagrams and $\omega$-categories}
 
@@ -12,7 +12,7 @@ TBW
 
 Define ... $\gcube^\infty$, $\globe^\infty$ and the map between them.
 
-\subsection{Globularization}
+\subsection{Globularization} \label{ss:globularization}
 
 For any $n$-dimensional framed polytope $P$ whose frame extremizes on it, we construct a surjective cellular map
 \[
@@ -20,8 +20,8 @@ For any $n$-dimensional framed polytope $P$ whose frame extremizes on it, we con
 \]
 which is injective on $\globe^n$ and whose composition $\gcube^\infty \to \globe^\infty \to P$ is piecewise linear.
 
-In the iterated monotone path polytope associated to $\{v_k\}$, each $P_k$ is defined via the linear functional $\angles{-,v_k}$.
-We consider the iterated monotone path polytope associated to the linear functionals
+In the iterated monotone path sequence associated to $\{v_k\}$, each $P_k$ is defined via the linear functional $\angles{-,v_k}$.
+We consider the iterated monotone path sequence associated to the linear functionals
 \begin{equation} \label{eq:new-projection}
 	\frac{\angles{-,v_k}-\angles{\bm_{v_k}(P_{k-1}),v_k}}{\angles{\tp_{v_k}(P_{k-1})-\bm_{v_k}(P_{k-1}),v_k}}
 \end{equation}
@@ -74,6 +74,6 @@ For the last step, we observe that $P_{n-1}$ is a segment, so we can simply defi
 These maps that we obtain are by construction continuous, cellular, equivariant under the action of $\Sym_2$ permuting $\Gamma_k$ and $\Gamma_k^\op$ (or sending $v_k$ to $-v_k$), and even piecewise linear.
 Finally, we obtain a map from $\globe^\infty$ by defining all the higher maps trivially mapping to the point $P_n$ and taking the colimit.
 
-\subsection{Kapranov--Voevodsky pasting scheme structure}
+\subsection{Kapranov--Voevodsky pasting theorem}
 
 TBW

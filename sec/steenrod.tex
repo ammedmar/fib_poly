@@ -1,8 +1,8 @@
 % !TEX root = ../fib_poly.tex
 
-\section{Diagonals}
+\section{Diagonals} \label{s:diagonals}
 
-\anibal{note to self: write something here}
+\todo{@anibal: Intro to \cref{s:diagonals}}
 
 \subsection{Diagonals polytope}
 
@@ -59,9 +59,9 @@ We can also see that the normal fan of $D_P$, seen in the same space as $P$ unde
 Moreover, the \emph{fundamental hyperplane arrangement} of $P$, introduced in \cite[Definition 1.18]{GLA21}, is obtained from the normal fan of $D_P$ by extending all the walls to hyperplanes.
 In the case where the normal fan of $D_P$ is already an hyperplane arrangement (for example, when $D_P$ is a zonotope, or when $P$ is a zonotope), it then agrees with the fundamental hyperplane arrangement of $P$.
 
-\subsection{Fibers}
+\subsection{Reflections and fibers}
 
-\anibal{Consider making this discussion have no lemmas and proofs}
+\todo{@guillaume: consider making this discussion have no lemmas and proofs}
 
 We denote by $\rho_z P \defeq 2z-P$ the reflection of $P$ with respect to $z \in P$.
 
@@ -122,7 +122,7 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 	Thus, this tight coherent section defines a vertex $-x=(-y,y)$ of $D_P$.
 \end{proof}
 
-\anibal{Furthermore, the action of reversing .... corresponds to ... and to ...}
+\todo{@guillaume: Maybe explain the action... reversing .... corresponds to ... and to ...}
 
 \subsection{Steenrod diagonals}
 
@@ -141,6 +141,8 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 \begin{definition}
 	A Steenrod diagonal on $P$ is an $\Sym_2$-equivariant topological, piecewise linear, cellular map $I^\infty \times P \to P \times P$.
 \end{definition}
+
+\todo{@guillaume: I think there should be a general adjunction construction starting with a piecewise linear map $R \to \Sigma(P,Q)$ and producing a piecewise linear map $R \times P \to Q$. I would include that construction on the section on framed polytopes.}
 
 \begin{theorem}
 	Let $(P,\{v_i\})$ be a framed polytope.
@@ -179,7 +181,7 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 Note that we make a slight abuse of notation on the left-hand side, denoting by $D_P$ the inverse image $\iota_0^{-1}(D_P)$ of the polytope of diagonals under the isomorphism~(\ref{eq:D_P-iso}).
 
 \begin{proof}
-	Using the isormophism (\ref{eq:D_P-iso}), it suffices to prove the statement for $(D_P,\{v_k,-v_k\})$ and $\pi^{-1}(z), z \in P$, which is a special case of \cref{t:bot-top-for-fibers}.
+	Using the isomorphism (\ref{eq:D_P-iso}), it suffices to prove the statement for $(D_P,\{v_k,-v_k\})$ and $\pi^{-1}(z), z \in P$, which is a special case of \cref{t:bot-top-for-fibers}.
 \end{proof}
 
 \begin{theorem}
