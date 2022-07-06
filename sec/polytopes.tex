@@ -13,18 +13,23 @@ Let $\pi \colon P \to Q$ be a projection of polytopes, that is, an affine map $\
 One can associate to it the \emph{fiber polytope} \[\Sigma(P,Q) \defeq \left\{ \frac{1}{vol(Q)}\int_Q \gamma(x)dx \ \colon \ \gamma \text{ is a section of }\pi \right\} \ , \] whose face lattice is isomorphic to the lattice of $\pi$-coherent subdivisions of $Q$ \cite{BilleraSturmfels92}.
 See also \cite[Chapter 9]{Ziegler95} for a detailed account.
 The vertices of $\Sigma(P,Q)$ correspond to tight coherent subdivisions, that is, subdivisions $\pi(\mathcal{F})$ where for each face $F \in \mathcal{F}\subset\mathcal{L}(P)$ we have $\dim(\pi(F))=\dim(F)$.
-Any linear function $c\in (\R^p)^{*}$ induces a subdivision $\pi(\mathcal{F}^c)$.
+Any linear function $c\in (\R^p)^{*}$ selects a family of faces $\mathcal{F}^c$ of $P$, the faces on which this function is maximal. 
+This family induces a subdivision $\pi(\mathcal{F}^c)$ of $Q$.
 When this subdivision is tight, there is a unique section $\gamma^c$ of $\pi$ which maximizes $c$ in each fiber.
 
 Moreover, the fiber polytope $\Sigma(P,Q)$ lives in the preimage of the barycenter $r$ of $Q$, that is, $\Sigma(P,Q)\subset\pi^{-1}(r)\cap P$.
 
 \subsection{Monotone path polytopes}
 
-\todo{@guillaume: write subsection as an example of fiber polytopes}
+When $Q=[a,b]$ is $1$-dimensional, the fiber polytope $\Sigma(P,Q)$ is called the \emph{monotone path polytope} of $P$ \cite[Theorem 5.3]{BilleraSturmfels92}. 
+It has dimension $\dim P -1$, and its vertices encode monotone paths between the extremal faces $\pi^{-1}(a)$ and $\pi^{-1}(b)$, that is sequences of edges for which a linear function $c \in (\R^p)^{*}$ is strictly increasing. 
+One usually chooses a \emph{generic} function $c$, that is a function which is non-constant on every edge of $P$. 
+For instance, the monotone path polytope of the $n$-simplex is the $(n-1)$-cube, and the monotone path polytope of the $(n-1)$-cube is the $(n-2)$-dimensional permutahedron (\Guillaume{Ref}). 
+The monotone path polytope construction led to the resolution of the \emph{Baues conjecture} (\Guillaume{Ref: Billera-Sturfmels-Kapranov + Reiner Survey}), a problem which originated algebraic topology, in relation to the study of iterated loop spaces (...). \Guillaume{This might fit better in the introduction...}
 
 \subsection{Adjunction}
 
-We now construct a piecewise linear map $P \to \Sigma(R,Q)$ given a piecewise linear map $P \times Q \to R$ such that ... ?
+Given a piecewise linear map $R \to \Sigma(P,Q)$, we construct a piecewise linear map $R \times Q \to P$ such that ... ? \Guillaume{Is $\Sigma(-,-)$ a bifunctor? Could $\times$ be an adjoint, maybe by averaging the maps $P \times Q \to R$? $\Sigma(P,Q)$ is obtained by averaging the fibers}
 
 \subsection{Framed polytope}
 
@@ -40,32 +45,39 @@ Its \textit{iterated monotone path sequence} $P_\bullet = \{P_k\}_{k \geq 0}$ is
 \end{align*}
 where $\Sigma_{\pi^{k}_{k-1}}(P_{k-2})\defeq \Sigma_{\pi^{k}_{k-1}}(\pi_k(P_{k-2}),\pi_{k-1}(P_{k-2}))$.
 
-\Todo{@guillaume: This text needs to be updated given previous changes}
-
-Note that by definition of the fiber polytope, we have $P_k \subset \ker \pi_k$ and $\dim P_k = \dim P - \min\{ \dim P,k\}$ for all $0\leq k \leq n$.
-In the case where $P$ is full dimensional, we have $\dim P_k = n-k$, and all the $P_k, 1 \leq k \leq n$ are made out of a projection to a 1-dimensional polytope, so they are \emph{monotone path polytopes} \cite[Theorem 5.3]{BilleraSturmfels92}.
-Note that flags of polytopes and their associated iterated fiber polytopes where studied in \cite{BilleraSturmfels94}.
-Note also that in order for this definition to make sense, one needs to use crucially the functoriality of the fiber polytope construction \cite[Lemma 2.3]{BilleraSturmfels92}.
-\anibal{Why?}
+By definition of the fiber polytope, we have $P_k \subset \pi_k^{-1}(r_k)$, where $r_k$ is the barycenter of $\pi_k(P)$, and $\dim P_k = \dim P - \min\{ \dim P,k\}$ for all $0\leq k \leq n$.
+In the case where $P$ is full dimensional, we have $\dim P_k = n-k$, and all the $P_k, 1 \leq k \leq n$ are made out of a projection to a 1-dimensional polytope, so they are monotone path polytopes.
+Note that flags of polytopes and their associated iterated fiber polytopes were studied in \cite{BilleraSturmfels94}.
+Note also that in this definition, we make repeated use of the following general fact: given two consecutive projections $P \xra{\pi} Q \to R$, the fiber polytope $\Sigma(Q,R)$ is the image of the fiber polytope $\Sigma(P,R)$ under the projection $\pi$ \cite[Lemma 2.3]{BilleraSturmfels92}.
 
 \anibal{Connection with toric variety?}
 
-\subsection{Zonotopes} \label{ss:zonotopes}
+% \subsection{Zonotopes} \label{ss:zonotopes}
 
-If $P$ is a zonotope, then all the $P_k$ are also zonotopes.
-Indeed, in this case $P$ is the projection of a cube $C \xra{\pi} P$.
-\cite[Theorem 4.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(C,P)$ of this projection is itself a zonotope, the \emph{fiber zonotope} of $P$.
-We consider the flag $C \xra{\pi} P \xra{\pi_1} I$, where $I$ is the $1$-dimensional image of $P$ under the projection $\pi_1$.
-Using the functoriality property \cite[Lemma 2.3]{BilleraSturmfels92}, we have that $\Sigma(P,I)=\pi(\Sigma(C,I))$ is the projection of a zonotope, thus itself a zonotope.
-Repeating this argument, we get that all the $P_k$ are zonotopes.
-\anibal{What is a zonotope? Why are they interesting?}
+%Keep for our next project!
+
+% If $P$ is a zonotope, then all the $P_k$ are also zonotopes.
+% Indeed, in this case $P$ is the projection of a cube $C \xra{\pi} P$.
+% \cite[Theorem 4.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(C,P)$ of this projection is itself a zonotope, the \emph{fiber zonotope} of $P$.
+% We consider the flag $C \xra{\pi} P \xra{\pi_1} I$, where $I$ is the $1$-dimensional image of $P$ under the projection $\pi_1$.
+% Using the functoriality property \cite[Lemma 2.3]{BilleraSturmfels92}, we have that $\Sigma(P,I)=\pi(\Sigma(C,I))$ is the projection of a zonotope, thus itself a zonotope.
+% Repeating this argument, we get that all the $P_k$ are zonotopes.
+% \anibal{What is a zonotope? Why are they interesting?}
 
 \subsection{Centrally symmetric polytopes} \label{ss:centrally-symmetric}
 
-If $P$ is centrally symmetric, then all the $P_k$ are also centrally symmetric.
-Indeed, in this case $P$ is the projection of a cross-polytope $T \xra{\pi} P$.
-\cite[Theorem 5.1]{BilleraSturmfels92} says that the fiber polytope $\Sigma(T,P)$ of this projection is itself centrally symmetric.
-A similar argument to \cref{ss:zonotopes} yields the result.
-\todo{@guillaume: consider a Lemma for referencing back in the diagonals section}
+A polytope $P$ is \emph{centrally symmetric} if there is a point $r$ in $P$ such that for every point $p \in P$, we have $r-p \in P$.
 
+\begin{lemma}
+	\label{l:centrally-symmetric}
+	If $P$ is centrally symmetric, the iterated monotone path sequence is made up of centrally symmetric polytopes. 
+\end{lemma}
+
+\begin{proof}
+	Every centrally symmetric polytope $P$ is the projection of a cross-polytope $T \xra{\pi} P$.
+	The fiber polytope $\Sigma(T,P)$ of this projection is itself centrally symmetric \cite[Theorem 5.1]{BilleraSturmfels92}.
+	We consider the flag $T \xra{\pi} P \xra{\pi_1} I$, where $I$ is the $1$-dimensional image of $P$ under the projection $\pi_1$.
+	Using the functoriality property \cite[Lemma 2.3]{BilleraSturmfels92}, we have that $\Sigma(P,I)=\pi(\Sigma(T,I))$ is the projection of a centrally symmetric polytope, thus itself centrally symmetric.
+	Repeating this argument, we get that all the $P_k$ are centrally symmetric.
+\end{proof}
 

@@ -14,13 +14,11 @@ Define ... $\gcube^\infty$, $\globe^\infty$ and the map between them.
 
 \subsection{Globularization} \label{ss:globularization}
 
-For any $n$-dimensional polytope $P$ with a Morse frame we construct a surjective cellular map
+For any $n$-dimensional polytope $P$ with a Morse frame we construct surjective, cellular, piecewise linear maps
 \[
-\globe^n \to P
+\gcube^n \to \globe^n \to P
 \]
-with the following equivariance property.
-
-%and whose composition $\gcube^\infty \to \globe^\infty \to P$ is piecewise linear.
+which are moreover equivariant with respect to the action of $(\Sym_2)^{\times n}$.
 
 In the iterated monotone path sequence associated to $\{v_k\}$, each $P_k$ is defined via the linear functional $\angles{-,v_k}$.
 We consider the iterated monotone path sequence associated to the linear functionals
@@ -55,26 +53,50 @@ We define a map
 \[
 \Gamma_2 \colon \gcube \times \gcube \to P \ ,
 \]
-where the first copy of $\gcube$ receives the subdivision by the $x_i$, $1\leq i \leq p$, via the formula
+where the second copy of $\gcube$ receives the subdivision by the $x_i$, $1\leq i \leq p$, via the formula
 \[
-\Gamma_2(x_i, z) \defeq \Gamma_{x_i}(z) \ ,
+\Gamma_2(z, x_i) \defeq \Gamma_{x_i}(z) \ ,
 \]
-and on each of the cubes $[x_i,x_{i+1}] \times \gcube$ by the formula
+and on each of the cubes $\gcube \times [x_i,x_{i+1}]$ by the formula
 \[
-\Gamma_2(t,z) \defeq \left( \frac{x_{i+1}-t}{x_{i+1}-x_i} \right) \Gamma_{x_i}(z) + \left( \frac{t-x_i}{x_{i+1}-x_i} \right) \Gamma_{x_{i+1}}(z) \ .
+\Gamma_2(z,t) \defeq \left( \frac{x_{i+1}-t}{x_{i+1}-x_i} \right) \Gamma_{x_i}(z) + \left( \frac{t-x_i}{x_{i+1}-x_i} \right) \Gamma_{x_{i+1}}(z) \ .
 \]
 We proceed in a similar fashion to define $\Gamma_2^\op$ with the $y_j$.
 Continuing in the same fashion, we define inductively the next maps
 \[
-\Gamma_k, \Gamma_k^\op \colon \gcube \times \gcube^{k-1} \to P \ , 3 \leq k \leq n-1 \ .
+\Gamma_k, \Gamma_k^\op \colon \gcube^{k-1} \times \gcube \to P \ , 3 \leq k \leq n-1 \ .
 \]
 For the last step, we observe that $P_{n-1}$ is a segment, so we can simply define
 \begin{eqnarray*}
-	\Gamma_n \colon \gcube \times \gcube^{n-1} & \to & P \\
-	(t,z) & \mapsto & (1-t)\Gamma_{n-1}(z) + t \Gamma_{n-1}^\op (z) \ .
+	\Gamma_n \colon  \gcube^{n-1} \times \gcube  & \to & P \\
+	(z,t) & \mapsto & (1-t)\Gamma_{n-1}(z) + t \Gamma_{n-1}^\op (z) \ .
 \end{eqnarray*}
-These maps that we obtain are by construction continuous, cellular, equivariant under the action of $\Sym_2$ permuting $\Gamma_k$ and $\Gamma_k^\op$ (or sending $v_k$ to $-v_k$), and even piecewise linear.
-Finally, we obtain a map from $\globe^\infty$ by defining all the higher maps trivially mapping to the point $P_n$ and taking the colimit.
+These maps that we obtain are by construction continuous, cellular, and even piecewise linear.
+We will use them to define two surjective cellular maps
+\[
+	\gcube^n \xra{\Psi} \globe^n \xra{\Upsilon} P \ .
+\]
+The fist map $\Psi=(\Psi_1,\ldots,\Psi_n)$ is defined component-wise by the formulas
+\begin{align*}
+	\Psi_1(t_1,\ldots,t_n) & \defeq \cos(t_1 \pi) \\
+	\Psi_2(t_1,\ldots,t_n) & \defeq \sin(t_1 \pi)\cos(t_2\pi) \\
+	\Psi_3(t_1,\ldots,t_n) & \defeq \sin(t_1 \pi)\sin(t_2\pi)\cos(t_3\pi) \\
+	 & \vdots \\
+	\Psi_{n-1}(t_1,\ldots,t_n) & \defeq \sin(t_1 \pi) \cdots \sin(t_{n-2} \pi) \cos(t_{n-1} \pi) \\
+	\Psi_n(t_1,\ldots,t_n) & \defeq (1-2t_n) \sin(t_1 \pi) \cdots \sin(t_{n-1} \pi) \ ,
+\end{align*}
+while the second map $\Upsilon$ is defined by
+\[ 
+\Upsilon(\Psi(t_1,\ldots,t_n)) \defeq \Gamma_n(t_1,\ldots, t_n)\ . 
+\]
+By construction, these maps are again continuous, cellular and piecewise linear. 
+There is moreover an action of $(\Sym_2)^{\times n}$ on each of the three spaces
+\begin{itemize}
+	\item On the $n$-cube $\gcube^n$ by sending a coordinate $t_i$ to $1-t_i$, its reflection with respect to the value $1/2$.
+	\item On the $n$-globe $\globe^n$ by sending a coordinate $\Psi_i$ to its opposite $-\Psi_i$.
+	\item On the framed polytope $P$ by sending a vector $v_i$ to its opposite $-v_i$, or equivalently sending the map $\Gamma_{i-1}$ to its opposite $\Gamma_{i-1}^\op$. 
+\end{itemize}
+One can check that the two maps $\Psi$ and $\Upsilon$ are equivariant with respect to this action. 
 
 \subsection{Kapranov--Voevodsky pasting theorem}
 

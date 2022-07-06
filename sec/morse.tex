@@ -2,16 +2,25 @@
 
 \subsection{Morse properties}
 
-\todo{@guillaume: consider saying something about the normal fan}
-
 \todo{@guillaume: consider saying something about toric varieties}
 
 \anibal{is there standard terminology for a property holding on a $P$ vs on all its faces?}
+\Guillaume{Didn't find that in Ziegler, will look more}
 
 A vector $v \in \R^n$ is said to be \textit{Morse} on a polytope $P \subseteq \R^n$ if $P$ has a \textbf{unique} vertex $\bm_v(P)$ which minimizes the scalar product $\angles{-,v}$ and a \textbf{unique} vertex $\tp_v(P)$ which maximizes it.
 We say that $v$ is \textit{locally Morse} on $P$ if it is Morse on each face of $P$.
 It is easily seen that it is sufficient to verify this property only on the edges of $P$.
 Although we do not use the following terminology, we mention that these properties are sometimes expressed respectively by saying that $v$ either quasi-orients or orients $P$.
+
+\Guillaume{add to conventions: we will freely use the canonical isomorphism $\R^n \cong (\R^n)^{*}$ to see the normal fan of $P$ in the same space as $P$ itself.}
+
+\begin{remark}
+	Note that $v$ is Morse with respect to $P$ if and only if both $v$ and $-v$ lie in maximal chambers of the normal fan $\mathcal{N}_P$.
+	Being locally Morse is equivalent to $v$ lying in a chamber of the smallest hyperplane arrangement refining $\mathcal{N}_P$.
+\end{remark}
+
+\Guillaume{Is there standard terminology for the minimal hyerplane arrangement refining the normal fan? If not, I would suggest the "enveloping zonotope"}
+
 
 A framed polytope $(P, \{v_i\})$ is said to be (\textit{locally}) \textit{Morse} if for every $1 \leq k \leq n$ the vector $v_k$ is (locally) Morse on $P_{k-1}$.
 
