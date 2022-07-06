@@ -1,25 +1,21 @@
 % !TEX root = ../fib_poly.tex
 
-\section{Orientations}
+\subsection{Morse properties}
 
-\todo{@anibal: Missing intro}
+\todo{@guillaume: consider saying something about the normal fan}
 
-\subsection{Extremizing on and orienting polytopes} \todo{@anibal: Better subsection name}
+\todo{@guillaume: consider saying something about toric varieties}
 
-A vector $v \in \R^n$ \textit{extremizes on} $P \subseteq \R^n$ if $P$ has a \textbf{unique} vertex $\bm_v(P)$ which minimizes the scalar product $\angles{-,v}$ and a \textbf{unique} vertex $\tp_v(P)$ which maximizes it.
-%We say that $v$ \textit{orients} $P$ if it extremizes on each edge of $P$ or, equivalently, if it extremizes on each face of it.
-We say that $v$ \textit{orients} $P$ if it extremizes on each edge or, equivalently, on each face of $P$.
+\anibal{is there standard terminology for a property holding on a $P$ vs on all its faces?}
 
-A frame $\{v_k\}$ \textit{extremizes on} $P$ if for every $1 \leq k \leq n$ the vector $v_k$ extremizes on $P_{k-1}$.
-We say that $\{v_k\}$ \textit{orients} $P$ if for every $1 \leq k \leq n$ the vector $v_k$ orients $P_{k-1}$.
+A vector $v \in \R^n$ is said to be \textit{Morse} on a polytope $P \subseteq \R^n$ if $P$ has a \textbf{unique} vertex $\bm_v(P)$ which minimizes the scalar product $\angles{-,v}$ and a \textbf{unique} vertex $\tp_v(P)$ which maximizes it.
+We say that $v$ is \textit{locally Morse} on $P$ if it is Morse on each face of $P$.
+It is easily seen that it is sufficient to verify this property only on the edges of $P$.
+Although we do not use the following terminology, we mention that these properties are sometimes expressed respectively by saying that $v$ either quasi-orients or orients $P$.
 
-%In this case, $v$ was said to \emph{quasi-orient} $P$ in \cite[Definition 1.11]{GLA21}.
+A framed polytope $(P, \{v_i\})$ is said to be (\textit{locally}) \textit{Morse} if for every $1 \leq k \leq n$ the vector $v_k$ is (locally) Morse on $P_{k-1}$.
 
-%\begin{definition}
-%	A framed polytope $(P,\{v_k\})$ possess the \emph{local bot-top property} if every face $(F,\{v_k\})$ of $P$ possess the bot-top property.
-%\end{definition}
-
-\subsection{Orientations and fibers}
+\anibal{The next statement should be inserted after everything else involving the $P_\bullet$ and fibers has been proven.}
 
 \begin{lemma} \label{l:orients-the-fibers}
 	Let $P \xra{\pi} Q$ be a projection of polytopes.
@@ -81,12 +77,14 @@ We first prove the following general lemma.
 	Continuing in the same fashion for the higher $v_k$, we get the above equivalence.
 \end{proof}
 
-\subsection{Admissibility}
+It will be convenient to express the local Morse property of a framed polytope in terms of its associated flag.
 
-A frame $\{v_k\}$ is \emph{$P$-admissible} if every $k$-face of $P$ is sent injectively to $\R^k$ by the projection $\pi_k$ in the associated flag.
+\begin{lemma}
+	A framed polytope with associated flag $\pi_\bullet$ is locally Morse if and only if every $k$-face of $P$ is sent injectively to $\R^k$ by $\pi_k$.
+\end{lemma}
 
 \begin{lemma} \label{l:P-admissible}
-	A frame $\{v_k\}$ is $P$-admissible if and only if for any $k$-dimensional face $F_k$ of $P$, the vector $v_k$ is not perpendicular to the line $\LinSpan(F_k) \cap \ker \pi_{k-1}$.
+	A framed polytope with flag $\pi_\bullet$ is admissible if and only if for every $k$-face $F_k$ the vector $v_k$ is not perpendicular to the line $\LinSpan(F_k) \cap \ker \pi_{k-1}$.
 \end{lemma}
 
 \begin{proof}
@@ -98,7 +96,7 @@ A frame $\{v_k\}$ is \emph{$P$-admissible} if every $k$-face of $P$ is sent inje
 \end{proof}
 
 \begin{lemma} \label{l:bot-top-admissible}
-	A frame orients $P$ if and only its associated flag is admissible.
+	A framed polytope is locally Morse if and only its associated flag is admissible.
 \end{lemma}
 
 \begin{proof}
