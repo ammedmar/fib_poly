@@ -16,3 +16,5 @@
 fib_poly.fdb_latexmk
 
 fib_poly.fls
+
+*.dvi
