@@ -22,9 +22,7 @@ Although we do not use the following terminology, we mention that these properti
 
 A framed polytope $(P, \{v_i\})$ is said to be (\textit{locally}) \textit{Morse} if for every $1 \leq k \leq n$ the vector $v_k$ is (locally) Morse on $P_{k-1}$.
 
-\anibal{The next statement should be inserted after everything else involving the $P_\bullet$ and fibers has been proven.}
-
-\begin{lemma} 
+\begin{lemma}
 \label{l:orients-the-fibers}
 	Let $P \xra{\pi} Q$ be a projection of polytopes.
 	A vector $v$ is (locally) Morse on $\Sigma(P, Q)$ if and only if it is (locally) Morse on every fiber $\pi^{-1}(q), q \in Q$.
@@ -40,13 +38,14 @@ A framed polytope $(P, \{v_i\})$ is said to be (\textit{locally}) \textit{Morse}
 
 %We observe that if $v$ orients $P$, then every face $F$ of $P$ has a unique vertex $\bm_v(F)$ (resp. $\tp_v(F)$) which minimizes (resp. maximizes) the scalar product $\angles{-,v}$.
 
-\begin{theorem}	
+\begin{theorem}
 \label{t:bot-top-for-fibers}
 	Let $P \xra{\pi} Q$ be a projection of polytopes, let $r$ be the barycenter of $Q$, and let $\{v_k\}$ be an orthonormal basis of $\LinSpan(\pi^{-1}(r))$.
 	Then, we have that
 	\[
-	(\Sigma(P,Q),\{v_k\}) \text{ is (locally) Morse }
-	\iff (\pi^{-1}(q),\{v_k\}) \text{ is (locally) Morse } \ \forall q \in Q \ .
+	(\Sigma(P,Q),\{v_k\}) \text{ is (locally) Morse}
+	\iff
+	\forall q \in Q, \ (\pi^{-1}(q),\{v_k\}) \text{ is (locally) Morse}.
 	\]
 \end{theorem}
 
@@ -67,16 +66,16 @@ It will be convenient to express the local Morse property of a framed polytope i
 \end{theorem}
 
 \begin{proof}
-	We reformulate the injectivity condition as follows: 
+	We reformulate the injectivity condition as follows:
 	a $k$-face $F_k$ of $P$ is sent injectively to $\R^k$ by $\pi_k$ if and only if the vector $v_k$ is not perpendicular to the line $\LinSpan(F_k) \cap \LinSpan(\pi_{k-1}^{-1}(r_{k-1}))$, where $r_{k-1}$ is the barycenter of $\pi_{k-1}(P)$.
-	This can be seen by induction on $k$. 
+	This can be seen by induction on $k$.
 	Requiring $\pi_1$ to be injective on the 1-faces of $P$ is exactly asking that for every 1-face $F_1$, we have $\LinSpan(F_1)\cap \LinSpan(\pi_{1}^{-1}(r_{1}))=0$, which is the same as requiring that $v_1$ is not perpendicular to $\LinSpan(F_1)=\LinSpan(F_1)\cap \LinSpan(\pi_{0}^{-1}(*))$.
 	Note that on both sides, it is not possible that the condition for $k=2$ is satisfied while the condition for $k=1$ does not hold.
 	So, supposing that this last condition holds, we have indeed that for all 2-face $F_2$ of $P$, $\LinSpan(F_2)\cap \LinSpan(\pi_{1}^{-1}(r_{1}))$ is a line (the dimension of $\LinSpan(F_2)\cap \LinSpan(\pi_{1}^{-1}(r_{1}))$ is at least 1, and if it was 2 it would mean that some 1-faces of $F_2$ are perpendicular to $v_1$).
 	Requiring that $\pi_2$ is injective on 2-faces of $P$ is exactly asking that for every 2-face $F_2$ of $P$, we have $\LinSpan(F_2)\cap \LinSpan(\pi_{2}^{-1}(r_{2}))=0$, which is the same as requiring that $v_2$ is not perpendicular to $\LinSpan(F_2)\cap \LinSpan(\pi_{1}^{-1}(r_{1}))$.
 	Continuing in the same fashion, we get the desired equivalence.
-	The conclusion then follows from the observation that the directions of the lines $\LinSpan(F_k) \cap \LinSpan(\pi_{k-1}^{-1}(r_{k-1}))$ are exactly the directions of the edges of $P_{k-1}$, for all $k$. 
+	The conclusion then follows from the observation that the directions of the lines $\LinSpan(F_k) \cap \LinSpan(\pi_{k-1}^{-1}(r_{k-1}))$ are exactly the directions of the edges of $P_{k-1}$, for all $k$.
 	This is clear for the $1$-faces of $P$.
-	For a $2$-face $F_2$ of $P$, it follows from the fact that the line $\LinSpan(F_2)\cap \LinSpan(\pi_{1}^{-1}(r_{1}))$ is the intersection of $F_2$ with an hyperplane perpendicular to $v_1$. 
+	For a $2$-face $F_2$ of $P$, it follows from the fact that the line $\LinSpan(F_2)\cap \LinSpan(\pi_{1}^{-1}(r_{1}))$ is the intersection of $F_2$ with an hyperplane perpendicular to $v_1$.
 	The proof for the higher dimensional faces is similar.
 \end{proof}

@@ -2,15 +2,53 @@
 
 \section{Higher categories}
 
-In this section we prove a theorem of Kapranov--Voevodsky \cite{kapranov1991polycategory} stating that a free $n$-category structure can be constructed on any framed polytope whose associated flag is admissible.
+In this section we prove a theorem of Kapranov--Voevodsky \cite[Theorem 2.3]{kapranov1991polycategory} stating that a pasting scheme structure can be constructed on any locally Morse framed polytope.
 
-\subsection{Globular sets, pasting diagrams and $\omega$-categories}
+\subsection{$n$-categories}
 
-TBW
+We will consider the recursive definition of $n$-\textit{categories}, that is, as categories enriched in $(n-1)$-categories.
+We will take the one-sorted viewpoint identifying an $n$-category $\cC$ with a set $\Mor\cC$ together with, for $i = 0,\dots n-1$, \textit{source} and \textit{target functions}
+\[
+s_i, t_i \colon \Mor\cC \to \Mor\cC
+\]
+and \textit{partial compositions}
+\[
+\circ_i \colon \Mor\cC \times \Mor\cC \to \Mor\cC
+\]
+with $a \circ_i b$ defined when $s_i a = t_i b$.
+For a complete list of relations these satisfy the reader can consult \cite[Definition 2.1]{steiner2004omega}.
 
-\subsection{Cubes and globes}
+\subsection{Pasting schemes}
 
-Define ... $\gcube^\infty$, $\globe^\infty$ and the map between them.
+We quote from Kapranov--Voevodsky. \cite[p.~12]{kapranov1991polycategory}
+\begin{displayquote}
+	Intuitively a pasting scheme is an ``algebraic expression with indeterminate elements'' which can be evaluated in an arbitrary $n$-category as soon as we have associated, in a compatible way, to the indeterminates in the expression concrete polymorphisms.
+	For example,
+	\begin{center}
+		\input{aux/pasting}
+	\end{center}
+\end{displayquote}
+We will work with an elaboration of their definition of pasting scheme due to Steiner \cite{steiner2004omega}; what he calls an ``augmented directed complex with a strongly loop free basis.''
+
+A \textit{pasting scheme} is a chain complex $(\Z[B], \bd)$ of $\Z$-modules with a partially ordered basis $(B,<)$ satisfying that ...
+
+%\subsection{Pasting diagrams and $\omega$-categories}
+%
+%Every (small) category has an underlying directed graph.
+%The right adjoint to forgetting its composition structure is the free category construction.
+%We will consider the higher version of this construction in the context of (small strict) $\omega$-categories.
+%Each such $\omega$-category has an underlying (reflexive) globular set $X_\bullet$, that is, a collection of sets indexed by the non-negative integers together with maps $s_n, t_n \colon X_{n+1} \to X_n$ satisfying
+%\[
+%s_n \circ s_{n-1} = s_n \circ t_{n-1}.
+%\]
+%Notice that this notion recovers that of a directed graph if $X_n = \emptyset$ for $\geq 2$.
+%
+%
+%Intuitively a pasting scheme is an ``algebraic expression
+%with indeterminate elements'' which can be evaluated in an
+%arbitrary n-category as soon as we have associated, in a com-
+%patible way, to the indeterminates in the expression concrete
+%polymorphisms.
 
 \subsection{Globularization} \label{ss:globularization}
 
@@ -86,18 +124,18 @@ The fist map $\Psi=(\Psi_1,\ldots,\Psi_n)$ is defined component-wise by the form
 	\Psi_n(t_1,\ldots,t_n) & \defeq (1-2t_n) \sin(t_1 \pi) \cdots \sin(t_{n-1} \pi) \ ,
 \end{align*}
 while the second map $\Upsilon$ is defined by
-\[ 
-\Upsilon(\Psi(t_1,\ldots,t_n)) \defeq \Gamma_n(t_1,\ldots, t_n)\ . 
+\[
+\Upsilon(\Psi(t_1,\ldots,t_n)) \defeq \Gamma_n(t_1,\ldots, t_n)\ .
 \]
-By construction, these maps are again continuous, cellular and piecewise linear. 
+By construction, these maps are again continuous, cellular and piecewise linear.
 There is moreover an action of $(\Sym_2)^{\times n}$ on each of the three spaces
 \begin{itemize}
 	\item On the $n$-cube $\gcube^n$ by sending a coordinate $t_i$ to $1-t_i$, its reflection with respect to the value $1/2$.
 	\item On the $n$-globe $\globe^n$ by sending a coordinate $\Psi_i$ to its opposite $-\Psi_i$.
-	\item On the framed polytope $P$ by sending a vector $v_i$ to its opposite $-v_i$, or equivalently sending the map $\Gamma_{i-1}$ to its opposite $\Gamma_{i-1}^\op$. 
+	\item On the framed polytope $P$ by sending a vector $v_i$ to its opposite $-v_i$, or equivalently sending the map $\Gamma_{i-1}$ to its opposite $\Gamma_{i-1}^\op$.
 \end{itemize}
-One can check that the two maps $\Psi$ and $\Upsilon$ are equivariant with respect to this action. 
+One can check that the two maps $\Psi$ and $\Upsilon$ are equivariant with respect to this action.
 
-\subsection{Kapranov--Voevodsky pasting theorem}
+\subsection{Kapranov--Voevodsky pasting scheme theorem}
 
 TBW
