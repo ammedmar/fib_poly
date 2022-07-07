@@ -6,13 +6,6 @@
 
 \subsection{Diagonals polytope}
 
-\begin{figure}[b]
-	\centering
-	\input{aux/DPinterval}
-	\caption{The polytope of diagonals of the interval (in red). Its two vertices define cellular approximations of the diagonal (dashed, in blue, and in green).}
-	\label{figure:cellularapproximation}
-\end{figure}
-
 \begin{definition}
 	The \emph{diagonals polytope} $D_P$ of a polytope $P$ is the fiber polytope of the projection
 	\[
@@ -23,10 +16,21 @@
 	\]
 \end{definition}
 
-We observe that $P$ embeds into $P\times P$ via the set-theoretic diagonal $\Delta (x)=(x,x)$, which is a section of $\pi$.
+We observe that $P$ embeds into $P\times P$ via the set-theoretic diagonal $\Delta (x)=(x,x)$, which is a section of the projection.
 The vertices of $D_P$ are associated with tight coherent sections, which are cellular approximations of the diagonal $\Delta$ by \cite[Proposition 5]{MTTV19}, see also \cite[Proposition 1.1]{GLA21}.
+\cref{f:diagonal-interval} shows the diagonals polytope of the unit interval. 
 
-\begin{example} \label{e:permutahedron}
+\begin{figure}[h!]
+	\centering
+	\input{aux/DPinterval}
+	\caption{The diagonals polytope of the interval (in red). Its two vertices define cellular approximations of the diagonal (dashed, in blue, and in green).}
+	\label{f:diagonal-interval}
+\end{figure}
+
+\Guillaume{Introduce zonotopes before, or remove the following example}
+
+\begin{example} 
+\label{e:permutahedron}
 	If $P=\sum_{1 \leq i<j \leq n+1} [e_i-e_j, e_j-e_i]$ is the standard $n$-dimensional permutahedron, then $D_P$ is the zonotope $\sum_{I<J} [\sum_{i \in I}e_i - \sum_{j \in J}e_j, \sum_{j \in J} e_j - \sum_{i \in I}e_i]$, where the sum runs over all pairs $I,J\subset [n+1]$ such that $|I|=|J|\neq 0, I\cap J = \emptyset$ and $\min(I \cup J) \in I$, see \cite[Theorem 3.6]{GLA21}.
 \end{example}
 
@@ -42,6 +46,7 @@ Consider the diagonal embedding
 and denote by $\{e_j\}$ the standard basis of $\R^n$.
 Then, $\{\Delta (e_j)\}$ is a basis of $\Ima \Delta$ and we have an isomorphism $\R^n \cong \Ima \Delta$.
 A basis for the orthogonal complement $\Ima \Delta^{\bot}$ is $\{(e_j,-e_j)\}$, and we have an isomorphism $\R^n \cong \Ima \Delta^{\bot}$.
+Consider the projection $\pi : \R^n \times \R^n \to \R^n, (x,y) \mapsto (x+y)/2$. 
 For any $z \in \R^n$, we have $\pi^{-1}(z)=\Delta(z)+\ker \pi$, and an affine isomorphism
 \begin{equation} \label{eq:D_P-iso}
 	\begin{matrix}
@@ -49,50 +54,40 @@ For any $z \in \R^n$, we have $\pi^{-1}(z)=\Delta(z)+\ker \pi$, and an affine is
 		& & v & \mapsto & \Delta(z)+(v,-v).
 	\end{matrix}
 \end{equation}
-The polytope of diagonals $D_P$ has the same dimension as $P$, and can be seen in $\R^n$ via the isomorphism $\iota_0$.
+The diagonals polytope $D_P$ has the same dimension as $P$, and can be seen in $\R^n$ via the isomorphism $\iota_r$ associated to the barycenter $r$ of $P$.
 
 \begin{remark}
 	We can see this isomorphism as the discrete analogue of the isomorphism between the tangent bundle of a manifold $M$ and the normal bundle of the diagonal submanifold of $M\times M$.
 \end{remark}
 
-We can also see that the normal fan of $D_P$, seen in the same space as $P$ under the isomorphism $\iota_0$, refines the normal fan of $P$.
+We can also see that the normal fan of $D_P$, seen in the same space as $P$ under the isomorphism $\iota_r$, refines the normal fan of $P$.
 Moreover, the \emph{fundamental hyperplane arrangement} of $P$, introduced in \cite[Definition 1.18]{GLA21}, is obtained from the normal fan of $D_P$ by extending all the walls to hyperplanes.
-In the case where the normal fan of $D_P$ is already an hyperplane arrangement (for example, when $D_P$ is a zonotope, or when $P$ is a zonotope), it then agrees with the fundamental hyperplane arrangement of $P$.
+In the case where the normal fan of $D_P$ is already an hyperplane arrangement (for example, when $D_P$ is a zonotope, or when $P$ is a zonotope \Guillaume{introduce zonotopes}), it then agrees with the fundamental hyperplane arrangement of $P$.
 
 \subsection{Reflections and fibers}
 
-\todo{@guillaume: consider making this discussion have no lemmas and proofs}
-
-We denote by $\rho_z P \defeq 2z-P$ the reflection of $P$ with respect to $z \in P$.
-
-\begin{lemma}
-	There is an affine isomorphism
-	\begin{equation} \label{eq:iso-intersection}
-		\begin{matrix}
-			\rho \colon & & P \cap \rho_z P & \xra{\cong} & \pi^{-1}(z) \\
-			& & x & \mapsto & (x,2z-x)
-		\end{matrix}
-	\end{equation}
-	for all $z \in P$.
-	\anibal{Do you need the name of the map ``$\rho$''?}
-\end{lemma}
-
-\begin{proof}
-	This is a straightforward observation.
-	Equivalently, the isomorphism can be given by the assignment $z+t \mapsto (z+t,z-t)$.
-\end{proof}
-
-This lemma makes clear the pointwise description of the diagonal
+We denote by $\rho_z P \defeq 2z-P$ the reflection of $P$ with respect to a point $z \in P$.
+The isomorphism $\iota_r$ above induces an affine isomorphism
+\begin{equation}
+\label{eq:iso-intersection}
+	\begin{matrix}
+		& & P \cap \rho_z P & \xra{\cong} & \pi^{-1}(z) \\
+		& & x & \mapsto & (x,2z-x)
+	\end{matrix}
+\end{equation}
+for all $z \in P$.
+A vertex of $D_P$ determines a unique tight coherent section $P \to P \times P$, which is given by the extremal vetices of all the fibers $\pi^{-1}(z), z \in P$ with respect to some functional $\angles{-,w}$.
+Since $D_P \subset \pi^{-1}(r)$, we can restrict ourselves to the vectors of the form $w=(v,-v)$ without loosing generality.
+Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum (resp. minimum) of $(v,-v)$ over $\pi^{-1}(z)$ is exactly the top (resp. bot) element of $P\cap \rho_z P$ with respect to $v$.
+This allows for the following pointwise description of the diagonal
 \begin{equation*}
 	\begin{matrix}
 		\triangle_{(P,v)} & : & P & \to & P \times P \\
-		& & z & \mapsto & (\bm_v(P \cap \rho_z P),\tp_v(P \cap \rho_z P))
+		& & z & \mapsto & (\bm_v(P \cap \rho_z P),\tp_v(P \cap \rho_z P)) \ 
 	\end{matrix}
 \end{equation*}
-in \cite[Definition 10]{MTTV19}, see also \cite[Proposition 1.15]{GLA21}.
-Indeed, the tight coherent section associated to a vertex in $D_P$ is given by the extremal vetices of all the fibers $\pi^{-1}(z), z \in P$ with respect to some functional $\angles{-,w}$.
-Since $D_P \subset \ker \pi$, we can restrict ourselves to the vectors of the form $w=(v,-v) \in \ker \pi$ without loosing generality.
-Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum (resp. minimum) of $(v,-v)$ over $\pi^{-1}(z)$ is exactly the top (resp. bot) element of $P\cap \rho_z P$ with respect to $v$.
+associated to a vector $v$ such that $\{D_P, (v,-v)\}$ is Morse, introduced in \cite[Definition 10]{MTTV19}, see also \cite[Proposition 1.15]{GLA21}.
+
 
 \subsection{Symmetry}
 
@@ -124,6 +119,14 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 
 \todo{@guillaume: Maybe explain the action... reversing .... corresponds to ... and to ...}
 
+\begin{corollary}
+	All the iterated monotone path polytopes of $D_P$ are centrally symmetric.   
+\end{corollary}
+
+\begin{proof}
+	This follows directly from \cref{l:centrally-symmetric}.
+\end{proof}
+
 \subsection{Steenrod diagonals}
 
 %\begin{definition}
@@ -146,7 +149,7 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 
 \begin{theorem}
 	Let $(P,\{v_i\})$ be a framed polytope.
-	If $(D_P, \{(v_i,-v_i)\})$ has the bot-top property then
+	If $(D_P, \{(v_i,-v_i)\})$ is locally Morse then
 	$(P,\{v_i\})$ has a canonical Steenrod diagonal.
 \end{theorem}
 
@@ -164,6 +167,8 @@ Under the isomorphism (\ref{eq:iso-intersection}) above, we see that the maximum
 	between these the sections $\triangle_0$ and $\triangle_0^\op$.
 	The higher maps are obtained in a similar fashion, the ones above the dimension of $P$ being trivial.
 \end{proof}
+
+
 
 \subsection{Other stuff to be worked out}
 

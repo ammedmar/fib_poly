@@ -23,3 +23,11 @@ Two frames give rise to the same associated flag if and only if they differ only
 %	The kernel of $\pi_{n-2}$ is 2-dimensional, and contains $\ker \pi_{n-1}$, so we can choose a unit vector $v_{n-1}$, perpendicular to $v_n$, such that $\ker \pi_{n-2}=\LinSpan(v_n,v_{n-1})$.
 %	Continuing in the same fashion, we obtain an ordered basis $\{v_1,\ldots, v_n\}$ of $\R^n$ such that $\ker \pi_{k}=\LinSpan(v_n,\ldots,v_{k+1})$.
 %\end{proof}
+
+\subsection{Normal fan}
+
+The \emph{normal fan} of a polytope $P \subset \R^n$ is the union, over all faces $F$ of $P$, of the \emph{normal cones} 
+\[
+\mathcal{N}_P(F) \defeq \left\{ c \in (\R^n)^{*} \ \bigg | \ F \subseteq \{ x \in P \ | \ c x =\max_{y \in P} c y \}\right\}  \ . 
+\] 
+Via the canonical isomorphism $\R^n \cong (\R^n)^{*}$, the normal fan of $P$ can be seen in $\R^n$, and we will sometimes note $v \in \mathcal{N}_P(F)$ for what would actually by $\angles{-,v} \in \mathcal{N}_P(F)$. 
