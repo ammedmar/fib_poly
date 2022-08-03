@@ -105,7 +105,7 @@ associated to a vector $v$ such that $\{D_P, (v,-v)\}$ is Morse, introduced in \
 			& & x & \mapsto & (\gamma_1(z),\gamma_2(z))
 		\end{matrix}
 	\end{equation*}
-	is given by maximum of $\angles{-,v}$ in each fiber $\pi^{-1}(z)$ of $\pi$.
+	is given by the maximum of $\angles{-,v}$ in each fiber $\pi^{-1}(z)$ of $\pi$.
 	Then, the section
 	\begin{equation*}
 		\begin{matrix}
@@ -113,7 +113,7 @@ associated to a vector $v$ such that $\{D_P, (v,-v)\}$ is Morse, introduced in \
 			& & x & \mapsto & (\gamma_2(z),\gamma_1(z))
 		\end{matrix}
 	\end{equation*}
-	is given by the minimum of $\angles{-,v}$ in each fiber, or equivalently the maximum of of $\angles{-,-v}$ in each fiber.
+	is given by the minimum of $\angles{-,v}$ in each fiber, or equivalently the maximum of $\angles{-,-v}$ in each fiber.
 	Thus, this tight coherent section defines a vertex $-x=(-y,y)$ of $D_P$.
 \end{proof}
 
@@ -171,6 +171,24 @@ associated to a vector $v$ such that $\{D_P, (v,-v)\}$ is Morse, introduced in \
 
 
 \subsection{Other stuff to be worked out}
+
+\Guillaume{Could this statement be useful to something?}
+\begin{theorem}
+	Let $P \to Q$ be a projection of polytopes, and let $R$ be a polytope. 
+	If $(\Sigma(P,Q), \{v_k\})$ is locally Morse, then any piecewise linear map $f: R \to \Sigma(P,Q)$ induces a piecewise linear map $\tilde f : R \times Q \to P$. 
+\end{theorem}
+
+\begin{proof}
+	We will build the map $\tilde f$ by making repeated use of \cref{l:adjunction-I}. 
+	It is clear that \cref{l:adjunction-I} can be used to define the map $\tilde f$ on each edge of $R$. 
+	Let $F$ be a $2$-face of $R$. 
+	If its image $f(F)$ is $1$-dimensional, then it suffices to define $\tilde f$ on a family of $1$-faces of $F$; we proceed as before on this family, and we set the projection $F \to f(F)$ to be constant in each fiber. 
+	Now we consider the case where $f(F)$ is a union of $2$-faces of $\Sigma(P,Q)$. 
+	Let $F_1$ be one of these $2$-faces in $f(F)$. 
+	We define $\tilde f$ on the preimage by $f$ of the $1$-skeleton of $F_1$ as before. 
+	Now, the intersections of $F_2$ with hyperplanes that are perpendicular to $v_1$ define $1$-dimensional polytopes. 
+	The fact that $v_1$ is Morse for every $2$-face ensures that they glue well together...
+\end{proof}
 
 \begin{lemma} \label{l:bot-top-for-DP}
 	Let $\{v_k\}$ be an orthogonal basis of $\R^n$, and let $P\subset \R^n$ be a polytope.

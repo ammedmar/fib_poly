@@ -12,91 +12,88 @@ TBW
 
 Define ... $\gcube^\infty$, $\globe^\infty$ and the map between them.
 
-\subsection{Globularization} \label{ss:globularization}
+\subsection{Globularization} 
+\label{ss:globularization}
 
-For any $n$-dimensional polytope $P$ with a Morse frame we construct surjective, cellular, piecewise linear maps
+\Guillaume{What do we mean by piecewise linear? It has to be an affine map; also cellular!}
+
+\begin{lemma}
+	\label{l:adjunction-I}
+	Let $P \to Q$ be a projection of polytopes, and let $I$ be a $1$-dimensional polytope. 
+	Any piecewise linear map $f \colon I \to \Sigma(P,Q)$ induces a piecewise linear map $\tilde f \colon I \times Q \to P$. 
+\end{lemma}
+
+\begin{proof}
+	The image of $I$ is a path, that is a sequence of vertices and edges $$w_1,e_1,w_2,e_2,\ldots,w_{k-1},e_{k-1},w_k$$ of $\Sigma(P,Q)$. 
+	Let us denote by $x_1=f^{-1}(w_1),\ldots, x_k=f^{-1}(w_k)$ the preimages of the vertices of this path. 
+	Each vertex $w_i$ defines a unique section $\gamma_{w_i} : Q \to P$ of the projection.
+	We define $\tilde f (x_i, q) \defeq \gamma_{w_i}(q)$ for all $1 \leq i \leq k$, and on each cylinder $[x_i,x_{i+1}] \times Q$ we interpolate linearly
+	\[
+	\tilde f (t,q) \defeq \left( \frac{x_{i+1}-t}{x_{i+1}-x_i} \right) \gamma_{w_i}(q) + \left( \frac{t-x_i}{x_{i+1}-x_i} \right) \gamma_{w_{i+1}}(q) \ .
+	\]
+	Since any convex combination of sections is a section, for any fixed $t\in I$ this map is a section of the projection $P \to Q$.
+	Moreover, since we interpolate linearly between the tight coherent sections associated to adjacent vertices of $\Sigma(P,Q)$, we obtain a piecewise linear map. 
+\end{proof}
+
+We will use iteratively \cref{l:adjunction-I} to construct, for any $n$-dimensional polytope $P$ with a Morse frame $\{v_k\}$, a surjective piecewise linear map
 \[
-\gcube^n \to \globe^n \to P
+\gcube^n \to P \ .
 \]
-which are moreover equivariant with respect to the action of $(\Sym_2)^{\times n}$.
-
 In the iterated monotone path sequence associated to $\{v_k\}$, each $P_k$ is defined via the linear functional $\angles{-,v_k}$.
 We consider the iterated monotone path sequence associated to the linear functionals
 \begin{equation} \label{eq:new-projection}
 	\frac{\angles{-,v_k}-\angles{\bm_{v_k}(P_{k-1}),v_k}}{\angles{\tp_{v_k}(P_{k-1})-\bm_{v_k}(P_{k-1}),v_k}}
 \end{equation}
-where each $P_{k-1}$ is sent to the interval $\gcube$, the vertex $\bm_{v_k}(P_{k-1})$ is sent to $0$ and $\tp_{v_k}(P_{k-1})$ is sent to $1$.
-We construct inductively a family of continuous piecewise linear cellular maps
+where each $P_{k-1}$ is sent to the interval $\gcube$, the vertex $\bm_{v_k}(P_{k-1})$ is sent to $0$ and the vertex $\tp_{v_k}(P_{k-1})$ is sent to $1$.
+Since $P_n$ is a point, there is a natural map $\Gamma_n \colon \{*\} \to P_n=\Sigma(P_{n-1},\gcube)$, which gives rise to a map $\gcube \to P_{n-1}=\Sigma(P_{n-2},\gcube)$ that we still denote by $\Gamma_n$. 
+This is an homotopy between $\Gamma_{n-1} \defeq \Gamma_n(0)$ et $\Gamma_{n-1}^\op \defeq \Gamma_n(1)$.
+Using \cref{l:adjunction-I}, the map $\Gamma_n$ induces a map $\Gamma_{n} \colon \gcube \times \gcube \to P_{n-2}=\Sigma(P_{n-3},\gcube)$, which interpolates between the two maps $\Gamma_{n-1} \defeq \Gamma_{n}(-,0)$ and $\Gamma_{n-1}^\op \defeq \Gamma_{n}(-,1)$. 
+Applying \cref{l:adjunction-I} allows us to replace the restrictions $\Gamma_{n-1}$ and $\Gamma_{n-1}^\op$ with two maps $\Gamma_{n-1} \colon \gcube \times \gcube \times \{0\} \to P_{n-3}$ and $\Gamma_{n-1}^\op \colon \gcube \times \gcube \times \{1\}  \to P_{n-3}$. 
+The formula defining $\Gamma_{n}$ extends to a map $\Gamma_{n} \colon \gcube \times \gcube \times \gcube \to P_{n-3}$, which interpolates between $\Gamma_{n-1}$ and $\Gamma_{n-1}^\op$. 
+Now we can apply \cref{l:adjunction-I} to the restriction $\gcube  \times \{x_i\} \times \{0\} \to P_{n-3}$ of $\Gamma_{n-1}$ to any vertex $x_i$ in the subdivision induced by $P_{n-2} \to \gcube$ on the second factor, in order to get maps $\gcube \times \gcube \times \{x_i\} \times \{0\} \to P_{n-4}$. 
+The formula defining $\Gamma_{n-1}$ extends to a map $\Gamma_{n-1} \colon \gcube \times \gcube \times \gcube \times \{0\} \to P_{n-4}$, which is an homotopy between $\Gamma_{n-2} \defeq \Gamma_{n-1}(-,-,0,0)$ and $\Gamma_{n-2}^\op \defeq \Gamma_{n-1}(-,-,1,0)$. 
+Similarly, we get a map $\Gamma_{n-1}^\op \colon \gcube  \times \gcube \times \gcube \times \{1\} \to P_{n-4}$ which is also an homotopy between $\Gamma_{n-1}^\op(-,-,0,1)=\Gamma_{n-2}$ and $\Gamma_{n-1}^\op(-,-,1,1)=\Gamma_{n-2}^\op$.
+Now, the formula defining $\Gamma_n$ extends to a map $\Gamma_n \colon \gcube^4 \to P_{n-4}$. 
+Continuing in the same fashion, we obtain a piecewise linear map 
 \[
-\Gamma_k, \Gamma_k^{\op} \colon \gcube^k \to P \ , 0 \leq k \leq n-1
+\Gamma_n \colon \gcube^n \to P 
 \]
-such that the two maps $\Gamma_k$ and $\Gamma_k^{\op}$ are both homotopies between $\Gamma_{k-1}$ and $\Gamma_{k-1}^{\op}$.
-We can also extend the construction to a $\Gamma_n \colon \gcube^n \to P$ which will be an homotopy between $\Gamma_{n-1}$ and $\Gamma_{n-1}^{\op}$.
+and a family of maps 
+\[
+\Gamma_k,\Gamma_k^\op \colon \gcube^k \to P \ , 0 \leq k \leq n-1 \ , 
+\]
+such that for each $k$ we have
+\[
+\Gamma_{k}=\Gamma_n(-,\ldots,-,0,\epsilon_{k+2},\ldots, \epsilon_{n})
+\text{ and } 
+\Gamma_{k}^\op=\Gamma_n(-,\ldots,-,1,\epsilon_{k+2},\ldots, \epsilon_{n}) \ , 
+\] 
+where each $\epsilon_i$, $k+2\leq i \leq n$ stands for either the value $0$ or $1$. 
+In particular, at each stage both $\Gamma_k$ and $\Gamma_k^\op$ are homotopies between $\Gamma_{k-1}$ and $\Gamma_{k-1}^\op$.
 
-First, we define $\Gamma_0 (*) = \bm_{v_1}(P)$ and $\Gamma_0^{\op} (*) = \tp_{v_1}(P)$.
-Then, the vertices $\bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$ define uniquely sections $\Gamma_1, \Gamma_1^\op \colon \gcube \to P$ such that $\Gamma_1(0)=\Gamma_1^\op(0)=\bm_{v_1}(P)$ and $\Gamma_1(1)=\Gamma_1^\op(1)=\tp_{v_1}(P)$.
-These sections are coherent monotone paths on $P$, defined explicitly by
-\begin{align*}
-	\Gamma_1(x) & = \bm_{v_2}(\pi_1^{-1}(x)) \\
-	\Gamma_1^\op(x) & = \tp_{v_2}(\pi_1^{-1}(x))
-\end{align*}
-for $x \in \gcube$, where $\pi_1 \colon P \to \gcube$ denotes the projection with respect to the linear functional (\ref{eq:new-projection}) in the case $k=2$.
-Next, the vertices $\bm_{v_3}(P_2)$ and $\tp_{v_3}(P_2)$ define monotone paths on $P_1$ between $\bm_{v_2}(P_1)$ and $\tp_{v_2}(P_1)$.
-We consider the associated (tight coherent) subdivisions of $\gcube$, induced by $\pi_2 \colon P_1 \to \gcube$.
-We denote the vertices of these subdivisions by
-\begin{align*}
-	x_1 & = \pi_2(\bm_{v_2}(P_1)), x_2, \ldots, x_{p-1}, x_p=\pi_2(\tp_{v_2}(P_1)) \\
-	y_1 & = \pi_2(\bm_{v_2}(P_1)), y_2, \ldots, y_{q-1}, y_q=\pi_2(\tp_{v_2}(P_1)) \ .
-\end{align*}
-All these vertices are projections of vertices of $P_1$, which in turn have associated tight coherent sections $\Gamma_{x_i} \colon \gcube \to P$.
-We define a map
-\[
-\Gamma_2 \colon \gcube \times \gcube \to P \ ,
-\]
-where the second copy of $\gcube$ receives the subdivision by the $x_i$, $1\leq i \leq p$, via the formula
-\[
-\Gamma_2(z, x_i) \defeq \Gamma_{x_i}(z) \ ,
-\]
-and on each of the cubes $\gcube \times [x_i,x_{i+1}]$ by the formula
-\[
-\Gamma_2(z,t) \defeq \left( \frac{x_{i+1}-t}{x_{i+1}-x_i} \right) \Gamma_{x_i}(z) + \left( \frac{t-x_i}{x_{i+1}-x_i} \right) \Gamma_{x_{i+1}}(z) \ .
-\]
-We proceed in a similar fashion to define $\Gamma_2^\op$ with the $y_j$.
-Continuing in the same fashion, we define inductively the next maps
-\[
-\Gamma_k, \Gamma_k^\op \colon \gcube^{k-1} \times \gcube \to P \ , 3 \leq k \leq n-1 \ .
-\]
-For the last step, we observe that $P_{n-1}$ is a segment, so we can simply define
-\begin{eqnarray*}
-	\Gamma_n \colon  \gcube^{n-1} \times \gcube  & \to & P \\
-	(z,t) & \mapsto & (1-t)\Gamma_{n-1}(z) + t \Gamma_{n-1}^\op (z) \ .
-\end{eqnarray*}
-These maps that we obtain are by construction continuous, cellular, and even piecewise linear.
-We will use them to define two surjective cellular maps
-\[
-	\gcube^n \xra{\Psi} \globe^n \xra{\Upsilon} P \ .
-\]
-The fist map $\Psi=(\Psi_1,\ldots,\Psi_n)$ is defined component-wise by the formulas
+There is an action of $(\Sym_2)^{\times n}$ on the Morse frame $\{ v_k \}$, given coordinate-wise by the assignment $v_k \mapsto -v_k$. 
+There is an analogous action of the same group on the $n$-cube $\gcube^n$, which is given coordinate-wise by the assignment $t_k \mapsto 1-t_k$. 
+We claim that the assignment $\{v_k\} \mapsto (\Gamma_n \colon \gcube^n \to P)$ is equivariant with respect to the action of $(\Sym_2)^{\times n}$.
+Indeed, replacing $v_k$ by its opposite $-v_k$ inverts the direction of the monotone paths on $P_{k-1}$, which corresponds precisely to inverting the parametrization of $\gcube^n$ given by \cref{l:adjunction-I}.
+
+The map $\Gamma_n$ is surjective, but definitely not injective (for example, the restriction $\Gamma_n(0,-,\ldots,-)$ is the constant map, with value $\bm_{v_1}(P)$). 
+We show that it can be factored through the globe $\globe^n$, in a $(\Sym_2)^{\times n}$-equivariant way, giving rise to a cellular homeomorphism $\globe^n \cong P$. 
+Explicitly, we define a map $\Psi \colon \gcube^n \to \globe^n$ component-wise by the formulas
 \begin{align*}
 	\Psi_1(t_1,\ldots,t_n) & \defeq \cos(t_1 \pi) \\
 	\Psi_2(t_1,\ldots,t_n) & \defeq \sin(t_1 \pi)\cos(t_2\pi) \\
 	\Psi_3(t_1,\ldots,t_n) & \defeq \sin(t_1 \pi)\sin(t_2\pi)\cos(t_3\pi) \\
 	 & \vdots \\
 	\Psi_{n-1}(t_1,\ldots,t_n) & \defeq \sin(t_1 \pi) \cdots \sin(t_{n-2} \pi) \cos(t_{n-1} \pi) \\
-	\Psi_n(t_1,\ldots,t_n) & \defeq (1-2t_n) \sin(t_1 \pi) \cdots \sin(t_{n-1} \pi) \ ,
+	\Psi_n(t_1,\ldots,t_n) & \defeq  \sin(t_1 \pi) \cdots \sin(t_{n-1} \pi)  (1-2t_n)\ .
 \end{align*}
-while the second map $\Upsilon$ is defined by
-\[ 
-\Upsilon(\Psi(t_1,\ldots,t_n)) \defeq \Gamma_n(t_1,\ldots, t_n)\ . 
-\]
-By construction, these maps are again continuous, cellular and piecewise linear. 
-There is moreover an action of $(\Sym_2)^{\times n}$ on each of the three spaces
-\begin{itemize}
-	\item On the $n$-cube $\gcube^n$ by sending a coordinate $t_i$ to $1-t_i$, its reflection with respect to the value $1/2$.
-	\item On the $n$-globe $\globe^n$ by sending a coordinate $\Psi_i$ to its opposite $-\Psi_i$.
-	\item On the framed polytope $P$ by sending a vector $v_i$ to its opposite $-v_i$, or equivalently sending the map $\Gamma_{i-1}$ to its opposite $\Gamma_{i-1}^\op$. 
-\end{itemize}
-One can check that the two maps $\Psi$ and $\Upsilon$ are equivariant with respect to this action. 
+There is an action of $(\Sym_2)^{\times n}$ on the globe $\globe^n$ which is given component-wise by multplication by $-1$. 
+It is clear that the map $\Psi$ above is $(\Sym_2)^{\times n}$-equivariant and cellular. 
+Moreover, its fibers are precisely the cells of $\gcube^n$ on which $\Gamma_n$ is constant (for example, $\Psi^{-1}(1,0,\ldots,0)=\{0\} \times \gcube^{n-1}$), i.e. it is a quotient map. 
+Indeed, \Guillaume{More details}
+
+
+
 
 \subsection{Kapranov--Voevodsky pasting theorem}
 
