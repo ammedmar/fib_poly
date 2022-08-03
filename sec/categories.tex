@@ -6,7 +6,7 @@ In this section we prove a theorem of Kapranov--Voevodsky \cite[Theorem 2.3]{kap
 
 \subsection{$n$-categories}
 
-We will consider the recursive definition of $n$-\textit{categories}, that is, as categories enriched in $(n-1)$-categories.
+We will consider $n$-\textit{categories} recursively defined as categories enriched in $(n-1)$-categories.
 We will take the one-sorted viewpoint identifying an $n$-category $\cC$ with a set $\Mor\cC$ together with, for $i = 0,\dots n-1$, \textit{source} and \textit{target functions}
 \[
 s_i, t_i \colon \Mor\cC \to \Mor\cC
@@ -16,11 +16,11 @@ and \textit{partial compositions}
 \circ_i \colon \Mor\cC \times \Mor\cC \to \Mor\cC
 \]
 with $a \circ_i b$ defined when $s_i a = t_i b$.
-For a complete list of relations these satisfy the reader can consult \cite[Definition 2.1]{steiner2004omega}.
+For a complete list of relations satisfied by these please consult \cite[Definition 2.1]{steiner2004omega}.
 
 \subsection{Pasting schemes}
 
-We quote from Kapranov--Voevodsky. \cite[p.~12]{kapranov1991polycategory}
+We quote from Kapranov--Voevodsky \cite[p.~12]{kapranov1991polycategory}
 \begin{displayquote}
 	Intuitively a pasting scheme is an ``algebraic expression with indeterminate elements'' which can be evaluated in an arbitrary $n$-category as soon as we have associated, in a compatible way, to the indeterminates in the expression concrete polymorphisms.
 	For example,
@@ -28,27 +28,12 @@ We quote from Kapranov--Voevodsky. \cite[p.~12]{kapranov1991polycategory}
 		\input{aux/pasting}
 	\end{center}
 \end{displayquote}
-We will work with an elaboration of their definition of pasting scheme due to Steiner \cite{steiner2004omega}; what he calls an ``augmented directed complex with a strongly loop free basis.''
+We will work with an elaboration of the definition of pasting scheme of Kapranov--Voevodsky due to Steiner \cite{steiner2004omega}.
+%what he calls an ``augmented directed complex with a strongly loop free basis.''
+A \textit{pasting scheme} is a chain complex of $\Z$-modules with a basis $B$ satisfying the following ``loop free" condition:
+The preorder $\leq_\N$ on $B$ defined by $a \leq_\N b$ if and only if $a \in \partial^- b$ or $b \in \partial^+ a$ makes $B$ into a poset, where for any $b \in B$ we write $\partial^\pm b$ for the set of basis elements in $\partial b$ with positive or negative coefficients.
 
-A \textit{pasting scheme} is a chain complex $(\Z[B], \bd)$ of $\Z$-modules with a partially ordered basis $(B,<)$ satisfying that ...
-
-%\subsection{Pasting diagrams and $\omega$-categories}
-%
-%Every (small) category has an underlying directed graph.
-%The right adjoint to forgetting its composition structure is the free category construction.
-%We will consider the higher version of this construction in the context of (small strict) $\omega$-categories.
-%Each such $\omega$-category has an underlying (reflexive) globular set $X_\bullet$, that is, a collection of sets indexed by the non-negative integers together with maps $s_n, t_n \colon X_{n+1} \to X_n$ satisfying
-%\[
-%s_n \circ s_{n-1} = s_n \circ t_{n-1}.
-%\]
-%Notice that this notion recovers that of a directed graph if $X_n = \emptyset$ for $\geq 2$.
-%
-%
-%Intuitively a pasting scheme is an ``algebraic expression
-%with indeterminate elements'' which can be evaluated in an
-%arbitrary n-category as soon as we have associated, in a com-
-%patible way, to the indeterminates in the expression concrete
-%polymorphisms.
+\anibal{Augmentation and uniqueness of basis satisfied by the polytope examples.}
 
 \subsection{Globularization} \label{ss:globularization}
 
