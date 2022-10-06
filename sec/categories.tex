@@ -35,6 +35,14 @@ The preorder $\leq_\N$ on $B$ defined by $a \leq_\N b$ if and only if $a \in \pa
 
 \anibal{Augmentation and uniqueness of basis satisfied by the polytope examples.}
 
+The "strongly loop-free" condition does not hold in general. 
+
+\begin{example}
+	Consider the $3$-dimensional cross-polytope $P$, and the frame $(v_1=(1,0,-\varepsilon),v_2=(0,-1,0),v_3=(\varepsilon,0,1))$, for any small $\varepsilon >0$. 
+	This frame is locally Morse, but the associated pasting scheme is not strongly loop-free.
+	\Guillaume{details + drawing!}
+\end{example}
+
 \subsection{Globularization} 
 \label{ss:globularization}
 
@@ -100,7 +108,7 @@ We claim that the assignment $\{v_k\} \mapsto (\Gamma_n \colon \gcube^n \to P)$ 
 Indeed, replacing $v_k$ by its opposite $-v_k$ inverts the direction of the monotone paths on $P_{k-1}$, which corresponds precisely to inverting the parametrization of $\gcube^n$ given by \cref{l:adjunction-I}.
 
 The map $\Gamma_n$ is surjective, but definitely not injective (for example, the restriction $\Gamma_n(0,-,\ldots,-)$ is the constant map, with value $\bm_{v_1}(P)$). 
-We show that it can be factored through the globe $\globe^n$, in a $(\Sym_2)^{\times n}$-equivariant way, giving rise to a cellular homeomorphism $\globe^n \cong P$. 
+We show that it can be factored through the globe $\globe^n$, in a $(\Sym_2)^{\times n}$-equivariant way, giving rise to a cellular homeomorphism $\Upsilon \colon \globe^n \cong P$. 
 Explicitly, we define a map $\Psi \colon \gcube^n \to \globe^n$ component-wise by the formulas
 \begin{align*}
 	\Psi_1(t_1,\ldots,t_n) & \defeq \cos(t_1 \pi) \\
@@ -108,27 +116,16 @@ Explicitly, we define a map $\Psi \colon \gcube^n \to \globe^n$ component-wise b
 	\Psi_3(t_1,\ldots,t_n) & \defeq \sin(t_1 \pi)\sin(t_2\pi)\cos(t_3\pi) \\
 	 & \vdots \\
 	\Psi_{n-1}(t_1,\ldots,t_n) & \defeq \sin(t_1 \pi) \cdots \sin(t_{n-2} \pi) \cos(t_{n-1} \pi) \\
-	\Psi_n(t_1,\ldots,t_n) & \defeq  \sin(t_1 \pi) \cdots \sin(t_{n-1} \pi)  (1-2t_n)\ .
+	\Psi_n(t_1,\ldots,t_n) & \defeq  \sin(t_1 \pi) \cdots \sin(t_{n-1} \pi)  (1-2t_n)\ ,
 \end{align*}
-
-while the second map $\Upsilon$ is defined by
-\[
-\Upsilon(\Psi(t_1,\ldots,t_n)) \defeq \Gamma_n(t_1,\ldots, t_n)\ .
-\]
-By construction, these maps are again continuous, cellular and piecewise linear.
-There is moreover an action of $(\Sym_2)^{\times n}$ on each of the three spaces
-\begin{itemize}
-	\item On the $n$-cube $\gcube^n$ by sending a coordinate $t_i$ to $1-t_i$, its reflection with respect to the value $1/2$.
-	\item On the $n$-globe $\globe^n$ by sending a coordinate $\Psi_i$ to its opposite $-\Psi_i$.
-	\item On the framed polytope $P$ by sending a vector $v_i$ to its opposite $-v_i$, or equivalently sending the map $\Gamma_{i-1}$ to its opposite $\Gamma_{i-1}^\op$.
-\end{itemize}
-One can check that the two maps $\Psi$ and $\Upsilon$ are equivariant with respect to this action.
-
+such that $\Gamma_n = \Psi \Upsilon$. 
 There is an action of $(\Sym_2)^{\times n}$ on the globe $\globe^n$ which is given component-wise by multplication by $-1$. 
 It is clear that the map $\Psi$ above is $(\Sym_2)^{\times n}$-equivariant and cellular. 
 Moreover, its fibers are precisely the cells of $\gcube^n$ on which $\Gamma_n$ is constant (for example, $\Psi^{-1}(1,0,\ldots,0)=\{0\} \times \gcube^{n-1}$), i.e. it is a quotient map. 
-Indeed, \Guillaume{More details}
+Indeed, 
+\Guillaume{More details}
 
-\subsection{Kapranov--Voevodsky pasting scheme theorem}
-
-TBW
+In the case where $P$ is centrally symmetric, it is naturally endowed with an $\Sym_2$ action sending a point $p \in P$ to its symmetic $r-p \in P$, where $r$ is the center of symmetry of $P$ (see \cref{ss:centrally-symmetric}). 
+Considering the diagonal action of $\Sym_2$ on $\gcube^n$ (resp. $\globe^n$), the map $\Gamma_n$ (resp. $\Upsilon$) then becomes $\Sym_2$-equivariant.
+Indeed,   
+\Guillaume{Continue}

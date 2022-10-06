@@ -4,9 +4,6 @@
 
 \todo{@guillaume: consider saying something about toric varieties}
 
-\anibal{is there standard terminology for a property holding on a $P$ vs on all its faces?}
-\Guillaume{Didn't find that in Ziegler, will look more}
-
 A vector $v \in \R^n$ is said to be \textit{Morse} on a polytope $P \subseteq \R^n$ if $P$ has a \textbf{unique} vertex $\bm_v(P)$ which minimizes the scalar product $\angles{-,v}$ and a \textbf{unique} vertex $\tp_v(P)$ which maximizes it.
 We say that $v$ is \textit{locally Morse} on $P$ if it is Morse on each face of $P$.
 It is easily seen that it is sufficient to verify this property only on the edges of $P$.
@@ -14,11 +11,9 @@ Although we do not use the following terminology, we mention that these properti
 
 \begin{remark}
 	Note that $v$ is Morse with respect to $P$ if and only if both $v$ and $-v$ lie in maximal chambers of the normal fan $\mathcal{N}_P$.
-	Being locally Morse is equivalent to $v$ lying in a chamber of the smallest hyperplane arrangement refining $\mathcal{N}_P$.
+	Being locally Morse is equivalent to $v$ lying in a chamber of the smallest hyperplane arrangement refining $\mathcal{N}_P$. 
+	In the literature, the corresponding zonotope is called \Guillaume{Padrol-...}; we propose the term \emph{enveloping zonotope}.
 \end{remark}
-
-\Guillaume{Is there standard terminology for the minimal hyerplane arrangement refining the normal fan? If not, I would suggest the "enveloping zonotope"}
-
 
 A framed polytope $(P, \{v_i\})$ is said to be (\textit{locally}) \textit{Morse} if for every $1 \leq k \leq n$ the vector $v_k$ is (locally) Morse on $P_{k-1}$.
 
@@ -34,17 +29,13 @@ A framed polytope $(P, \{v_i\})$ is said to be (\textit{locally}) \textit{Morse}
 	Indeed, the edge directions of $\Sigma(P,Q)$ are directions normal to the walls of $\mathcal{N}_{\Sigma(P,Q)}$, which are precisely covered by the union of the walls of $\mathcal{N}_{\pi^{-1}(q)}, q \in Q$.
 \end{proof}
 
-
-
-%We observe that if $v$ orients $P$, then every face $F$ of $P$ has a unique vertex $\bm_v(F)$ (resp. $\tp_v(F)$) which minimizes (resp. maximizes) the scalar product $\angles{-,v}$.
-
 \begin{theorem}
 \label{t:bot-top-for-fibers}
 	Let $P \xra{\pi} Q$ be a projection of polytopes, let $r$ be the barycenter of $Q$, and let $\{v_k\}$ be an orthonormal basis of $\LinSpan(\pi^{-1}(r))$.
 	Then, we have that
 	\[
 	(\Sigma(P,Q),\{v_k\}) \text{ is (locally) Morse}
-	\iff
+	\implies
 	\forall q \in Q, \ (\pi^{-1}(q),\{v_k\}) \text{ is (locally) Morse}.
 	\]
 \end{theorem}
@@ -53,15 +44,20 @@ A framed polytope $(P, \{v_i\})$ is said to be (\textit{locally}) \textit{Morse}
 	To ease the notation, let us denote by $\Sigma$ the fiber polytope $\Sigma(P,Q)$.
 	By \cref{l:orients-the-fibers}, we have that $v_1$ is (locally) Morse on $\Sigma$ if and only if it is (locally) Morse on every fiber $\pi^{-1}(q), q \in Q$.
 	By the same lemma, we have that $v_2$ is (locally) Morse on $\Sigma_1$ if and only if it is (locally) Morse on any intersection of $\Sigma$ with an hyperplane orthogonal to $v_1$.
-	This is equivalent to $v_2$ being (locally) Morse on the intersections of each fiber $\pi^{-1}(q)$ with any hyperplane orthogonal to $v_1$.
-	Indeed, as shown in \cite[Lemma 3.1]{BilleraSturmfels94}, refinement of normal fans is preserved by projection, and the normal fan of the intersection of $\Sigma$ with an hyperplane orthogonal to $v_1$ is the common refinement of the normal fans of the intersections of the fibers $\pi^{-1}(q), q \in Q$ with some hyperplanes orthogonal to $v_1$.
-	Using again \cref{l:orients-the-fibers}, this is equivalent to $v_2$ being (locally) Morse on $\pi^{-1}(q)_1$, for each $q \in Q$.
+\Guillaume{To be rewritten}
+	%This is equivalent to $v_2$ being (locally) Morse on the intersections of each fiber $\pi^{-1}(q)$ with any hyperplane orthogonal to $v_1$.
+	%Indeed, as shown in \cite[Lemma 3.1]{BilleraSturmfels94}, refinement of normal fans is preserved by projection, and the normal fan of the intersection of $\Sigma$ with an hyperplane orthogonal to $v_1$ is the common refinement of the normal fans of the intersections of the fibers $\pi^{-1}(q), q \in Q$ with some hyperplanes orthogonal to $v_1$. \Guillaume{NO!}
+
+	%Using again \cref{l:orients-the-fibers}, this is equivalent to $v_2$ being (locally) Morse on $\pi^{-1}(q)_1$, for each $q \in Q$.
 	Continuing in the same fashion for the higher $v_k$, we get the above equivalence.
 \end{proof}
+
+The converse of \cref{t:bot-top-for-fibers} does not hold in general, see \cref{e:simplex-permuto}.
 
 It will be convenient to express the local Morse property of a framed polytope in terms of its associated flag.
 
 \begin{theorem}
+\label{t:Morse-injectivity}
 	A framed polytope with associated flag $\pi_\bullet$ is locally Morse if and only if every $k$-face of $P$ is sent injectively to $\R^k$ by $\pi_k$.
 \end{theorem}
 
