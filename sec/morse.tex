@@ -29,6 +29,14 @@ A framed polytope $(P, \{v_i\})$ is said to be (\textit{locally}) \textit{Morse}
 	Indeed, the edge directions of $\Sigma(P,Q)$ are directions normal to the walls of $\mathcal{N}_{\Sigma(P,Q)}$, which are precisely covered by the union of the walls of $\mathcal{N}_{\pi^{-1}(q)}, q \in Q$.
 \end{proof}
 
+Let $\prec$ denote the relation of being a Minkowski summand, or equivalently having a coarser normal fan.  
+
+\begin{lemma}{{\cite[Lemma 3.1]{BilleraSturmfels94}}}
+\label{l:Minkowski-summand-fiber-polytope}
+	Let $P \xra{\pi} Q$ be a projection of polytopes.
+	If $P' \prec P$ and $\pi(P') \prec Q$, then we have $\Sigma(P', \pi(P')) \prec \Sigma(P,Q)$.
+\end{lemma}
+
 \begin{theorem}
 \label{t:bot-top-for-fibers}
 	Let $P \xra{\pi} Q$ be a projection of polytopes, let $r$ be the barycenter of $Q$, and let $\{v_k\}$ be an orthonormal basis of $\LinSpan(\pi^{-1}(r))$.
@@ -41,15 +49,10 @@ A framed polytope $(P, \{v_i\})$ is said to be (\textit{locally}) \textit{Morse}
 \end{theorem}
 
 \begin{proof}
-	To ease the notation, let us denote by $\Sigma$ the fiber polytope $\Sigma(P,Q)$.
-	By \cref{l:orients-the-fibers}, we have that $v_1$ is (locally) Morse on $\Sigma$ if and only if it is (locally) Morse on every fiber $\pi^{-1}(q), q \in Q$.
-	By the same lemma, we have that $v_2$ is (locally) Morse on $\Sigma_1$ if and only if it is (locally) Morse on any intersection of $\Sigma$ with an hyperplane orthogonal to $v_1$.
-\Guillaume{To be rewritten}
-	%This is equivalent to $v_2$ being (locally) Morse on the intersections of each fiber $\pi^{-1}(q)$ with any hyperplane orthogonal to $v_1$.
-	%Indeed, as shown in \cite[Lemma 3.1]{BilleraSturmfels94}, refinement of normal fans is preserved by projection, and the normal fan of the intersection of $\Sigma$ with an hyperplane orthogonal to $v_1$ is the common refinement of the normal fans of the intersections of the fibers $\pi^{-1}(q), q \in Q$ with some hyperplanes orthogonal to $v_1$. \Guillaume{NO!}
-
-	%Using again \cref{l:orients-the-fibers}, this is equivalent to $v_2$ being (locally) Morse on $\pi^{-1}(q)_1$, for each $q \in Q$.
-	Continuing in the same fashion for the higher $v_k$, we get the above equivalence.
+	As in \cref{l:orients-the-fibers}, we have that $\pi^{-1}(q) \prec \Sigma(P,Q)$. 
+	Applying \cref{l:Minkowski-summand-fiber-polytope} to the projection $\pi_1$, we get $(\pi^{-1}(q))_1 \prec \Sigma(P,Q)_1$. 
+	Applying it again to the projection $\pi_2$, we get $(\pi^{-1}(q))_2 \prec \Sigma(P,Q)_2$.
+	Continuing in the same fashion, we get $(\pi^{-1}(q))_k \prec \Sigma(P,Q)_k$ for all $k$.
 \end{proof}
 
 The converse of \cref{t:bot-top-for-fibers} does not hold in general, see \cref{e:simplex-permuto}.
