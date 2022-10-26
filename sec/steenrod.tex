@@ -7,7 +7,7 @@
 \subsection{Diagonals polytope}
 
 \begin{definition}
-	The \emph{diagonals polytope} $D_P$ of a polytope $P$ is the fiber polytope of the projection
+	The \emph{diagonals polytope} $D_P$ of a polytope $P$ is the fiber polytope $\Sigma(P\times P, P)$ of the projection
 	\[
 	\begin{tikzcd}[row sep=-2,column sep=small]
 		P \times P \arrow[r] & P \\
@@ -27,17 +27,39 @@ The vertices of $D_P$ are associated with tight coherent sections, which are cel
 	\label{f:diagonal-interval}
 \end{figure}
 
-\begin{example}
+The diagonals polytope admits an equivalent description via the Cayley trick.
+For a complete exposition, we refer to \cite[Section 9.2]{deloeraTriangulations2010}.
+Define the \emph{join} $P * Q \subset \R^n \times \R^n \times \R$ of two polytopes $P,Q \subset \R^n$ as the convex hull of the two sets of points $\{(p,0,0) \ | \ p \in P \}$ and $\{(0,q,1) \ | \ q \in Q\}$. 
+Define their \emph{Cayley embedding} $\Cay(P,Q) \subset \R^n \times \R$ as the convex hull of the two sets of points $\{(p,0) \ | \ p \in P \}$ and $\{(q,1) \ | \ q \in Q\}$. 
+%Note that we have $\dim(P*Q)=\dim P + \dim Q + 1$, and if $\dim P = \dim Q$, we have $\dim(\Cay(P,Q))=\dim P+1$. 
+There is an obvious projection from $P * Q$ to $\Cay(P,Q)$ sending each of the two polytopes $P$ and $Q$ to itself. 
+One can thus consider the fiber polytope $\Sigma(P*Q,\Cay(P,Q))$.
+The following is a particular case of \cite[Theorem 3.1]{huberCayleyTrickLifting2000}.
+
+\begin{lemma}[Cayley trick]
+	\label{l:cayleytrick}
+	There is a combinatorial equivalence between the diagonals polytope and its Cayley counterpart
+	\[ 
+		D_P=\Sigma(P\times P,P) \cong \Sigma(P*P,\Cay(P,P))  \ . 
+	\]
+\end{lemma}
+Note that the Cayley embedding $\Cay(P,P)$ is just the prism $P \times I$. 
+%This gives two ways to look at the diagonals polytope: via mixed subdivisions on the left, and via polyhedral subdivisions on the right. 
+%\Guillaume{Define mixed subdivisions?}
+
+\begin{example}[The simplex]
 \label{e:simplex-permutahedron}
 	The diagonals polytope of the standard $n$-simplex is the standard $n$-permutahedron. 
-	\Guillaume{Proof!!}
+	As explained in \cite[Example 9.2.20]{deloeraTriangulations2010}, this can be easily seen via the Cayley trick.
+	Indeed, we have $\simplex^n * \simplex^n = \simplex^{2n}$, so the fiber polytope $\Sigma(P*P,\Cay(P,P))$ is the secondary polytope of the prism $\simplex^n \times I$, which is affinely isomorphic to the standard permutahedron \cite[Theorem 6.2.6]{deloeraTriangulations2010}.
+	On the other hand, an easy computation shows that the direction of edges of $\simplex^n \cap \rho_z \simplex^n, z \in \simplex^n$ are exactly the directions of the edges of the standard permutahedron. 
 \end{example}
 
-\begin{example} 
+\begin{example}[The permutahedron]
 \label{e:permutahedron}
 	If $P=\sum_{1 \leq i<j \leq n+1} [e_i-e_j, e_j-e_i]$ is the standard $n$-dimensional permutahedron
 	Since $P$ is a zonotope, \cref{l:centrally-symmetric} implies that $D_P$ is also a zonotope. 
-	Using the computation of the directions of the edges of $D_P$ in \cite[Theorem 3.6]{GLA21}, we deduce that $D_P=\sum_{I<J} [\sum_{i \in I}e_i - \sum_{j \in J}e_j, \sum_{j \in J} e_j - \sum_{i \in I}e_i]$, where the sum runs over all pairs $I,J\subset [n+1]$ such that $|I|=|J|\neq 0, I\cap J = \emptyset$ and $\min(I \cup J) \in I$, see .
+	Using the computation of the directions of the edges of $D_P$ in \cite[Theorem 3.6]{GLA21}, we deduce that $D_P=\sum_{I<J} [\sum_{i \in I}e_i - \sum_{j \in J}e_j, \sum_{j \in J} e_j - \sum_{i \in I}e_i]$, where the sum runs over all pairs $I,J\subset [n+1]$ such that $|I|=|J|\neq 0, I\cap J = \emptyset$ and $\min(I \cup J) \in I$.
 \end{example}
 
 \subsection{Tangent-Normal isomorphism}
@@ -66,9 +88,27 @@ The diagonals polytope $D_P$ has the same dimension as $P$, and can be seen in $
 	We can see this isomorphism as the discrete analogue of the isomorphism between the tangent bundle of a manifold $M$ and the normal bundle of the diagonal submanifold of $M\times M$.
 \end{remark}
 
-We can also see that the normal fan of $D_P$, seen in the same space as $P$ under the isomorphism $\iota_r$, refines the normal fan of $P$.
-Moreover, the \emph{fundamental hyperplane arrangement} of $P$, introduced in \cite[Definition 1.18]{GLA21}, is obtained from the normal fan of $D_P$ by extending all the walls to hyperplanes.
-In the case where the normal fan of $D_P$ is already an hyperplane arrangement (for example, when $D_P$ is a zonotope, or when $P$ is a zonotope, it then agrees with the fundamental hyperplane arrangement of $P$.
+\begin{definition}
+	\label{d:edgezonotope}
+	The \emph{edge zonotope} $E(P)$ of $P$ is the Minkowski sum of the directions of the edges of $P$. 
+\end{definition}
+
+The normal fan of $E(P)$ is obtained from the normal fan of $P$ by extending all the walls to hyperplanes.
+In other words, it is the smallest hyperplane arrangement refining $\mathcal{N}_P$. 
+\Guillaume{In the literature, the edge zonotope is also called...}
+Seeing $D_P$ in the same space as $P$ under the isomorphism $\iota_r$ makes evident the following relations between normal fans. 
+ 
+\begin{lemma}
+	We have the following sequence of refinement of normal fans 
+	\[
+		P \prec E(P) \prec D_P \prec E(D_P) \ . 
+	\]
+\end{lemma}
+
+In particular, the normal fan of $D_P$ refines the normal fan of $P$. 
+The normal fan of $E(D_P)$ is exactly the \emph{fundamental hyperplane arrangement} of $P$, introduced in \cite[Definition 1.18]{GLA21}.
+
+\Guillaume{Diagonals polytope and monotone path polytope!?!}
 
 \subsection{Reflections and fibers}
 
